@@ -513,8 +513,7 @@
     "status": "proposal",
     "priority": "P1",
     "why": [
-      "空态本身简洁，但页头与中间重复突出购盒操作。",
-      "Learn how collections work 指向不存在的首页锚点。"
+      "根据已确认参考图修正当前 Web 预览。"
     ],
     "changes": [
       "保留中心空态，以一个金色主操作引导首次开盒。",
@@ -548,16 +547,16 @@
     ],
     "current_image": null,
     "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
+    "implementation_status": "已更新 · 已确认 UI",
+    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
     "implemented_changes": [
-      "空态继续使用一个金色购盒按钮，顶部入口降为描边。",
-      "帮助链接修复到收藏帮助分类。"
+      "已修正：使用已登录的独立空收藏预览，显示 Your collection is empty，不再弹出登录窗口。",
+      "预览数据与正常演示数据隔离；保留金色 Open your first box 按钮及收藏帮助入口。"
     ],
-    "web_route": "boxzy-collection.html?preview=clean&empty=1",
+    "web_route": "boxzy-collection.html?preview=demo&empty=1",
     "historical_image": "evidence/collection-empty-0.jpg",
     "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=clean&empty=1&guide=doc-collection-empty-v3",
+    "current_preview": "../boxzy-collection.html?preview=demo&empty=1&guide=doc-collection-empty-v4",
     "browser_visual_verified": false
   },
   {
@@ -1689,29 +1688,34 @@
     "status": "retain",
     "priority": "P2",
     "why": [
-      "简单 spinner 符合已确认方向，无需新视觉方案。",
-      "固定舞台缩放的实际文字与控件尺寸尚未浏览器验证。"
+      "根据已确认参考图修正当前 Web 预览。"
     ],
     "changes": [],
-    "interaction": "保留 Loading；网络延迟、超时和结果失败按现有不同状态处理，不显示假进度。",
+    "interaction": "Loading...",
     "parameters": [
       {
-        "element": "舞台宽度",
+        "element": "舞台",
         "min": 1280,
         "max": 1280,
-        "rule": "px；舞台高度固定 720px，不修改已确认构图。"
+        "rule": "固定 1280 × 720 CSS px；顶部栏 64px；随视口等比缩放。"
       },
       {
-        "element": "实际操作点击高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；实现时核查整体缩小后的可用尺寸，不能仅看设计尺寸。"
+        "element": "内容布局",
+        "min": 32,
+        "max": 32,
+        "rule": "舞台内边距32px，单行网格居中；背景 #111111。"
       },
       {
-        "element": "状态辅助文字",
+        "element": "状态图标",
+        "min": 36,
+        "max": 64,
+        "rule": "Loading 36px；失败与更新64px；金色 #F5C442。"
+      },
+      {
+        "element": "文字与按钮",
         "min": 14,
-        "max": 16,
-        "rule": "px；使用当前短文案，保持失败与更新中区别。"
+        "max": 54,
+        "rule": "Loading 14/22px；标题32/40px；正文17/26px；返回按钮最小304×54px、圆角10px。"
       }
     ],
     "evidence": "参考图观察",
@@ -1721,13 +1725,16 @@
     ],
     "current_image": null,
     "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
+    "implementation_status": "已更新 · 已确认 UI",
+    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
+    "implemented_changes": [
+      "已按确认图恢复：小转圈与 Loading... 在顶部栏以下的内容区水平、垂直居中。",
+      "沿用黑金边框、Logo、声音开关、余额与关闭按钮；加载中不显示返回按钮。"
+    ],
     "web_route": "boxzy-interactive.html?preview=demo&screen=loading",
     "historical_image": "evidence/opening-loading-1.png",
     "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=loading&guide=doc-opening-loading-v3",
+    "current_preview": "../boxzy-interactive.html?preview=demo&screen=loading&guide=doc-opening-loading-v4",
     "browser_visual_verified": false
   },
   {
@@ -1736,29 +1743,34 @@
     "status": "retain",
     "priority": "P2",
     "why": [
-      "当前源码已缩短失败说明，并保留收藏出口，优于旧长文案。",
-      "保留视觉不等于真实订单恢复和库存已验证。"
+      "根据已确认参考图修正当前 Web 预览。"
     ],
     "changes": [],
-    "interaction": "使用 Sorry, opening failed 与 Your unopened box is in My Collection；与更新中、结果暂未加载区分。",
+    "interaction": "Unable to open your box\nSorry, we couldn’t open your box.\nYour unopened box is still in My Collection.\nPlease try again later.\n\nBack to My Collection",
     "parameters": [
       {
-        "element": "舞台宽度",
+        "element": "舞台",
         "min": 1280,
         "max": 1280,
-        "rule": "px；舞台高度固定 720px，不修改已确认构图。"
+        "rule": "固定 1280 × 720 CSS px；顶部栏 64px；随视口等比缩放。"
       },
       {
-        "element": "实际操作点击高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；实现时核查整体缩小后的可用尺寸，不能仅看设计尺寸。"
+        "element": "内容布局",
+        "min": 32,
+        "max": 32,
+        "rule": "舞台内边距32px，单行网格居中；背景 #111111。"
       },
       {
-        "element": "状态辅助文字",
+        "element": "状态图标",
+        "min": 36,
+        "max": 64,
+        "rule": "Loading 36px；失败与更新64px；金色 #F5C442。"
+      },
+      {
+        "element": "文字与按钮",
         "min": 14,
-        "max": 16,
-        "rule": "px；使用当前短文案，保持失败与更新中区别。"
+        "max": 54,
+        "rule": "Loading 14/22px；标题32/40px；正文17/26px；返回按钮最小304×54px、圆角10px。"
       }
     ],
     "evidence": "源码确认",
@@ -1767,13 +1779,16 @@
     ],
     "current_image": null,
     "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
+    "implementation_status": "已更新 · 已确认 UI",
+    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
+    "implemented_changes": [
+      "已按确认图恢复：金色圆圈感叹号、居中标题 Unable to open your box、完整三行说明。",
+      "金色实心 Back to My Collection 返回收藏；未开盒权益保留。"
+    ],
     "web_route": "boxzy-interactive.html?preview=demo&screen=failed",
     "historical_image": "evidence/opening-failed-1.png",
     "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=failed&guide=doc-opening-failed-v3",
+    "current_preview": "../boxzy-interactive.html?preview=demo&screen=failed&guide=doc-opening-failed-v4",
     "browser_visual_verified": false
   },
   {
@@ -1782,29 +1797,34 @@
     "status": "retain",
     "priority": "P2",
     "why": [
-      "当前源码两行更新说明已经清楚，不用沿用旧图高价值承诺。",
-      "更新何时结束依赖真实奖池状态，评审不承诺时间。"
+      "根据已确认参考图修正当前 Web 预览。"
     ],
     "changes": [],
-    "interaction": "使用 New prizes on the way / Open once the update is complete；返回收藏，不新增免费换盒。",
+    "interaction": "New prizes are on the way\nThis prize pool is currently sold out.\nWe’re adding new, higher-value prizes.\nYour box will stay in My Collection\nand can be opened once the update is complete.\n\nBack to My Collection",
     "parameters": [
       {
-        "element": "舞台宽度",
+        "element": "舞台",
         "min": 1280,
         "max": 1280,
-        "rule": "px；舞台高度固定 720px，不修改已确认构图。"
+        "rule": "固定 1280 × 720 CSS px；顶部栏 64px；随视口等比缩放。"
       },
       {
-        "element": "实际操作点击高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；实现时核查整体缩小后的可用尺寸，不能仅看设计尺寸。"
+        "element": "内容布局",
+        "min": 32,
+        "max": 32,
+        "rule": "舞台内边距32px，单行网格居中；背景 #111111。"
       },
       {
-        "element": "状态辅助文字",
+        "element": "状态图标",
+        "min": 36,
+        "max": 64,
+        "rule": "Loading 36px；失败与更新64px；金色 #F5C442。"
+      },
+      {
+        "element": "文字与按钮",
         "min": 14,
-        "max": 16,
-        "rule": "px；使用当前短文案，保持失败与更新中区别。"
+        "max": 54,
+        "rule": "Loading 14/22px；标题32/40px；正文17/26px；返回按钮最小304×54px、圆角10px。"
       }
     ],
     "evidence": "源码确认",
@@ -1813,13 +1833,16 @@
     ],
     "current_image": null,
     "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
+    "implementation_status": "已更新 · 已确认 UI",
+    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
+    "implemented_changes": [
+      "已按确认图恢复：金色圆圈刷新图标、居中标题 New prizes are on the way 与四行说明。",
+      "金色实心 Back to My Collection 返回收藏；奖池更新完成后才允许再次开盒。"
+    ],
     "web_route": "boxzy-interactive.html?preview=demo&screen=updating",
     "historical_image": "evidence/opening-updating-1.png",
     "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=updating&guide=doc-opening-updating-v3",
+    "current_preview": "../boxzy-interactive.html?preview=demo&screen=updating&guide=doc-opening-updating-v4",
     "browser_visual_verified": false
   },
   {

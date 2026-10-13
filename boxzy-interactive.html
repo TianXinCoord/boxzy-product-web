@@ -1736,6 +1736,7 @@
   <link rel="stylesheet" href="assets/boxzy/black-gold.css?v=20260910-5">
 <link rel="stylesheet" href="assets/boxzy/desktop-ui.css?v=20260928-2"><link rel="stylesheet" href="assets/boxzy/ui-20261012.css">
 <link rel="stylesheet" href="assets/boxzy/approved-ui.css?v=20261013-full-width-banner">
+  <link rel="stylesheet" href="assets/boxzy/opening-status.css?v=20261013-restored">
 </head>
 <body class="ui-approved desktop-ui home-refined">
   <div class="boxzy-gate boxzy-boot-screen" data-boxzy-boot aria-label="BOXZY is loading" aria-live="polite">
@@ -2175,12 +2176,12 @@
         if (!boxExperience.classList.contains('open')) return;
         if (state === 'ready') { renderOpeningResultState({state:'loading',record,openingId});  presentResolvedPrize(record.product); return; }
         const copy = {
-          loading:['Loading…',''], slow:['Loading…',''],
+          loading:['Loading...',''], slow:['Loading...',''],
           timeout:['Still checking your result','Your opening is saved. Check again or return to Collection.'],
           network:['Unable to load your result','Your opening is saved. Please check again.'],
           unavailable:['Unable to load your result','Your opening is saved. Please check again.'],
-          failed:['Sorry, opening failed','Your unopened box is in My Collection.'],
-          updating:['New prizes on the way','Open once the update is complete.'],
+          failed:['Unable to open your box',"Sorry, we couldn’t open your box.\nYour unopened box is still in My Collection.\nPlease try again later."],
+          updating:['New prizes are on the way',"This prize pool is currently sold out.\nWe’re adding new, higher-value prizes.\nYour box will stay in My Collection\nand can be opened once the update is complete."],
           'storage-error':['Unable to save your result','Please keep this page open and contact support.'],
           resolved:['Opening completed','Find your prize in My Collection.']
         }[state] || ['Unable to load your result','Please check again.'];
@@ -2188,6 +2189,12 @@
         const wasActive = resultLoadingStage.classList.contains('active');
         setExperienceStage(resultLoadingStage);
         resultLoadingStage.dataset.state=state;
+        const statusIcons = {
+          failed: '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27"/><path d="M32 18v18"/><circle class="status-dot" cx="32" cy="45" r="2"/></svg>',
+          updating: '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29"/><path d="M18 27a15 15 0 0 1 26-6l3 4M47 16v10H37M46 37a15 15 0 0 1-26 6l-3-4M17 48V38h10"/></svg>',
+          loading: '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><path d="M24 4a20 20 0 1 1-19 26"/></svg>'
+        };
+        document.getElementById('resultStatusIcon').innerHTML=statusIcons[state]||statusIcons.loading;
         resultLoadingStage.setAttribute('aria-busy',String(loading));
         document.getElementById('resultStatusTitle').textContent=copy[0];
         document.getElementById('resultStatusMessage').textContent=copy[1];
@@ -2197,7 +2204,7 @@
         document.getElementById('openingResultSupport').hidden=state!=='storage-error';
         document.getElementById('openingResultSupport').href=BoxzyCatalog.route('boxzy-support.html')+'#opening-'+encodeURIComponent(openingId);
         document.getElementById('leaveOpeningResult').hidden=loading || state==='storage-error';
-        document.getElementById('leaveOpeningResult').textContent='Go to collection';
+        document.getElementById('leaveOpeningResult').textContent=['failed','updating'].includes(state)?'Back to My Collection':'Go to collection';
         document.getElementById('resultStatusMessage').hidden=loading;
         document.querySelector('.opening-reference').hidden=true;
         if (!wasActive) requestAnimationFrame(()=>document.getElementById('resultStatusTitle').focus({preventScroll:true}));

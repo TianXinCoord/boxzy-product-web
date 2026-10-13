@@ -1,7 +1,7 @@
 {
   "date": "2026-10-13",
   "layout": "self-contained repository; product guide in guide/",
-  "localReferencesChecked": 878,
+  "localReferencesChecked": 883,
   "missingLocalReferences": [],
   "outsideRepository": [],
   "sourceAndLogicChecksPassed": 38,
@@ -9,5 +9,17 @@
   "guideCopiesIdentical": true,
   "guideFilesCopied": 186,
   "guideImageBytesPreserved": true,
-  "browserVisualVerified": false
+  "browserVisualVerified": false,
+  "localUIRestoration": {
+    "states": [
+      "collection-empty",
+      "opening-failed",
+      "opening-loading",
+      "opening-updating"
+    ],
+    "statePreviewChecksPassed": true,
+    "browserVisualVerified": false,
+    "publication": "approved for repository update",
+    "userVisualApproval": true
+  }
 }
