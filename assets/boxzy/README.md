@@ -1,24 +1,11 @@
-# BOXZY reusable product assets
+# BOXZY Web assets
 
-All four files are RGBA PNGs with a real alpha channel and no baked-in UI text,
-buttons, prices, navigation, or page background.
+- `banner-wide-2128x739.png`：当前首页横幅。
+- `banner-final-2071x759.png`：用户确认的原始横幅，保留作来源。
+- `catalog/`：当前四种盒子与奖品素材。
+- `real-products/`：仍被页面引用的商品透明图。
+- `video/`、`sfx/`：开盒媒体，保留现有资源与播放路径。
+- `rank-medal-1.png` 至 `rank-medal-3.png`：排行榜动态路径素材。
+- CSS/JS：运行与构建依赖；不得按文件名中的版本号判断是否废弃。
 
-| File | Size | Intended use |
-| --- | --- | --- |
-| `box-discovery.png` | 1254 × 1254 | Discovery tier product card, modal, mobile carousel |
-| `box-collector.png` | 1254 × 1254 | Collector tier product card, modal, mobile carousel |
-| `box-vault.png` | 1254 × 1254 | Vault tier product card, modal, mobile carousel |
-| `banner-product-group.png` | 1672 × 941 | Default hero using supplied real sealed-product photos |
-| `banner-real-products.png` | 1672 × 941 | Named copy of the real-product hero composition |
-| `banner-product-group-concept.png` | 1672 × 941 | Archived fictional BOXZY product concept |
-| `empty-presentation-tray.png` | 1672 × 941 | Empty tray for future inventory compositions |
-
-The three individual boxes share the same camera angle, scale, and lighting so
-they can be swapped within one component without visual jumps. Keep marketing
-headlines and CTAs as HTML rather than baking them into these images.
-
-The default banner uses the supplied source-product photos as direct composited
-cutouts; their packaging was not regenerated. Source images and reusable cutouts
-are stored under `real-products/`. The Legendary Treasures source is only
-200 × 254, so it should be replaced if a higher-resolution original becomes
-available.
+未被页面使用的研究图、旧 Banner 和生成中间图已移出当前交付，可从 Git 历史找回。

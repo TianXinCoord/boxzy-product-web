@@ -25,8 +25,14 @@ npm run build
 npm test
 ```
 
-预编译 CSS 已提供，不需要构建即可打开页面。38 项 Node / DOM stub 与源码检查通过；不等同于浏览器视觉验收。`review/` 内旧日期的检查记录为历次证据，本次交付以根目录 `delivery-verification.json` 为准。
+预编译 CSS 已提供，不需要构建即可打开页面。38 项 Node / DOM stub 与源码检查通过；不等同于浏览器视觉验收。`review/` 保留测试脚本、测试基线及当前测试结果；根目录 `delivery-verification.json` 为当前交付检查记录。
+
+检查两个同级目录的资源引用：`python3 review/verify-offline.py`。
 
 ## 实现边界
 
 这是本地前端演示，不是生产服务。账号、余额、支付、提现、物流和奖池等需接入后端。`preview=demo` / `preview=reference` 使用隔离的示例状态；文档预览具有独立会话键，不会当作真实交易执行。
+
+## 文件整理
+
+未引用的生成草稿、旧 Banner、重复研究图与过期报告已清理。运行资源、样式源码、测试及说明中仍展示的历史对比图保留。删除项可从 Git 历史恢复；本地原交付副本未删除。

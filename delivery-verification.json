@@ -4,11 +4,13 @@
     "boxzy-product-web",
     "boxzy-product-web-guide"
   ],
-  "localReferencesChecked": 594,
+  "localReferencesChecked": 872,
   "missingLocalReferences": [],
   "sourceAndLogicChecksPassed": 38,
   "currentPreviewCount": 36,
   "guideCopiesIdentical": true,
   "browserVisualVerified": false,
-  "oldWorkspaceCopiesPreserved": true
+  "oldWorkspaceCopiesPreserved": true,
+  "cleanupRemovedFiles": 81,
+  "cleanupRemovedBytes": 67214148
 }

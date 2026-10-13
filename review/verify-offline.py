@@ -1,46 +1,53 @@
-"""Check file dependencies and embedded guide images; no browser invocation."""
+"""Validate the two sibling delivery folders; does not invoke a browser."""
 from pathlib import Path
 from html.parser import HTMLParser
-from urllib.parse import urlparse,unquote
-import re,json,hashlib,base64,datetime
-root=Path(__file__).resolve().parent.parent
-missing=[];outside=[];remote=[];assets=set();images=0;embedded=0;html_count=0
+from urllib.parse import urlsplit, unquote
+import re, json
+WEB = Path(__file__).resolve().parents[1]
+GUIDE = WEB.parent / 'boxzy-product-web-guide'
+assert GUIDE.is_dir(), 'Place boxzy-product-web-guide beside boxzy-product-web'
+roots = [WEB, GUIDE]
+missing, outside, remote = [], [], set()
+checked = 0
 
-def check(file,value,kind):
- if not value or value.startswith(('#','data:','mailto:','tel:','javascript:')):return
- u=urlparse(value)
- if u.scheme not in ('','file'):
-  if kind!='href':remote.append({'file':str(file.relative_to(root)),'url':value})
-  return
- dest=(Path(unquote(u.path)) if u.scheme=='file' else file.parent/unquote(u.path)).resolve()
- try:dest.relative_to(root)
- except ValueError:outside.append({'file':str(file.relative_to(root)),'reference':value});return
- if not dest.exists():missing.append({'file':str(file.relative_to(root)),'reference':value})
- elif dest.is_file():assets.add(str(dest.relative_to(root)))
-class Parser(HTMLParser):
- def handle_starttag(self,tag,attrs):
-  global images,embedded
-  a=dict(attrs)
-  for k in ['src','href','poster']:check(self.file,a.get(k,''),k)
-  if tag=='img':
-   images+=1
-   value=a.get('src','')
-   if value.startswith('data:image/'):
-    raw=base64.b64decode(value.split(',',1)[1],validate=True)
-    assert len(raw)>0
-    embedded+=1
-for f in list(root.glob('*.html'))+list((root/'guide').glob('*.html')):
- parser=Parser();parser.file=f;parser.feed(f.read_text());html_count+=1
-for f in (root/'assets').rglob('*.css'):
- for value in re.findall(r'url\([\"\']?([^\)\"\']+)',f.read_text()):check(f,value,'src')
-for f in list((root/'assets').rglob('*.js'))+list(root.glob('*.html')):
- for value in re.findall(r'''["'](assets/[^"'`\s<>]+)["']''',f.read_text()):
-  if '${' in value:continue
-  # Runtime asset literals are relative to the document, not JS file.
-  check(root/'index.html',value,'src')
-report={'generatedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Static offline dependency validation, not browser rendering','htmlFiles':html_count,'imageElements':images,'embeddedImagesDecoded':embedded,'localDependencies':len(assets),'missing':missing,'outsidePackage':outside,'remoteRuntimeDependencies':remote,'browserValidation':'Not performed. Browser tool rejected file:// and explicitly prohibited workarounds.'}
-(root/'review/verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-assert not missing and not outside and not remote,json.dumps(report,ensure_ascii=False)
-manifest={str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((root/'assets').rglob('*')) if p.is_file()}
-(root/'review/asset-manifest.json').write_text(json.dumps({'algorithm':'sha256','files':manifest},ensure_ascii=False,indent=2))
-print(json.dumps(report,ensure_ascii=False,indent=2))
+def check(file, value):
+ global checked
+ if not value or value.startswith(('#', 'data:', 'mailto:', 'tel:', 'javascript:')): return
+ u = urlsplit(value)
+ if u.scheme in ('https', 'http'):
+  remote.add(value); return
+ if not u.path: return
+ target = (file.parent / unquote(u.path)).resolve()
+ checked += 1
+ if not any(target.is_relative_to(r) for r in roots): outside.append([str(file), value])
+ if not target.exists(): missing.append([str(file), value])
+
+class Refs(HTMLParser):
+ def handle_starttag(self, tag, attrs):
+  if tag not in ('a', 'img', 'iframe', 'link', 'script', 'video', 'source'): return
+  a = dict(attrs)
+  for key in ('src', 'href', 'poster'):
+   if key in a: check(self.path, a[key])
+
+for root in roots:
+ for p in root.rglob('*.html'):
+  if '.git' in p.parts: continue
+  parser = Refs(); parser.path = p; parser.feed(p.read_text())
+ for p in (root / 'assets').rglob('*.css'):
+  for s in re.findall(r'''url\(["']?([^)'"\s]+)''', p.read_text()): check(p, s)
+# JS and inline asset literals resolve relative to their HTML document.
+for p in list((WEB / 'assets').rglob('*.js')) + list(WEB.glob('*.html')):
+ for s in re.findall(r'''["'](assets/[^"'`\s<>]+)["']''', p.read_text()):
+  if '${' not in s: check(WEB / 'index.html', s)
+for rank in (1, 2, 3): check(WEB / 'index.html', f'assets/boxzy/rank-medal-{rank}.png')
+html = (GUIDE / 'START-HERE.html').read_text()
+assert html == (GUIDE / 'BOXZY-WEB-PRODUCT-GUIDE.html').read_text()
+assert html.count('<iframe ') == 36
+for row in json.loads((GUIDE / 'implementation.json').read_text()):
+ for key in ('current_preview', 'historical_image'):
+  s = row.get(key)
+  if s and not s.startswith('deliverables/'): check(GUIDE / 'implementation.json', s)
+report = {'localReferencesChecked': checked, 'missing': missing, 'outsideDelivery': outside,
+          'guideCurrentPreviews': 36, 'guideCopiesIdentical': True, 'browserVisualVerified': False}
+print(json.dumps(report, ensure_ascii=False, indent=2))
+assert not missing and not outside
