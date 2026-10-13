@@ -1,14 +1,13 @@
 {
   "date": "2026-10-13",
-  "folders": [
-    "boxzy-product-web",
-    "boxzy-product-web-guide"
-  ],
-  "localReferencesChecked": 594,
+  "layout": "self-contained repository; product guide in guide/",
+  "localReferencesChecked": 878,
   "missingLocalReferences": [],
+  "outsideRepository": [],
   "sourceAndLogicChecksPassed": 38,
   "currentPreviewCount": 36,
   "guideCopiesIdentical": true,
-  "browserVisualVerified": false,
-  "oldWorkspaceCopiesPreserved": true
+  "guideFilesCopied": 186,
+  "guideImageBytesPreserved": true,
+  "browserVisualVerified": false
 }

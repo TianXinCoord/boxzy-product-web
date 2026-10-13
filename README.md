@@ -15,7 +15,18 @@
 
 ## 配套产品说明
 
-将 `boxzy-product-web-guide` 与本目录放在同一级，打开其中的 `START-HERE.html`。说明中的 36 个当前页面预览直接引用本 Demo；两目录名称请保持不变。
+完整说明文档已包含在本仓库 `guide/` 目录中。打开 `guide/START-HERE.html`（或 `guide/index.html`），36 个当前页面预览直接引用本仓库 Demo。只需下载或部署这一个仓库；不再依赖同级的独立说明仓库。
+
+```text
+index.html                 # Web Demo 入口
+START-HERE.html            # Demo 与说明导航
+guide/START-HERE.html      # 完整产品说明
+guide/assets/             # 说明素材
+guide/images/             # 参考图片
+guide/evidence/           # 历史对比图
+```
+
+部署时将仓库根目录作为静态站点根目录，保留 `guide/` 子目录。
 
 ## 开发
 
