@@ -1,0 +1,14 @@
+{
+  "name": "boxzy-web-pc",
+  "private": true,
+  "version": "2026.10.13",
+  "scripts": {
+    "build:css": "tailwindcss -c src/tailwind.config.cjs -i src/ui.css -o assets/boxzy/ui-20261012.css --minify",
+    "test": "node review/qa.cjs && node review/pc-qa.cjs && node review/approved-qa.cjs",
+    "build:approved": "tailwindcss -c src/tailwind.config.cjs -i src/approved-ui.css -o assets/boxzy/approved-ui.css --minify",
+    "build": "npm run build:css && npm run build:approved"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

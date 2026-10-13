@@ -1,0 +1,89 @@
+/* Approved September 28 money-entry surfaces. Shared by desktop and mobile. */
+#boxzyDeposit,#boxzyWithdraw{--funds-gold:#f2c451;--funds-muted:#b1b1b1;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px;place-items:center;overflow:hidden}
+#boxzyWithdraw{display:grid}
+:is(#boxzyDeposit,#boxzyWithdraw) *{box-sizing:border-box;min-width:0}
+:is(#boxzyDeposit,#boxzyWithdraw) button{font-family:inherit;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+:is(#boxzyDeposit,#boxzyWithdraw) :is(button,input,a):focus-visible{outline:2px solid #f2c451;outline-offset:3px}
+:is(#boxzyDeposit,#boxzyWithdraw) ::selection{background:#f2c451;color:#131313}
+:is(#boxzyDeposit,#boxzyWithdraw) :is(.boxzy-deposit-sheet,.boxzy-withdraw-sheet){position:relative;inset:auto;width:min(580px,100%);height:auto;max-height:calc(100dvh - 40px);padding:28px 26px 24px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#51452b #0d0d0d;border:1px solid #ae882c;border-radius:20px;background:radial-gradient(ellipse at 50% 0,rgba(178,130,36,.055),transparent 60%),#0c0c0c;color:#f7f7f7;box-shadow:0 28px 90px #0008;transform:none}
+:is(#boxzyDeposit,#boxzyWithdraw) .funds-drag-handle{display:none}
+#boxzyDeposit h2,#boxzyWithdraw .boxzy-withdraw-header h2{margin:0;font-size:28px;line-height:36px;text-align:center;letter-spacing:-.025em}
+#boxzyDeposit .boxzy-deposit-limit,#boxzyWithdraw .boxzy-withdraw-header p{margin:4px 0 0;color:var(--funds-muted);font-size:14px;line-height:20px;text-align:center}
+#boxzyDeposit .boxzy-deposit-close,#boxzyWithdraw .boxzy-withdraw-close{position:absolute;top:20px;right:20px;width:44px;height:44px;padding:0;border:1px solid #282828;border-radius:50%;background:#1a1a1a;color:#eaeaea;font-size:28px;line-height:1;cursor:pointer}
+#boxzyWithdraw .boxzy-withdraw-header{display:block;min-height:0;padding:0;border:0}
+#boxzyWithdraw .boxzy-withdraw-body{padding:0}
+#boxzyDeposit .boxzy-current-balance{width:max-content;max-width:100%;height:42px;margin:18px auto 0;padding:0 20px;gap:14px;border:1px solid #262626;border-radius:99px;background:#191919;color:#e2e2e2;font-size:14px}
+#boxzyDeposit .boxzy-current-balance strong{color:var(--funds-gold);font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+#boxzyDeposit .boxzy-amount-label,#boxzyWithdraw .withdraw-amount-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#boxzyDeposit .boxzy-amount-wrap,#boxzyWithdraw .withdraw-amount{display:flex;justify-content:center;align-items:center;gap:8px;width:100%;height:94px;margin:10px auto 4px;padding:0;border:0;border-radius:0;background:transparent}
+#boxzyDeposit .boxzy-currency,#boxzyWithdraw .withdraw-amount>span{position:static;color:#919191;font-size:30px;line-height:1}
+#boxzyDeposit .boxzy-amount,#boxzyWithdraw .withdraw-amount input{width:3ch;max-width:calc(100% - 42px);height:82px;padding:0;border:0;background:transparent;color:#f7f7f7;caret-color:var(--funds-gold);font-family:inherit;font-size:64px;font-weight:550;line-height:1;letter-spacing:-.035em;text-align:center;font-variant-numeric:tabular-nums}
+#boxzyWithdraw .withdraw-amount input{width:4ch}
+#boxzyWithdraw .withdraw-amount input::placeholder{color:#939393;opacity:1}
+#boxzyDeposit .boxzy-deposit-error{display:block;margin:0;color:#ffb0a6;text-align:center;font-size:12px;line-height:18px}
+#boxzyDeposit .boxzy-deposit-error:empty{display:none}
+#boxzyDeposit .boxzy-presets{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:8px 0 0}
+#boxzyDeposit .boxzy-preset{height:46px;padding:0;border:1px solid #303030;border-radius:10px;background:#141414;color:#f5f5f5;font-size:16px;font-weight:650;box-shadow:none}
+#boxzyDeposit .boxzy-preset.active{border-color:#f9d46f;background:linear-gradient(135deg,#ffda6a,#efb82e);color:#121212;box-shadow:none}
+:is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
+:is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad button{display:grid;place-items:center;min-height:54px;height:54px;padding:0;border:1px solid #2e2e2e;border-radius:11px;background:#151515;color:#f9f9f9;font-size:27px;font-weight:500;box-shadow:none;cursor:pointer;transition:background .12s,border-color .12s}
+:is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad .text-key{color:var(--funds-gold);font-size:17px;font-weight:750;letter-spacing:0}
+:is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad button:active{background:#303030;border-color:#b39347;transform:none}
+@media(hover:hover){:is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad button:hover{background:#242424;border-color:#5b5034}}
+#boxzyDeposit .boxzy-section-label,#boxzyWithdraw .boxzy-withdraw-body>h3{margin:20px 0 9px;color:var(--funds-muted);font-size:14px;font-weight:500;line-height:20px}
+#boxzyDeposit .boxzy-method,#boxzyWithdraw .boxzy-payout-method{display:grid;grid-template-columns:36px minmax(0,1fr) 28px;gap:12px;align-items:center;width:100%;min-height:62px;height:62px;padding:10px 14px;border:1px solid #d5ab3a;border-radius:12px;background:#121212;color:white;box-shadow:none}
+#boxzyDeposit .coinflow-icon,#boxzyWithdraw .boxzy-payout-icon{display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:9px;background:linear-gradient(135deg,#ffda6a,#efb82e);color:#121212;box-shadow:none;font-size:11px;font-weight:850}
+#boxzyWithdraw .boxzy-coinflow-glyph{font-style:normal;font-size:11px}
+#boxzyDeposit .boxzy-method strong,#boxzyWithdraw .boxzy-payout-copy strong{font-size:16px;font-weight:650}
+#boxzyWithdraw .boxzy-payout-copy span{margin-top:4px;color:var(--funds-muted);font-size:12px}
+#boxzyDeposit .boxzy-radio,#boxzyWithdraw .method-check{display:grid;place-items:center;width:28px;height:28px;background:#f4c64e;color:#121212;border-radius:50%;font-size:20px;font-weight:800;box-shadow:none}
+#boxzyDeposit .boxzy-deposit-submit,#boxzyWithdraw .withdraw-continue{width:100%;height:54px;margin:18px 0 0;border:1px solid #f8d675;border-radius:12px;background:linear-gradient(135deg,#ffdb72,#dea529);color:#121212;font-size:17px;font-weight:700;box-shadow:none}
+#boxzyDeposit .boxzy-deposit-submit:disabled,#boxzyWithdraw .withdraw-continue:disabled{border-color:transparent;background:#705c29;color:#161616;opacity:1;cursor:not-allowed}
+#boxzyDeposit .boxzy-deposit-legal{margin:14px 0 0;color:var(--funds-muted);font-size:12px;line-height:18px}
+#boxzyWithdraw .boxzy-withdraw-summary{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:20px 0 0;padding:14px 0;border:1px solid #2e2e2e;border-radius:12px;background:#121212}
+#boxzyWithdraw .boxzy-withdraw-summary>div{display:block;min-height:0;padding:0 18px;border:0;border-radius:0;background:none}
+#boxzyWithdraw .boxzy-withdraw-summary>div+div{border-left:1px solid #333333}
+#boxzyWithdraw .boxzy-withdraw-summary span{color:var(--funds-muted);font-size:12px;line-height:18px}
+#boxzyWithdraw .boxzy-withdraw-summary strong{margin-top:5px;font-size:21px;line-height:26px;font-variant-numeric:tabular-nums}
+#boxzyWithdraw .boxzy-withdraw-summary>div:first-child strong{color:var(--funds-gold)}
+#boxzyWithdraw .withdraw-helper{margin:0 0 16px;text-align:center;color:var(--funds-muted);font-size:13px;line-height:18px}
+#boxzyWithdraw .boxzy-withdraw-status{min-height:0;margin:12px 0 0;color:#ffb0a6;font-size:12px;line-height:18px}
+#boxzyWithdraw .boxzy-withdraw-status:empty{display:none}
+#boxzyWithdraw [hidden]{display:none!important}
+#boxzyWithdraw .withdraw-review{padding-top:22px}
+#boxzyDeposit .boxzy-success{padding:100px 0 65px}
+@media(max-width:620px){
+ #boxzyDeposit,#boxzyWithdraw{padding:0;align-items:end}
+ :is(#boxzyDeposit,#boxzyWithdraw) :is(.boxzy-deposit-sheet,.boxzy-withdraw-sheet){width:100%;max-height:calc(100dvh - max(12px,env(safe-area-inset-top)));min-height:min(790px,calc(100dvh - max(12px,env(safe-area-inset-top))));padding:35px 20px max(24px,env(safe-area-inset-bottom));border:1px solid #272727;border-bottom:0;border-radius:26px 26px 0 0;background:#0c0c0c;box-shadow:none}
+ :is(#boxzyDeposit,#boxzyWithdraw) .funds-drag-handle{display:block;position:absolute;top:10px;left:calc(50% - 17px);width:34px;height:4px;border-radius:4px;background:#767676}
+ #boxzyDeposit h2,#boxzyWithdraw .boxzy-withdraw-header h2{text-align:left;font-size:25px;line-height:32px;padding-right:40px}
+ #boxzyDeposit .boxzy-deposit-limit,#boxzyWithdraw .boxzy-withdraw-header p{text-align:left;font-size:14px}
+ #boxzyDeposit .boxzy-deposit-close,#boxzyWithdraw .boxzy-withdraw-close{top:30px;right:16px;background:#191919}
+ #boxzyDeposit .boxzy-current-balance{margin-top:22px}
+ #boxzyDeposit .boxzy-amount-wrap{height:106px;margin-top:12px}
+ #boxzyDeposit .boxzy-presets{gap:6px;margin-top:6px}
+ #boxzyDeposit .boxzy-preset{height:44px;font-size:15px}
+ :is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad{gap:7px;margin-top:14px}
+ :is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad button{height:54px;min-height:54px}
+ #boxzyDeposit .boxzy-section-label,#boxzyWithdraw .boxzy-withdraw-body>h3{margin-top:22px}
+ #boxzyDeposit .boxzy-deposit-submit,#boxzyWithdraw .withdraw-continue{height:54px;margin-top:22px;border-radius:18px}
+ #boxzyWithdraw .boxzy-withdraw-summary{margin-top:24px}
+ #boxzyWithdraw .boxzy-withdraw-summary>div{padding:0 14px}
+ #boxzyWithdraw .withdraw-amount{height:106px;margin-top:16px}
+}
+@media(max-height:740px){
+ :is(#boxzyDeposit,#boxzyWithdraw) :is(.boxzy-deposit-sheet,.boxzy-withdraw-sheet){min-height:0}
+ #boxzyDeposit .boxzy-current-balance,#boxzyWithdraw .boxzy-withdraw-summary{margin-top:14px}
+ #boxzyDeposit .boxzy-amount-wrap,#boxzyWithdraw .withdraw-amount{height:78px;margin-top:6px}
+ #boxzyDeposit .boxzy-amount,#boxzyWithdraw .withdraw-amount input{height:72px;font-size:54px}
+ :is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad button{height:46px;min-height:46px}
+ :is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad{gap:6px;margin-top:10px}
+ #boxzyDeposit .boxzy-section-label,#boxzyWithdraw .boxzy-withdraw-body>h3{margin-top:14px}
+ #boxzyDeposit .boxzy-deposit-submit,#boxzyWithdraw .withdraw-continue{margin-top:14px}
+}
+@media(prefers-reduced-motion:reduce){:is(#boxzyDeposit,#boxzyWithdraw),:is(#boxzyDeposit,#boxzyWithdraw) *{transition:none!important;animation:none!important}}
+/* Tap the amount to use a phone's system keyboard (including decimal entry).
+   The custom keyboard returns when the input loses focus. */
+@media(max-width:620px) and (pointer:coarse){
+ #boxzyDeposit:has(.boxzy-amount:focus) .boxzy-keypad,#boxzyWithdraw:has(#withdrawAmount:focus) .boxzy-keypad{display:none}
+}

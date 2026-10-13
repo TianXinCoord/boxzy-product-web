@@ -1,0 +1,47 @@
+.boxzy-toast-region{position:fixed;top:66px;right:24px;z-index:1250;display:grid;width:min(340px,calc(100vw - 32px));gap:8px;pointer-events:none}
+.boxzy-toast{position:relative;display:grid;grid-template-columns:8px minmax(0,1fr) 24px;align-items:center;min-height:52px;padding:10px 10px 10px 14px;border:1px solid #294057;border-radius:8px;background:#091522;color:#e8edf4;box-shadow:0 12px 32px rgba(0,0,0,.32);pointer-events:auto;font:600 13px/1.4 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;animation:boxzy-toast-in .18s ease-out}
+.boxzy-toast.is-leaving{opacity:0;transform:translateY(-6px);transition:opacity .16s ease,transform .16s ease}
+.boxzy-toast-dot{width:6px;height:6px;border-radius:50%;background:#5f7895}
+.boxzy-toast[data-type="success"] .boxzy-toast-dot{background:#2fbd74}
+.boxzy-toast[data-type="error"] .boxzy-toast-dot{background:#ff3b3b}
+.boxzy-toast[data-type="warning"] .boxzy-toast-dot{background:#e8a33b}
+.boxzy-toast[data-type="info"] .boxzy-toast-dot{background:#438fff}
+.boxzy-toast-message{min-width:0;padding-left:7px}
+.boxzy-toast-close{display:grid;width:24px;height:24px;padding:0;place-items:center;border:0;background:transparent;color:#9eabba;cursor:pointer;font:400 18px/1 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.boxzy-toast-close:hover{color:#fff}
+.boxzy-toast-close:focus-visible,.boxzy-confirm-close:focus-visible,.boxzy-confirm-button:focus-visible{outline:2px solid #6ea8ff;outline-offset:2px}
+.boxzy-confirm-backdrop{position:fixed;inset:0;z-index:1400;display:none;place-items:center;padding:20px;background:rgba(0,5,11,.76);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.boxzy-confirm-backdrop.open{display:grid}
+.boxzy-confirm-panel{width:min(460px,100%);overflow:hidden;border:1px solid #294057;border-radius:10px;background:#081522;color:#f2f5f9;box-shadow:0 28px 80px rgba(0,0,0,.58);font:14px/1.55 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;animation:boxzy-confirm-in .16s ease-out}
+.boxzy-confirm-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px 0}
+.boxzy-confirm-title{margin:0;font-size:20px;line-height:1.25;letter-spacing:-.02em}
+.boxzy-confirm-close{display:grid;width:28px;height:28px;padding:0;place-items:center;border:0;background:transparent;color:#a9b4c1;cursor:pointer;font:300 22px/1 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.boxzy-confirm-close:hover{color:#fff}
+.boxzy-confirm-body{padding:24px 22px 22px}
+.boxzy-confirm-message{margin:0;color:#e4e9ef;font-size:15px;line-height:1.55}
+.boxzy-confirm-note{margin:15px 0 0;color:#98a6b7;font-size:13px}
+.boxzy-confirm-footer{display:flex;justify-content:flex-end;gap:10px;padding:16px 22px;border-top:1px solid #22364a}
+.boxzy-confirm-button{min-width:108px;height:40px;padding:0 17px;border:1px solid #2b425a;border-radius:7px;background:#0b1a29;color:#dce4ed;cursor:pointer;font:700 13px/1 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.boxzy-confirm-button:hover{border-color:#466785;color:#fff}
+.boxzy-confirm-button.danger{border-color:#993142;background:#111922;color:#ff5969}
+.boxzy-confirm-button.primary{border-color:#1674ff;background:#1674ff;color:#fff}
+.boxzy-confirm-button.primary:hover{filter:brightness(1.08)}
+html.boxzy-confirm-open,body.boxzy-confirm-open{overflow:hidden}
+@keyframes boxzy-toast-in{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
+@keyframes boxzy-confirm-in{from{opacity:0;transform:translateY(7px) scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:590px){.boxzy-toast-region{top:58px;right:16px;width:calc(100vw - 32px)}.boxzy-confirm-backdrop{align-items:end;padding:8px}.boxzy-confirm-panel{border-radius:10px}.boxzy-confirm-header{padding:19px 18px 0}.boxzy-confirm-body{padding:20px 18px}.boxzy-confirm-footer{padding:14px 18px}.boxzy-confirm-button{min-width:0;flex:1}}
+@media(prefers-reduced-motion:reduce){.boxzy-toast,.boxzy-confirm-panel{animation:none}}
+
+/* Refined shared confirmation surface. */
+.boxzy-confirm-backdrop{background:rgba(0,5,11,.72);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.boxzy-confirm-panel{border-color:rgba(70,97,128,.24);border-radius:14px;background:linear-gradient(145deg,#0a1724,#07121d 74%);box-shadow:0 30px 90px rgba(0,0,0,.58),inset 0 1px rgba(255,255,255,.018)}
+.boxzy-confirm-header{padding:24px 26px 0}
+.boxzy-confirm-close{border-radius:50%;background:transparent;transition:background .16s,color .16s}
+.boxzy-confirm-close:hover{background:#122130}
+.boxzy-confirm-body{padding:26px 26px 24px}
+.boxzy-confirm-footer{gap:11px;padding:0 26px 24px;border-top:0}
+.boxzy-confirm-button{height:42px;border-color:transparent;border-radius:8px;background:#101d29}
+.boxzy-confirm-button:hover{border-color:transparent;background:#162635}
+.boxzy-confirm-button.danger{border-color:rgba(215,64,82,.3);background:rgba(104,27,40,.12)}
+.boxzy-confirm-button.primary{border-color:rgba(63,132,231,.24);background:linear-gradient(180deg,#1d73ed,#1358ce)}
+@media(max-width:590px){.boxzy-confirm-header{padding:20px 18px 0}.boxzy-confirm-body{padding:22px 18px 20px}.boxzy-confirm-footer{padding:0 18px 18px}}

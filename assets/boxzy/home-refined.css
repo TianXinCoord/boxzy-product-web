@@ -1,0 +1,263 @@
+/* Homepage visual refinement: fewer rules, stronger hierarchy through surfaces and spacing. */
+.home-refined {
+  background:
+    radial-gradient(860px 480px at 22% 39%, rgba(8, 66, 127, .12), transparent 68%),
+    radial-gradient(720px 420px at 82% 90%, rgba(24, 45, 73, .1), transparent 70%),
+    #020911;
+}
+
+.home-refined .boxzy-header {
+  border-bottom-color: rgba(86, 110, 138, .16);
+  background: rgba(2, 9, 17, .95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .16);
+}
+
+.home-refined .boxzy-header .nav-links {
+  border-color: rgba(58, 82, 110, .32);
+  background: rgba(5, 14, 24, .58);
+}
+
+.home-refined .boxzy-header .nav-link {
+  border-right: 0;
+  color: #bfc8d4;
+}
+
+.home-refined .boxzy-header .nav-link + .nav-link {
+  box-shadow: inset 1px 0 rgba(64, 86, 112, .13);
+}
+
+.home-refined .boxzy-header .nav-link:hover {
+  background: rgba(29, 57, 91, .14);
+}
+
+.home-refined .boxzy-header .nav-link.active {
+  background: linear-gradient(180deg, rgba(19, 54, 99, .34), rgba(8, 28, 53, .3));
+}
+
+.home-refined .boxzy-header .balance-control,
+.home-refined .boxzy-header .account-button,
+.home-refined .boxzy-header .guest-button {
+  border-color: rgba(64, 88, 116, .42);
+  background: rgba(5, 14, 24, .7);
+}
+
+.home-refined .live-strip {
+  height: 50px;
+  border-bottom: 0;
+  background: rgba(3, 10, 18, .94);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, .12);
+}
+
+.home-refined .live-label {
+  flex-basis: 166px;
+  border-right: 0;
+  background: transparent;
+}
+
+.home-refined .pull {
+  position: relative;
+  min-width: 265px;
+  padding-inline: 21px;
+  border: 0;
+}
+
+.home-refined .pull::after {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(transparent, rgba(77, 100, 126, .2), transparent);
+  content: "";
+}
+
+.home-refined .pull:hover {
+  background: rgba(38, 75, 119, .09);
+}
+
+.home-refined .page {
+  padding-top: 16px;
+}
+
+.home-refined .hero.approved-banner {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #06101a;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .2);
+}
+
+.home-refined .hero-banner-button {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #06101a;
+  box-shadow: none;
+}
+
+.home-refined .hero-banner-button::after {
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .02),
+    inset 0 -56px 100px rgba(0, 10, 23, .13);
+}
+
+.home-refined .hero-banner-image {
+  width: calc(100% + 6px);
+  max-width: none;
+  margin: -3px;
+  border-radius: 15px;
+}
+
+.home-refined .hero-banner-button:hover {
+  filter: brightness(1.018);
+  transform: translateY(-1px);
+}
+
+.home-refined .section-heading {
+  margin: 22px 2px 11px;
+}
+
+.home-refined .box-grid {
+  gap: 20px;
+}
+
+.home-refined .box-card {
+  min-height: 238px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background:
+    radial-gradient(340px 210px at 10% 18%, rgba(32, 63, 99, .1), transparent 72%),
+    linear-gradient(145deg, #091521, #06101a 78%);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .025),
+    0 18px 40px rgba(0, 0, 0, .17);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.home-refined .box-card::before {
+  opacity: .14;
+}
+
+.home-refined .box-card:hover,
+.home-refined .box-card.selected {
+  border-color: color-mix(in srgb, var(--accent) 22%, rgba(62, 83, 107, .22));
+  background:
+    radial-gradient(360px 220px at 12% 18%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 72%),
+    linear-gradient(145deg, #0a1724, #07121d 78%);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .24);
+  transform: translateY(-3px);
+}
+
+.home-refined .box-image {
+  filter: drop-shadow(0 20px 20px rgba(0, 0, 0, .48));
+}
+
+.home-refined .box-info {
+  padding: 20px 22px 20px 0;
+}
+
+.home-refined .box-rule {
+  display: none;
+}
+
+.home-refined .box-detail {
+  margin-top: 18px;
+}
+
+.home-refined .box-types {
+  margin: 6px 0 14px;
+}
+
+.home-refined .open-button {
+  border-color: rgba(66, 112, 170, .24);
+  background: linear-gradient(180deg, #102843, #0a1c30);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .035), 0 8px 18px rgba(0, 0, 0, .14);
+}
+
+.home-refined .open-button:hover {
+  border-color: rgba(81, 143, 220, .42);
+  background: linear-gradient(180deg, #153253, #0d2540);
+}
+
+@media (max-width: 930px) {
+  .home-refined .live-label { flex-basis: 145px; }
+  .home-refined .pull { min-width: 245px; }
+}
+
+@media (max-width: 590px) {
+  .home-refined .live-strip { height: 48px; }
+  .home-refined .live-label { flex-basis: 112px; }
+  .home-refined .pull { min-width: 220px; padding-inline: 14px; }
+  .home-refined .page { padding-top: 14px; }
+  .home-refined .hero.approved-banner,
+  .home-refined .hero-banner-button { border-radius: 11px; }
+  .home-refined .box-card { border-radius: 12px; }
+}
+
+/* Live-pull detail uses the same quiet surface hierarchy as the storefront. */
+.home-refined .auth-dialog.pull-dialog {
+  border-color: rgba(69, 98, 132, .24);
+  border-radius: 15px;
+  background: #07121d;
+  box-shadow: 0 34px 100px rgba(0, 0, 0, .6), inset 0 1px rgba(255, 255, 255, .018);
+}
+
+.home-refined .pull-visual {
+  border-right: 0;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(29, 72, 126, .62), rgba(10, 31, 56, .78) 48%, #081522 100%);
+}
+
+.home-refined .pull-visual::after {
+  display: none;
+}
+
+.home-refined .pull-rarity {
+  border-color: transparent;
+  background: rgba(26, 34, 47, .78);
+}
+
+.home-refined #pullBackdrop[data-rarity="rare"] .pull-rarity {
+  border-color: transparent;
+  background: rgba(13, 41, 73, .78);
+}
+
+.home-refined #pullBackdrop[data-rarity="common"] .pull-rarity {
+  border-color: transparent;
+  background: rgba(25, 35, 47, .82);
+}
+
+.home-refined .pull-dialog-body {
+  padding: 52px 40px 32px 38px;
+}
+
+.home-refined .pull-origin {
+  padding: 17px;
+  border: 0;
+  background: #0b1825;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .018);
+}
+
+.home-refined .pull-origin-label {
+  padding-bottom: 8px;
+  border-bottom: 0;
+}
+
+.home-refined .pull-origin-detail {
+  padding-top: 10px;
+}
+
+.home-refined .pull-origin img {
+  border-color: transparent;
+  background: #0e1c2a;
+}
+
+.home-refined .pull-box-link {
+  border-color: rgba(74, 139, 231, .24);
+  background: linear-gradient(180deg, #1c71ec, #1257cf);
+  box-shadow: 0 12px 28px rgba(0, 51, 153, .15);
+}
+
+@media (max-width: 590px) {
+  .home-refined .pull-visual { border-bottom: 0; }
+  .home-refined .pull-dialog-body { padding: 28px 23px 23px; }
+}

@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-10-13T03:32:45.671Z",
+  "scope": "PC code and state tests only; no rendered-browser verification",
+  "checks": [
+    {
+      "name": "Four tiers use approved 5 / 10 / 20 / 100 prices and distinct new artwork",
+      "status": "pass"
+    },
+    {
+      "name": "Isolated preview survives page initialization without writing real localStorage",
+      "status": "pass"
+    },
+    {
+      "name": "Shipping 900 + handling 200 + tax 100 cents equals exactly 1200 cents",
+      "status": "pass"
+    },
+    {
+      "name": "Explicit zero tax is accepted; missing, null, fractional and negative tax are rejected",
+      "status": "pass"
+    },
+    {
+      "name": "Shipping quote updates Tax, Total and CTA together",
+      "status": "pass"
+    },
+    {
+      "name": "Shipping charges $12 once, persists each fee and ignores a repeated click",
+      "status": "pass"
+    },
+    {
+      "name": "Changing the address invalidates the old quote and does not debit balance",
+      "status": "pass"
+    },
+    {
+      "name": "Incomplete API quote cannot be paid; retry label and fee error are shown",
+      "status": "pass"
+    },
+    {
+      "name": "Closing shipping ignores a late quote response",
+      "status": "pass"
+    },
+    {
+      "name": "Insufficient balance requests the exact shortfall without shipping or debiting",
+      "status": "pass"
+    },
+    {
+      "name": "One-time storage failure rolls back in-memory shipment and persisted balance",
+      "status": "pass"
+    },
+    {
+      "name": "Pending to ready keeps the same opening ID and never touches balance",
+      "status": "pass"
+    },
+    {
+      "name": "Ended / skip duplicate checks share one in-flight result lookup",
+      "status": "pass"
+    },
+    {
+      "name": "Confirmed failed and pool updating produce separate states; ready can follow an updated pool",
+      "status": "pass"
+    },
+    {
+      "name": "Network, empty product and wrong opening ID never become an empty prize success",
+      "status": "pass"
+    },
+    {
+      "name": "Timeout and closing both reject a late ready response",
+      "status": "pass"
+    },
+    {
+      "name": "Resolved result is not re-fetched or re-opened",
+      "status": "pass"
+    },
+    {
+      "name": "Same 16:9 artboard fits 1280×800, 1440×900 and 1920×1080 without exceeding available viewport",
+      "status": "pass"
+    },
+    {
+      "name": "Original seven prize-pool products, prices and odds remain unchanged; free swap is absent",
+      "status": "pass"
+    }
+  ]
+}

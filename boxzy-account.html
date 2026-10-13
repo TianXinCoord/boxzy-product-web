@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="assets/boxzy/catalog.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Account — BOXXY</title>
+  <link rel="stylesheet" href="assets/boxzy/account.css?v=20260910-1">
+  <link rel="stylesheet" href="assets/boxzy/deposit.css">
+  <link rel="stylesheet" href="assets/boxzy/withdraw.css?v=20260910-1">
+  <link rel="stylesheet" href="assets/boxzy/feedback.css?v=20260902-1">
+  <script src="assets/boxzy/feedback.js?v=20260902-2"></script>
+  <link rel="stylesheet" href="assets/boxzy/header.css?v=20260902-1">
+  <link rel="stylesheet" href="assets/boxzy/black-gold.css?v=20260910-4">
+<link rel="stylesheet" href="assets/boxzy/desktop-ui.css?v=20260928-2"><link rel="stylesheet" href="assets/boxzy/ui-20261012.css">
+<link rel="stylesheet" href="assets/boxzy/approved-ui.css?v=20261013-final-banner">
+</head>
+<body class="ui-approved desktop-ui black-gold-ui account-black-gold">
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <linearGradient id="crystalBlue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8deaff"/><stop offset=".35" stop-color="#138cff"/><stop offset=".72" stop-color="#0755ff"/><stop offset="1" stop-color="#0030a4"/></linearGradient>
+      <linearGradient id="crystalDark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#123b87"/><stop offset="1" stop-color="#020d28"/></linearGradient>
+      <radialGradient id="glowBlue"><stop stop-color="#087dff" stop-opacity=".7"/><stop offset="1" stop-color="#087dff" stop-opacity="0"/></radialGradient>
+    </defs>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m14 6 4 4M4 20l3.5-.8L19 7.7a1.7 1.7 0 0 0 0-2.4l-.3-.3a1.7 1.7 0 0 0-2.4 0L4.8 16.5 4 20Z"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M5 21h14"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M5 21h14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.2 10.8 7.6-4.5m-7.6 6.9 7.6 4.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><path d="M3 10h18v11H3V10Zm9 0v11M2 6h20v4H2V6Z"/><path d="M12 6H8.5A2.5 2.5 0 1 1 11 3.5L12 6Zm0 0h3.5A2.5 2.5 0 1 0 13 3.5L12 6Z"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14H2v5h4v-5H4Zm16 0h2v5h-4v-5h2Zm0 5c0 2-2 3-4 3h-2"/></symbol>
+    <symbol id="i-signout" viewBox="0 0 24 24"><path d="M14 8V4H4v16h10v-4m-4-4h11m-4-4 4 4-4 4"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 3h6l1 4H8l1-4Zm-3 4 1 14h10l1-14M10 11v6m4-6v6"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+  </svg>
+
+  <header class="site-header boxzy-header" data-boxzy-header data-active="account" data-initial-balance="450"></header>
+  <script src="assets/boxzy/header.js?v=20260910-1"></script>
+
+  <main class="account-page">
+    <header class="page-intro">
+      <h1>My Account</h1>
+      <p>Manage your account and preferences.</p>
+    </header>
+
+    <div class="account-shell">
+      <div class="account-primary">
+        <section class="balance-card card" aria-labelledby="balanceTitle">
+          <div class="wallet-header">
+            <div class="eyebrow" id="balanceTitle">WALLET</div>
+            <button class="history-link" type="button" data-history><svg class="icon"><use href="#i-clock"/></svg>Transaction history</button>
+          </div>
+          <div class="wallet-values">
+            <div class="balance-copy"><span>Available balance</span><div class="total-balance" data-balance>$450.00</div></div>
+          </div>
+          <div class="balance-buttons">
+            <button class="money-button primary" data-deposit>Deposit</button>
+            <button class="money-button" data-withdraw>Withdraw</button>
+          </div>
+        </section>
+
+        <section class="detail-card card shipping-detail">
+          <div class="detail-icon"><svg class="icon"><use href="#i-pin"/></svg></div>
+          <div class="detail-copy"><h2>Shipping address</h2><p data-address-summary>No address saved</p><a class="address-link" href="boxzy-addresses.html">Add address <span>›</span></a></div>
+        </section>
+      </div>
+
+      <aside class="account-secondary">
+        <section class="profile-strip card">
+          <div class="user-avatar"><svg class="icon"><use href="#i-user"/></svg></div>
+          <div class="profile-copy"><strong data-username>user_2b4fae55</strong><span>Member account</span><button class="outline-button" data-edit-user>Edit username <span>→</span></button></div>
+        </section>
+        <section class="detail-card card referral-card">
+          <div class="detail-icon"><svg class="icon"><use href="#i-gift"/></svg></div>
+          <div class="detail-copy"><h2>Referral code</h2><strong>UTOCV5</strong><p>Give $5, get $5</p></div>
+          <button class="copy-link" data-copy-code>Copy <svg class="icon"><use href="#i-copy"/></svg></button>
+        </section>
+        <section class="settings-card card" aria-label="Account actions">
+          <a class="setting-row" href="boxzy-support.html"><span class="setting-icon"><svg class="icon"><use href="#i-headset"/></svg></span><span><strong>Customer support</strong></span><b>›</b></a>
+          <button class="setting-row" data-signout><span class="setting-icon"><svg class="icon"><use href="#i-signout"/></svg></span><span><strong>Sign out</strong></span><b>›</b></button>
+        </section>
+        <button class="delete-account" data-delete>Delete account</button>
+      </aside>
+    </div>
+  </main>
+
+  <div class="modal-backdrop" data-username-modal aria-hidden="true">
+    <section class="account-modal username-modal" role="dialog" aria-modal="true" aria-labelledby="usernameTitle">
+      <header><h2 id="usernameTitle">Edit username</h2><button type="button" data-username-close aria-label="Close edit username">×</button></header>
+      <form data-username-form novalidate>
+        <label for="usernameInput">Username</label>
+        <div class="validated-input"><input id="usernameInput" name="username" minlength="3" maxlength="20" autocomplete="off" spellcheck="false"><span data-username-check>✓</span></div>
+        <div class="field-meta"><span data-username-error>3–20 characters · Letters, numbers, and underscores only.</span><span data-username-count>0 / 20</span></div>
+        <p class="username-availability" data-username-availability></p>
+        <p class="case-note">Usernames are checked without case sensitivity.</p>
+        <div class="modal-actions"><button class="secondary-button" type="button" data-username-close>Cancel</button><button class="primary-button" type="submit" data-username-save>Save changes</button></div>
+      </form>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" data-delete-modal aria-hidden="true">
+    <section class="account-modal delete-modal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+      <button class="modal-x" type="button" data-delete-close aria-label="Close delete account">×</button>
+      <div data-delete-main>
+        <h2 id="deleteTitle">Delete account</h2>
+        <p>This permanently deletes your profile, collection, addresses, and account history. This cannot be undone.</p>
+        <div class="delete-balance-rule"><span>Remaining balance: <strong data-delete-balance>$450.00</strong></span><small>Any remaining promotional balance is forfeited.</small></div>
+        <div class="delete-checks" data-delete-checks></div>
+        <p class="delete-blocker" data-delete-blocker></p>
+        <label class="delete-confirm-label" for="deleteConfirmInput">Type DELETE to confirm</label>
+        <input class="delete-confirm-input" id="deleteConfirmInput" autocomplete="off" placeholder="DELETE" data-delete-input>
+        <div class="modal-actions"><button class="secondary-button" type="button" data-delete-close>Cancel</button><button class="danger-button" type="button" data-delete-confirm disabled>Delete account</button></div>
+        <small class="reauth-note">Identity verification is required before final deletion.</small>
+      </div>
+      <div class="delete-reauth" data-delete-reauth hidden><button class="review-back" type="button" data-delete-back>← Back</button><h2>Verify your identity</h2><p>Sign in again with the provider connected to this account.</p><button class="reauth-provider apple" type="button" data-delete-provider="Apple">Continue with Apple</button><button class="reauth-provider google" type="button" data-delete-provider="Google">Continue with Google</button><small>Deletion starts immediately after successful verification.</small></div>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" data-support-modal aria-hidden="true">
+    <section class="account-modal support-modal" role="dialog" aria-modal="true" aria-labelledby="supportTitle">
+      <button class="modal-x" type="button" data-support-close aria-label="Close customer support">×</button>
+      <h2 id="supportTitle">Customer support</h2>
+      <p>Questions about orders, withdrawals, shipping, or your account? We’re here to help.</p>
+      <div class="support-email"><div><strong>support@boxzy.com</strong></div><button type="button" data-copy-support aria-label="Copy support email"><svg class="icon"><use href="#i-copy"/></svg>Copy</button></div>
+      <a class="email-support-button" href="mailto:support@boxzy.com"><svg class="icon"><use href="#i-mail"/></svg>Email support</a>
+      <div class="response-time"><svg class="icon"><use href="#i-clock"/></svg><span>Typical response time: <strong>1–2 business days</strong></span></div>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" data-signout-modal aria-hidden="true">
+    <section class="account-modal signout-modal" role="dialog" aria-modal="true" aria-labelledby="signoutTitle">
+      <div class="signout-content">
+        <button class="modal-x" type="button" data-signout-close aria-label="Close sign out confirmation">×</button>
+        <h2 id="signoutTitle">Sign out?</h2>
+        <p>You’ll return to guest browsing. Your balance, collection, and saved addresses will stay on your account.</p>
+        <div class="modal-actions"><button class="secondary-button" type="button" data-signout-close>Cancel</button><button class="primary-button" type="button" data-signout-confirm>Sign out</button></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="history-backdrop" data-history-backdrop aria-hidden="true">
+    <aside class="history-drawer" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+      <header class="drawer-header"><div><h2 id="historyTitle">Transaction history</h2><p>Deposits and withdrawals</p></div><button type="button" data-history-close aria-label="Close transaction history">×</button></header>
+      <div class="history-tabs" role="tablist" aria-label="Transaction type">
+        <button class="active" type="button" role="tab" aria-selected="true" data-history-filter="all">All</button>
+        <button type="button" role="tab" aria-selected="false" data-history-filter="deposit">Deposits</button>
+        <button type="button" role="tab" aria-selected="false" data-history-filter="withdrawal">Withdrawals</button>
+      </div>
+      <div class="history-list" data-history-list></div>
+      <div class="history-empty" data-history-empty hidden><strong>No transactions yet</strong><span>Your completed deposits and withdrawals will appear here.</span></div>
+      <p class="drawer-note"><span class="info-dot">i</span>Track the status of your withdrawals here. Estimated arrival is shown before confirmation.</p>
+    </aside>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="assets/boxzy/deposit.js"></script>
+  <script src="assets/boxzy/withdraw.js?v=20260910-2"></script>
+  <script src="assets/boxzy/account.js?v=20260910-1"></script>
+<script src="assets/boxzy/desktop-ui.js?v=20260928-1"></script><script src="review/preview.js"></script></body>
+</html>

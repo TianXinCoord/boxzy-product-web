@@ -1,0 +1,250 @@
+/* Approved BOXZY desktop UI — 2026-09-28. */
+body.desktop-ui{--review-bg:#090909;--review-surface:#121212;--review-line:#303030;--review-muted:#b1b1b1;--review-gold:#efc35a;background:#090909;color:#f5f5f5;-webkit-font-smoothing:antialiased}
+body.desktop-ui :is(button,a,input,select):focus-visible{outline:2px solid #f3cc70;outline-offset:4px}
+body.desktop-ui :is(button,a){text-underline-offset:4px}
+body.desktop-ui .boxzy-header{height:64px;padding-inline:40px;border-bottom:1px solid #252525;background:#0a0a0a;box-shadow:none}
+body.desktop-ui .boxzy-header :is(.nav-links,.balance-control,.account-button){border-color:#353535;box-shadow:none;background:#111111}
+body.desktop-ui .boxzy-header :is(.nav-link,.balance-control,.account-button){height:40px}
+body.desktop-ui .boxzy-header .nav-link.active{background:#202020}
+body.desktop-ui .boxzy-header .balance-add{width:30px;height:30px;box-shadow:none}
+body.desktop-ui :is(.account-page,.collection-page,.leaderboard-page,.support-page){width:min(1200px,calc(100% - 96px));padding-top:40px}
+body.desktop-ui :is(h1,.page-intro h1,.support-title){font-size:36px;line-height:1.15;letter-spacing:-.035em}
+body.desktop-ui :is(.page-intro p,.collection-heading p,.support-subtitle,.title-copy p,.addresses-heading p){font-size:15px;line-height:1.65;color:#b1b1b1}
+body.desktop-ui :is(.total-balance,.my-position,.my-metric,.dialog-value,.history-item-title,.box-price){font-variant-numeric:tabular-nums}
+body.desktop-ui :is(.dialog-close,.modal-x,.drawer-close,.modal-close,.rules-close){min-width:40px;min-height:40px;display:grid;place-items:center}
+/* Home: preserve approved artwork; restore legible product copy at laptop heights. */
+body.desktop-ui.home-refined .page{height:calc(100vh - 118px);width:min(1344px,calc(100% - 80px));padding:16px 0 20px;gap:20px}
+body.desktop-ui.home-refined .box-card{height:clamp(210px,28vh,282px);min-height:210px;border-color:#323232;border-radius:14px;box-shadow:none}
+body.desktop-ui.home-refined .box-card:hover{transform:translateY(-2px);border-color:#bd9641;box-shadow:0 10px 26px #0005}
+body.desktop-ui.home-refined .box-name{font-size:19px}
+body.desktop-ui.home-refined .box-price{font-size:34px}
+body.desktop-ui.home-refined :is(.box-detail,.box-types){font-size:13px;line-height:1.6;color:#b4b4b4}
+body.desktop-ui.home-refined .open-button{height:46px;font-size:14px;box-shadow:none}
+body.desktop-ui.home-refined .availability{font-size:13px;color:#b1b1b1}
+body.desktop-ui.home-refined .section-heading h2{font-size:28px}
+body.desktop-ui.home-refined .eyebrow{font-size:12px}
+/* Collection: restore broken box art and make expiry actionable at a glance. */
+body.desktop-ui .collection-stats{margin-top:26px;margin-bottom:16px;border-top:1px solid #2b2b2b;border-bottom:1px solid #2b2b2b;background:transparent}
+body.desktop-ui .collection-stats small{font-size:13px;color:#b1b1b1}
+body.desktop-ui .collection-grid{gap:20px}
+body.desktop-ui .collection-card{background:#121212;border:1px solid #2f2f2f;border-radius:14px;box-shadow:none}
+body.desktop-ui .collection-card :is(h3,strong){line-height:1.5}
+body.desktop-ui :is(.unopened-policy,.vault-policy){padding:14px 16px;border:1px solid #51452a;border-radius:9px;background:#1a1a1a;font-size:13px;line-height:1.6}
+body.desktop-ui .tabs button{min-height:44px;font-size:14px}
+body.desktop-ui .collection-toolbar select{height:42px;font-size:13px}
+body.desktop-ui .open-entitlement{min-height:44px;font-size:13px;box-shadow:none}
+body.desktop-ui :is(.entitlement-timer,.entitlement-date,.entitlement-meta,.entitlement-price){font-size:12px}
+body.desktop-ui .prize-drawer{width:500px;background:#121212}
+body.desktop-ui .collection-modal{border-color:#66532c;background:#121212}
+/* Account: one prominent wallet; quieter secondary settings. */
+body.desktop-ui .account-shell{grid-template-columns:minmax(0,1.65fr) minmax(340px,1fr);gap:24px;margin-top:28px}
+body.desktop-ui .card{border:1px solid #303030;border-radius:14px;background:#121212;box-shadow:none}
+body.desktop-ui .balance-card{padding:28px 32px;min-height:274px;background:linear-gradient(115deg,#212121,#121212 75%);border-color:#655333}
+body.desktop-ui .wallet-values{margin-top:22px}
+body.desktop-ui .total-balance{font-size:54px;letter-spacing:-.04em}
+body.desktop-ui .balance-buttons{margin-top:24px}
+body.desktop-ui .money-button{height:48px;width:170px;font-size:15px;font-weight:650;box-shadow:none}
+body.desktop-ui .history-link{font-size:14px;min-height:40px;color:#e0c280}
+body.desktop-ui :is(.detail-icon,.setting-icon,.user-avatar){border:0;background:#212121;color:#d9bf7b}
+body.desktop-ui .outline-button{font-size:14px;min-height:32px;margin-top:10px}
+body.desktop-ui .setting-row{min-height:64px;font-size:14px}
+body.desktop-ui .delete-account{padding:10px 14px;min-height:40px;font-size:13px}
+body.desktop-ui .history-drawer{width:520px;background:#121212}
+body.desktop-ui .history-item{border:0;border-bottom:1px solid #303030;border-radius:0;background:none;min-height:88px}
+body.desktop-ui .history-item-title{flex-wrap:wrap;gap:4px 10px}
+body.desktop-ui .history-item-title strong{font-size:17px}
+body.desktop-ui .history-item-title span{font-size:13px}
+body.desktop-ui .history-tabs button{height:40px;font-size:14px}
+body.desktop-ui :is(.account-modal,.rules-dialog){border-color:#62532d;background:#121212;border-radius:16px}
+body.desktop-ui .username-modal label{font-size:14px}
+body.desktop-ui :is(.field-meta,.case-note,.username-availability){font-size:12px}
+/* Address form: labels and required marks on one line, footer always within reach. */
+body.desktop-ui .addresses-page{width:min(1100px,calc(100% - 96px));padding-top:32px}
+body.desktop-ui .address-card{padding:24px;min-height:158px;background:#121212;border-color:#3a3a3a}
+body.desktop-ui .saved-address strong{font-size:18px}
+body.desktop-ui .saved-address p{font-size:15px;line-height:1.6}
+body.desktop-ui .saved-address>span{font-size:13px}
+body.desktop-ui .address-actions button{height:40px;font-size:13px}
+body.desktop-ui .address-modal{width:640px;background:#121212;border-color:#62532d}
+body.desktop-ui .address-modal header{background:#121212;padding:26px 32px 20px}
+body.desktop-ui .address-modal header h2{font-size:25px}
+body.desktop-ui .address-modal header p{font-size:13px;line-height:1.6;color:#b1b1b1}
+body.desktop-ui .address-modal form{gap:16px;padding:24px 32px 0}
+body.desktop-ui .address-modal label:not(.default-check){display:block;font-size:13px;line-height:1.5}
+body.desktop-ui .address-modal label>b{display:inline;margin-left:3px}
+body.desktop-ui .address-modal :is(input:not([type="checkbox"]),select){display:block;margin-top:7px;height:46px;font-size:14px;border-color:#484848;background:#1a1a1a}
+body.desktop-ui .address-modal label small{display:block;margin-top:5px;font-size:11px;color:#a7a7a7}
+body.desktop-ui .address-modal .form-actions{position:sticky;bottom:0;z-index:4;padding:18px 0 24px;border-top:1px solid #373737;background:#121212}
+body.desktop-ui .address-modal .form-actions button{height:46px;font-weight:650}
+/* Support: reading first, contact remains available but secondary. */
+body.desktop-ui .support-home-hero{grid-template-columns:minmax(0,1.65fr) minmax(310px,.85fr);gap:56px;align-items:center}
+body.desktop-ui .support-title{font-size:42px}
+body.desktop-ui .support-home-copy .support-search{height:58px;max-width:none;margin-top:24px}
+body.desktop-ui .support-search input{font-size:16px}
+body.desktop-ui .email-card{background:#151515;border:1px solid #353535;box-shadow:none;padding:22px}
+body.desktop-ui .email-card h2{font-size:18px}
+body.desktop-ui .email-card p{font-size:14px;line-height:1.65}
+body.desktop-ui .email-actions{flex-wrap:wrap;gap:14px}
+body.desktop-ui .email-button{background:#252525;border-color:#72643e;color:#efcf81;box-shadow:none;min-height:42px}
+body.desktop-ui .topics-section{margin-top:42px}
+body.desktop-ui .topics-grid{gap:14px 20px;margin-top:16px}
+body.desktop-ui .topic-card{min-height:112px;background:#121212;border-color:#353535;border-radius:12px;padding:20px}
+body.desktop-ui .topic-copy strong{font-size:18px}
+body.desktop-ui .topic-copy p{font-size:14px;color:#b2b2b2;line-height:1.6}
+body.desktop-ui .article-count{font-size:12px}
+body.desktop-ui .topic-icon{border:0;background:#242424;color:#e0c06c}
+body.desktop-ui .article-layout{grid-template-columns:minmax(0,1fr) 320px;gap:64px}
+body.desktop-ui .article-main{max-width:760px}
+body.desktop-ui .article-main h1{font-size:40px;line-height:1.2}
+body.desktop-ui .article-intro{font-size:16px;line-height:1.8;margin:24px 0;color:#d3d3d3;max-width:68ch}
+body.desktop-ui :is(.related-card,.topic-nav-card,.article-row,.article-surface){background:#121212;border-color:#353535}
+body.desktop-ui .article-row{min-height:104px}
+body.desktop-ui .article-row p{font-size:14px;line-height:1.65}
+body.desktop-ui :is(.related-links a,.topic-nav-links a){font-size:14px;min-height:52px}
+body.desktop-ui .article-pagination{border-top:1px solid #353535;padding-top:22px;margin-top:32px}
+/* Prize catalogue: labels read comfortably, odds keep their exact business values. */
+body.desktop-ui .box-summary{background:#111111;border-right-color:#353535}
+body.desktop-ui .box-copy{font-size:15px;color:#b7b7b7}
+body.desktop-ui .range-title h2{font-size:13px}
+body.desktop-ui .range-row :is(span,small){font-size:12px}
+body.desktop-ui .prize-card{background:#121212;border-color:#353535;border-radius:12px}
+body.desktop-ui .prize-image{background:#1a1a1a}
+body.desktop-ui .prize-body{padding:18px 14px}
+body.desktop-ui .prize-body h3{font-size:14px;line-height:1.5;min-height:42px}
+body.desktop-ui .prize-body strong{font-size:17px}
+body.desktop-ui .pool-note{font-size:12px;min-height:42px}
+/* Ranking: reduce podium bulk and align the personal rank with table metrics. */
+body.desktop-ui .leaderboard-toolbar{grid-template-columns:1fr auto;gap:20px;min-height:112px}
+body.desktop-ui .leaderboard-toolbar .title-copy{grid-row:1/3}
+body.desktop-ui .period-switch{justify-self:end}
+body.desktop-ui .countdown-card{justify-self:end;border:0;background:transparent;padding:0;height:24px}
+body.desktop-ui .podium{margin-top:18px;gap:20px}
+body.desktop-ui .my-rank{margin-top:28px;border-color:#726039;background:#1f1f1f}
+body.desktop-ui .rank-list{gap:0;border:1px solid #343434;border-radius:12px;overflow:hidden}
+body.desktop-ui .rank-row{border:0;border-bottom:1px solid #323232;border-radius:0;min-height:62px;background:#121212}
+body.desktop-ui .rank-row:last-child{border-bottom:0}
+body.desktop-ui .table-heading{font-size:13px;color:#b7b7b7}
+body.desktop-ui .rules-trigger{min-width:28px;min-height:28px;vertical-align:middle}
+/* Authentication is intentionally small and familiar. */
+body.desktop-ui #authBackdrop .dialog{width:460px;border-radius:18px;border-color:#6b5830;background:#131313;padding:36px}
+body.desktop-ui #authBackdrop :is(.auth-copy,.auth-subtitle){font-size:15px;line-height:1.6}
+body.desktop-ui #authBackdrop .auth-legal{font-size:12px;line-height:1.6}
+@media(prefers-reduced-motion:reduce){body.desktop-ui *,body.desktop-ui *::before,body.desktop-ui *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+body.desktop-ui.home-refined .page{margin-inline:auto}
+body.desktop-ui .product-details h2{font-size:16px;line-height:1.45}
+body.desktop-ui :is(.unopened-origin,.reward-delivered){font-size:12px;line-height:1.6}
+body.desktop-ui .unopened-price small{font-size:11px}
+body.desktop-ui .unopened-price strong{font-size:15px}
+body.desktop-ui .unopened-timer{display:flex;flex-wrap:wrap;gap:4px;font-size:12px;padding-block:10px}
+body.desktop-ui .unopened-timer time{width:100%;font-size:11px;margin-left:17px;color:#b0b0b0}
+body.desktop-ui .unopened-source{font-size:9px}
+body.desktop-ui #authBackdrop .auth-dialog{width:460px;border-radius:18px;border-color:#6b5830;background:#131313;padding:36px}
+body.desktop-ui #authBackdrop :is(.auth-status-title,.auth-status-message){font-size:13px;line-height:1.5}
+body.desktop-ui .prize-body h3{white-space:normal;overflow:visible;text-overflow:clip;height:auto;min-height:42px}
+@media(min-width:931px) and (max-height:820px){
+ body.desktop-ui.home-refined .box-card{height:256px;min-height:256px}
+ body.desktop-ui.home-refined .box-info{padding-block:14px}
+ body.desktop-ui.home-refined .box-rule{margin:8px 0}
+ :is(#boxzyDeposit,#boxzyWithdraw) :is(.boxzy-deposit-sheet,.boxzy-withdraw-sheet){padding:20px 26px 18px}
+ #boxzyDeposit .boxzy-current-balance,#boxzyWithdraw .boxzy-withdraw-summary{margin-top:12px}
+ #boxzyDeposit .boxzy-amount-wrap,#boxzyWithdraw .withdraw-amount{height:78px;margin-top:6px}
+ #boxzyDeposit .boxzy-amount,#boxzyWithdraw .withdraw-amount input{height:72px;font-size:54px}
+ :is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad button{height:46px;min-height:46px}
+ :is(#boxzyDeposit,#boxzyWithdraw) .boxzy-keypad{gap:6px;margin-top:10px}
+ #boxzyDeposit .boxzy-section-label,#boxzyWithdraw .boxzy-withdraw-body>h3{margin-top:14px}
+ #boxzyDeposit .boxzy-deposit-submit,#boxzyWithdraw .withdraw-continue{margin-top:14px;height:50px}
+ #boxzyDeposit .boxzy-deposit-legal{margin-top:10px}
+}
+/* Warm black + restrained gold. User direction: 2026-09-28, revision 3. */
+body.desktop-ui{--review-bg:#080705;--review-surface:#14110c;--review-line:#413522;--review-muted:#b8afa0;background:radial-gradient(900px 440px at 50% 0,rgba(191,132,31,.055),transparent 78%),#080705;color:#f6f2e8}
+body.desktop-ui .boxzy-header{background:#090805;border-bottom-color:#302719}
+body.desktop-ui .boxzy-header :is(.nav-links,.balance-control,.account-button){background:#100e09;border-color:#443821}
+body.desktop-ui .boxzy-header .nav-link.active{background:linear-gradient(180deg,#2d2311,#19140b)}
+body.desktop-ui :is(.card,.collection-card,.prize-card,.email-card,.topic-card,.related-card,.topic-nav-card,.article-row,.article-surface,.address-card,.history-drawer,.prize-drawer,.collection-modal,.account-modal,.rules-dialog,.address-modal){background:linear-gradient(135deg,rgba(208,153,48,.06),transparent 62%),#100e0a;border-color:rgba(211,164,67,.25);box-shadow:inset 0 1px rgba(255,220,141,.035)}
+body.desktop-ui .balance-card{background:radial-gradient(560px 320px at 0 0,rgba(210,149,39,.14),transparent 78%),#100e0a;border-color:#705729}
+body.desktop-ui :is(.detail-icon,.setting-icon,.user-avatar,.topic-icon){background:#241b0d;color:#efc363;border:1px solid rgba(217,164,57,.22)}
+body.desktop-ui :is(.page-intro p,.collection-heading p,.support-subtitle,.title-copy p,.addresses-heading p,.topic-copy p,.box-copy,.table-heading,.address-modal header p){color:#b9b0a0}
+body.desktop-ui .email-button{background:linear-gradient(180deg,#3a2b12,#281e0e);border:1px solid #97743a;color:#f6ce73}
+body.desktop-ui .email-button:hover{background:#493617;border-color:#d2a653}
+body.desktop-ui .prize-image{background:radial-gradient(ellipse at 50% 70%,rgba(207,149,42,.075),transparent 72%),#151109}
+body.desktop-ui .box-summary{background:linear-gradient(135deg,#181208,#0c0b07 70%);border-color:#44351d}
+body.desktop-ui :is(.rank-list,.rank-row,.collection-stats,.history-item,.article-pagination){border-color:#382e1e}
+body.desktop-ui .rank-row{background:#100e09}
+body.desktop-ui .my-rank{background:linear-gradient(90deg,#29200f,#151109);border-color:#7f622e}
+body.desktop-ui .address-modal :is(header,.form-actions){background:#110e09;border-color:#3b2e1a}
+body.desktop-ui .address-modal :is(input:not([type="checkbox"]),select){background:#1b160e;border-color:#51412a}
+body.desktop-ui #authBackdrop .auth-dialog{background:radial-gradient(ellipse at 50% 0,rgba(224,170,53,.09),transparent 75%),#100e09;border-color:#71572a}
+/* Help centre: one search-led hero, shortcuts, then five topics and a contact tile. */
+body.desktop-ui .support-page:has(.support-home-hero){width:min(1200px,calc(100% - 96px));padding-top:44px}
+body.desktop-ui .support-home-hero{display:block;position:relative;padding:0 0 28px;text-align:center;border-bottom:1px solid #3c2d18;background:radial-gradient(ellipse at 50% 18%,rgba(201,140,28,.09),transparent 66%)}
+body.desktop-ui .support-home-copy{max-width:780px;margin:auto}
+body.desktop-ui .support-home-copy .support-eyebrow{font-size:11px;letter-spacing:.2em;color:#e6b951}
+body.desktop-ui .support-home-copy h1.support-title{font-size:46px;line-height:1.15;margin-top:12px;font-weight:750}
+body.desktop-ui .support-home-copy .support-subtitle{font-size:16px;margin-top:12px}
+body.desktop-ui .support-home-copy .support-search{height:60px;margin-top:26px;padding-inline:20px;border-color:#806334;background:linear-gradient(100deg,#21190d,#121009);box-shadow:0 8px 32px #0004,inset 0 1px #f3ce7220;text-align:left;border-radius:10px}
+body.desktop-ui .support-home-copy .support-search svg{stroke:#ebc26c}
+body.desktop-ui .support-shortcuts{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:17px;font-size:12px;color:#afa18b}
+body.desktop-ui .support-shortcuts a{display:inline-flex;gap:8px;align-items:center;padding:6px 11px;border:1px solid #4b391c;border-radius:5px;color:#ddbc79;text-decoration:none;background:#1a140a}
+body.desktop-ui .support-shortcuts a:hover{border-color:#d1a14a;color:#ffdc89}
+body.desktop-ui .topics-section{margin-top:26px}
+body.desktop-ui .topics-section>.section-label{font-size:11px;color:#e0b55d;letter-spacing:.17em}
+body.desktop-ui .topics-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}
+body.desktop-ui .topic-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:15px;min-height:218px;padding:23px 24px;transition:border-color .16s,background .16s;transform:none}
+body.desktop-ui .topic-card:last-child{grid-column:auto}
+body.desktop-ui .topic-card:hover{background:linear-gradient(145deg,#2b2010,#141009);border-color:#b98a35;transform:none}
+body.desktop-ui .topic-icon{width:43px;height:43px;border-radius:10px}
+body.desktop-ui .topic-icon svg{width:23px;height:23px}
+body.desktop-ui .topic-copy{display:flex;flex-direction:column;flex:1;width:100%;gap:5px}
+body.desktop-ui .topic-copy strong{font-size:19px;font-weight:650}
+body.desktop-ui .topic-copy p{margin:0;font-size:14px;line-height:1.55;max-width:31ch}
+body.desktop-ui .article-count{margin-top:auto;padding-top:10px;color:#d5ad61;font-size:12px}
+body.desktop-ui .topic-card>.chevron{position:absolute;right:24px;top:25px;color:#d7b263;font-size:25px}
+body.desktop-ui .topics-grid>.email-card{display:flex;flex-direction:column;min-height:218px;padding:24px;background:radial-gradient(ellipse at 0 0,rgba(230,171,56,.17),transparent 78%),#191209;border-color:#8c682c}
+body.desktop-ui .topics-grid>.email-card h2{font-size:21px;max-width:15ch;line-height:1.25;color:#f4d18b}
+body.desktop-ui .topics-grid>.email-card p{margin:10px 0 16px;color:#bdb19c;font-size:13px}
+body.desktop-ui .topics-grid>.email-card .email-actions{gap:12px;align-items:center;margin-top:auto;flex-wrap:wrap}
+body.desktop-ui .topics-grid>.email-card .email-button{min-width:130px;height:40px;color:#160e04;background:linear-gradient(180deg,#f4cc70,#d39c31);border-color:#e8b850;font-weight:750}
+body.desktop-ui .article-sidebar{display:grid;align-content:start;gap:16px}
+body.desktop-ui .article-email-card{border-color:#80612b;padding:24px}
+body.desktop-ui .article-email-card h2{color:#f1cb7d}
+/* Selection concepts are now included: restore every box and clarify the selection. */
+body.desktop-ui.prototype{background:radial-gradient(ellipse at 50% 56%,rgba(186,121,20,.12),transparent 62%),#070604}
+body.desktop-ui.prototype .stage-copy h1{font-size:56px;margin-top:14px}
+body.desktop-ui.prototype .stage-copy p{color:#b7aa96;font-size:15px}
+body.desktop-ui.prototype .box-carousel{max-width:calc(100vw - 80px);gap:26px}
+body.desktop-ui.prototype .box-pick{width:16vw;max-width:220px}
+body.desktop-ui.prototype .box-pick.selected{width:23vw;max-width:310px;color:#f5ca6a}
+body.desktop-ui.prototype .box-pick.selected img{filter:drop-shadow(0 22px 30px #0008) drop-shadow(0 0 26px rgba(233,165,46,.26)) brightness(1.05)}
+body.desktop-ui.prototype .box-pick img{object-fit:contain;max-height:320px}
+body.desktop-ui.prototype .choose-footer{padding-bottom:12px}
+body.desktop-ui.prototype .circle-control{width:40px;height:40px}
+@media(min-width:931px) and (max-height:820px){
+ body.desktop-ui .support-page:has(.support-home-hero){padding-top:24px}
+ body.desktop-ui .support-home-copy h1.support-title{font-size:38px;margin-top:8px}
+ body.desktop-ui .support-home-copy .support-search{margin-top:18px;height:52px}
+ body.desktop-ui .support-home-hero{padding-bottom:20px}
+ body.desktop-ui .topic-card,body.desktop-ui .topics-grid>.email-card{min-height:194px;padding:20px}
+ body.desktop-ui .topics-section{margin-top:20px}
+ body.desktop-ui .topic-copy strong{font-size:17px}
+ body.desktop-ui .topic-card{gap:10px}
+ body.desktop-ui.prototype .stage-copy h1{font-size:46px}
+ body.desktop-ui.prototype .box-pick img{max-height:260px}
+}
+/* Default is a selection, so use the brand gold rather than success green. */
+body.desktop-ui .default-badge{background:rgba(211,158,45,.12);border-color:#8b682f;color:#edc367}
+/* Keyboard focus must remain visible even where legacy rules suppress outlines. */
+body.desktop-ui.home-refined #authBackdrop .dialog-close:focus-visible{outline:2px solid #f3cc70!important;outline-offset:4px!important;box-shadow:none!important}
+body.desktop-ui .box-card:focus-visible{outline:2px solid #f3cc70;outline-offset:4px}
+/* Sale completion belongs to the same gold opening flow, including its states. */
+body.desktop-ui .sale-success-check{border-color:#d7a83c;color:#efc35a;box-shadow:0 8px 24px rgba(159,104,19,.14),inset 0 1px rgba(246,208,120,.12)}
+body.desktop-ui :is(.sale-success-kicker,.sale-success-amount,.sale-success-amount span){color:#efc35a}
+body.desktop-ui .sale-success-amount{font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+body.desktop-ui .sale-success-copy{color:#bdb19c}
+body.desktop-ui .sale-success-visual::after{border-color:rgba(221,170,60,.55);box-shadow:0 12px 42px rgba(171,117,25,.18)}
+body.desktop-ui .sale-success-box{filter:drop-shadow(0 20px 30px rgba(0,0,0,.58)) drop-shadow(0 8px 18px rgba(213,155,40,.18))}
+body.desktop-ui .sale-success-prompt{color:#f3ead8}
+body.desktop-ui .sale-open-again{border-color:#f3cb68;background:linear-gradient(180deg,#f6ce69 0%,#d99f22 100%);color:#201605;box-shadow:0 12px 28px rgba(142,91,12,.2),inset 0 1px rgba(255,235,176,.6)}
+body.desktop-ui .sale-open-again:hover{filter:brightness(1.06)}
+body.desktop-ui .sale-open-again:active{transform:translateY(0);filter:brightness(.96)}
+body.desktop-ui .sale-collection-link{color:#d9b86f}
+body.desktop-ui .sale-collection-link:hover{color:#ffe0a0}

@@ -1,0 +1,3356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="assets/boxzy/catalog.js"></script>
+<script src="assets/boxzy/opening-result.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050b13">
+  <title>BOXZY — Mystery Pokémon TCG Sealed Products</title>
+  <link rel="stylesheet" href="assets/boxzy/deposit.css?v=20260902-2">
+  <link rel="stylesheet" href="assets/boxzy/feedback.css?v=20260902-2">
+  <script src="assets/boxzy/feedback.js?v=20260902-2"></script>
+  <link rel="stylesheet" href="assets/boxzy/gate.css">
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #040a11;
+      --surface: #08111d;
+      --surface-2: #0b1522;
+      --line: #223246;
+      --line-soft: #172434;
+      --text: #f6f8fc;
+      --muted: #99a7ba;
+      --blue: #2f7cff;
+      --blue-2: #0756ef;
+      --green: #68df72;
+      --magenta: #df61f5;
+      --gold: #ffba28;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(900px 500px at 23% 42%, rgba(7, 78, 149, .14), transparent 64%),
+        radial-gradient(780px 480px at 80% 88%, rgba(34, 59, 93, .12), transparent 68%),
+        var(--page);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid #79a8ff;
+      outline-offset: 3px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 64px;
+      padding: 0 clamp(24px, 4.6vw, 76px);
+      border-bottom: 1px solid rgba(103, 124, 151, .25);
+      background: rgba(4, 10, 17, .9);
+      backdrop-filter: blur(18px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      width: 158px;
+      height: 44px;
+      text-decoration: none;
+    }
+    .logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+    .nav-links { display: flex; gap: clamp(38px, 6vw, 82px); }
+    .nav-link {
+      position: relative;
+      border: 0;
+      padding: 21px 0 19px;
+      background: none;
+      color: #d4d8df;
+      cursor: pointer;
+      font-size: 17px;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 8px;
+      left: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--blue);
+      opacity: 0;
+      transform: scaleX(.3);
+      transition: .2s ease;
+    }
+    .nav-link:hover, .nav-link.active { color: #fff; }
+    .nav-link.active::after { opacity: 1; transform: scaleX(1); }
+
+    .account-actions { justify-self: end; display: flex; gap: 14px; }
+    .action-button {
+      min-height: 44px;
+      border: 1px solid #344255;
+      border-radius: 10px;
+      padding: 0 24px;
+      background: rgba(9, 16, 25, .7);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .18s ease, border-color .18s ease, filter .18s ease;
+    }
+    .action-button:hover { transform: translateY(-1px); border-color: #70839c; }
+    .action-button.primary {
+      min-width: 154px;
+      border-color: #1768ff;
+      background: linear-gradient(180deg, #1768ff, #0647d1);
+      box-shadow: 0 10px 28px rgba(0, 70, 235, .28);
+    }
+    .action-button.primary:hover { filter: brightness(1.12); }
+    .balance-control { display: flex; align-items: center; min-height: 44px; padding-left: 18px; border: 1px solid #344255; border-radius: 24px; background: #09111b; color: #dce3ec; font-weight: 800; }
+    .balance-add { display: grid; place-items: center; width: 34px; height: 34px; margin: 4px 5px 4px 14px; border: 0; border-radius: 50%; background: #0d47c9; color: #fff; cursor: pointer; font-size: 23px; line-height: 1; }
+    .account-button { min-height: 44px; padding: 0 22px; border: 1px solid #344255; border-radius: 24px; background: #09111b; color: #fff; cursor: pointer; font-weight: 750; }
+
+    .live-strip {
+      position: relative;
+      z-index: 12;
+      display: flex;
+      height: 44px;
+      overflow: clip;
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(5, 12, 21, .96);
+    }
+    .live-label {
+      z-index: 2;
+      display: flex;
+      flex: 0 0 168px;
+      align-items: center;
+      gap: 11px;
+      padding-left: clamp(24px, 4.6vw, 76px);
+      border-right: 1px solid #263447;
+      background: #050c15;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .1em;
+    }
+    .live-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #347fff;
+      box-shadow: 0 0 14px rgba(52, 127, 255, .8);
+      animation: pulse 1.5s infinite;
+    }
+    .logic-help { display: inline-grid; place-items: center; width: 20px; height: 20px; flex: 0 0 auto; border: 1px solid #45617f; border-radius: 50%; background: #0d1b2a; color: #8fc0ff; cursor: pointer; font-size: 11px; font-weight: 900; line-height: 1; }
+    .logic-help:hover { border-color: #74aef8; background: #142a42; color: #fff; }
+    .hero > .logic-help { position: absolute; top: 14px; right: 14px; z-index: 5; width: 25px; height: 25px; }
+    .heading-with-help { display: flex; align-items: center; gap: 10px; }
+    .logic-dialog { width: min(620px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; padding: 34px; }
+    .logic-kicker { color: #f0c34e; font-size: 12px; font-weight: 900; letter-spacing: .18em; }
+    .logic-dialog h3 { margin: 7px 0 11px; font-size: 27px; letter-spacing: -.03em; }
+    .logic-intro { margin: 0 0 18px; color: #98a6b8; line-height: 1.55; }
+    .logic-list { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; text-align: left; }
+    .logic-list li { padding: 11px 13px; border: 1px solid #273b51; border-radius: 10px; background: #0b1623; color: #c6d0dc; font-size: 13px; line-height: 1.48; }
+    .logic-list strong { color: #fff; }.logic-list code { color: #89bdff; font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 11px; }
+    @keyframes pulse { 50% { opacity: .38; transform: scale(.8); } }
+
+    .live-window { min-width: 0; flex: 1; overflow: hidden; }
+    .live-track {
+      display: flex;
+      width: max-content;
+      height: 100%;
+      animation: ticker 38s linear infinite;
+    }
+    .live-window:hover .live-track { animation-play-state: paused; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+    .pull {
+      display: grid;
+      grid-template-columns: 45px auto auto;
+      align-items: center;
+      column-gap: 11px;
+      min-width: 238px;
+      height: 100%;
+      padding: 4px 19px;
+      border-right: 1px solid #273446;
+      border-top: 0;
+      border-bottom: 0;
+      border-left: 0;
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .pull:hover { background: rgba(52, 112, 196, .12); }
+    .pull img { width: 34px; height: 36px; object-fit: contain; }
+    .pull-copy { min-width: 0; }
+    .pull-user { overflow: hidden; color: #e4e8ef; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+    .pull-product { overflow: hidden; color: #9ba9bb; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+    .pull-value { color: #50a1ff; font-size: 14px; }
+
+    .page { padding: 14px clamp(22px, 4.1vw, 68px) 18px; }
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(540px, 1.05fr) minmax(480px, .95fr);
+      align-items: center;
+      min-height: 422px;
+      overflow: hidden;
+      border: 1px solid #2a405d;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(700px 380px at 26% 65%, rgba(9, 80, 157, .21), transparent 64%),
+        linear-gradient(105deg, #07111e 0%, #07101b 55%, #04090e 100%);
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.014) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(90deg, black, transparent 75%);
+    }
+    .hero-copy { z-index: 2; padding: 60px 0 60px 56px; }
+    .hero h1 {
+      margin: 0;
+      max-width: 800px;
+      font-size: clamp(44px, 4.15vw, 72px);
+      font-weight: 950;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+    .hero h1 span {
+      display: block;
+      margin-top: 8px;
+      color: #79aaff;
+      background: linear-gradient(180deg, #afd2ff 2%, #508cff 88%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { margin: 25px 0 31px; color: #aab3c1; font-size: 19px; }
+    .hero-cta {
+      min-width: 247px;
+      min-height: 56px;
+      border: 1px solid #176aff;
+      border-radius: 8px;
+      padding: 0 26px;
+      background: linear-gradient(180deg, #1265ff, #0644cc);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 15px 32px rgba(0, 70, 220, .28);
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: .08em;
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .hero-cta:hover { transform: translateY(-2px); filter: brightness(1.14); }
+    .hero-art-wrap { align-self: stretch; min-width: 0; position: relative; }
+    .hero-art-wrap::after {
+      content: "";
+      position: absolute;
+      right: 8%;
+      bottom: 5%;
+      width: 78%;
+      height: 17%;
+      border-radius: 50%;
+      background: rgba(0, 39, 90, .62);
+      filter: blur(28px);
+      z-index: -1;
+    }
+    .hero-art {
+      position: absolute;
+      top: -12%;
+      right: -1%;
+      width: 108%;
+      height: 118%;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 28px rgba(0,0,0,.4));
+      transition: transform .35s ease;
+    }
+    .hero:hover .hero-art { transform: translateY(-5px) scale(1.01); }
+
+    .hero.approved-banner {
+      display: block;
+      min-height: 0;
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+      background: none;
+    }
+    .hero.approved-banner::before { display: none; }
+    .hero-banner-button {
+      display: block;
+      width: 100%;
+      margin: 0;
+      border: 0;
+      border-radius: var(--radius);
+      padding: 0;
+      overflow: hidden;
+      background: none;
+      cursor: pointer;
+      transition: filter .2s ease, transform .2s ease;
+    }
+    .hero-banner-button:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    .hero-banner-image { display: block; width: 100%; height: auto; }
+
+    .box-section { scroll-margin-top: 166px; }
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin: 13px 2px 8px;
+    }
+    .eyebrow {
+      margin-bottom: 4px;
+      color: #53a2ff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .24em;
+    }
+    .section-heading h2 { margin: 0; font-size: 29px; line-height: 1.05; letter-spacing: -.025em; }
+    .availability { margin-bottom: 3px; color: #9ba7b7; font-size: 14px; }
+
+    .box-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .box-card {
+      --accent: var(--green);
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(210px, 58%) 1fr;
+      align-items: center;
+      min-height: 218px;
+      overflow: hidden;
+      border: 1px solid #26374b;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(10, 20, 33, .96), rgba(5, 12, 20, .98));
+      cursor: pointer;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .box-card:nth-child(2) { --accent: #4e9dff; }
+    .box-card:nth-child(3) { --accent: var(--magenta); }
+    .box-card::before {
+      content: "";
+      position: absolute;
+      inset: auto 13% -38% 13%;
+      height: 58%;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--accent) 16%, transparent);
+      filter: blur(32px);
+      opacity: .4;
+    }
+    .box-card:hover, .box-card.selected {
+      transform: translateY(-5px);
+      border-color: color-mix(in srgb, var(--accent) 72%, #fff 6%);
+      box-shadow: 0 20px 46px rgba(0,0,0,.28), 0 0 25px color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+    .box-card.selected::after {
+      content: "SELECTED";
+      position: absolute;
+      top: 13px;
+      right: 14px;
+      border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+      border-radius: 99px;
+      padding: 4px 8px;
+      background: #07101b;
+      color: var(--accent);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .13em;
+    }
+    .box-image {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 202px;
+      object-fit: contain;
+      transform: scale(1.06);
+      filter: drop-shadow(0 20px 18px rgba(0,0,0,.6));
+      transition: transform .26s ease;
+    }
+    .box-card:hover .box-image { transform: scale(1.1) translateY(-3px); }
+    .box-info { position: relative; z-index: 2; padding: 16px 20px 16px 0; }
+    .box-name { color: var(--accent); font-size: 13px; font-weight: 900; letter-spacing: .18em; }
+    .box-price { margin-top: 4px; font-size: 28px; font-weight: 900; }
+    .box-rule { height: 1px; margin: 11px 0 13px; background: #28394c; }
+    .box-detail { color: #c5ccd6; font-size: 10px; white-space: nowrap; }
+    .box-types { margin: 6px 0 12px; color: #939eae; font-size: 10px; white-space: nowrap; }
+    .open-button {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      background: rgba(8, 16, 27, .78);
+      color: #fff;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 900;
+      transition: background .18s ease, color .18s ease, transform .18s ease;
+    }
+    .open-button:hover {
+      background: color-mix(in srgb, var(--accent) 19%, #07101a);
+      transform: translateY(-1px);
+    }
+
+    .dialog-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(0, 5, 11, .74);
+      backdrop-filter: blur(14px);
+    }
+    .dialog-backdrop.open { display: grid; animation: fade-in .18s ease; }
+    @keyframes fade-in { from { opacity: 0; } }
+    .dialog {
+      position: relative;
+      width: min(520px, 100%);
+      overflow: hidden;
+      border: 1px solid #334861;
+      border-radius: 20px;
+      background: linear-gradient(150deg, #0d1a2a, #060e18 70%);
+      box-shadow: 0 35px 110px rgba(0,0,0,.68);
+      animation: dialog-in .22s ease;
+    }
+    @keyframes dialog-in { from { transform: translateY(12px) scale(.98); opacity: 0; } }
+    .dialog-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      border: 1px solid #34465d;
+      border-radius: 50%;
+      background: #0a1420;
+      color: #cbd4df;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    .dialog-body { display: grid; grid-template-columns: 190px 1fr; align-items: center; padding: 30px; }
+    .dialog-image { width: 190px; height: 200px; object-fit: contain; filter: drop-shadow(0 18px 15px #0009); }
+    .dialog-kicker { color: #6ba8ff; font-size: 11px; font-weight: 900; letter-spacing: .18em; }
+    .dialog h3 { margin: 5px 0 2px; font-size: 27px; }
+    .dialog-price { color: #fff; font-size: 23px; font-weight: 850; }
+    .dialog-copy { margin: 11px 0 17px; color: #9eabba; font-size: 13px; }
+    .confirm-button {
+      width: 100%;
+      min-height: 46px;
+      border: 0;
+      border-radius: 9px;
+      background: linear-gradient(180deg, #176dff, #0750dd);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .simple-dialog { padding: 36px; }
+    .simple-dialog h3 { margin-top: 0; }
+    .simple-dialog p { color: #9fabba; }
+
+    .auth-dialog {
+      width: min(430px, 100%);
+      overflow: visible;
+      border-color: rgba(90, 117, 151, .28);
+      border-radius: 18px;
+      padding: 27px 30px 25px;
+      background:
+        radial-gradient(360px 170px at 50% 0%, rgba(48, 98, 174, .11), transparent 72%),
+        linear-gradient(155deg, #0b1624 0%, #070e18 76%);
+      box-shadow: 0 28px 76px rgba(0, 0, 0, .58), inset 0 1px rgba(255,255,255,.025);
+      text-align: center;
+    }
+    .auth-dialog::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 15%;
+      width: 70%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(104, 160, 255, .58), transparent);
+    }
+    .auth-dialog .dialog-close {
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      border: 0;
+      background: transparent;
+      color: #aeb8c6;
+      font-size: 18px;
+      transition: background .18s ease, color .18s ease, transform .18s ease;
+    }
+    .auth-dialog .dialog-close:hover { background: #19283b; color: #fff; transform: rotate(3deg); }
+    .auth-logo { display: block; width: 112px; height: 33px; margin: 0 auto 20px; object-fit: contain; }
+    .auth-dialog h3.auth-title { margin: 0; font-size: 22px; line-height: 1.15; letter-spacing: -.035em; }
+    .auth-subtitle { margin: 7px 0 21px; color: #96a4b7; font-size: 12px; line-height: 1.45; }
+    .auth-provider {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 50px;
+      margin-top: 0;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 10px;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: -.01em;
+      box-shadow: 0 8px 22px rgba(0,0,0,.18);
+      transition: transform .18s ease, border-color .18s ease, filter .18s ease;
+    }
+    .auth-provider:hover { transform: translateY(-1px); border-color: rgba(126, 162, 212, .34); filter: brightness(1.08); }
+    .auth-provider.google { border-color: rgba(255,255,255,.7); background: #fff; color: #111722; }
+    .auth-provider-icon {
+      position: absolute;
+      left: 17px;
+      display: block;
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+    .auth-status {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+      padding: 12px 12px 12px 13px;
+      border-radius: 10px;
+      background: rgba(20, 32, 47, .82);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .16), inset 0 1px rgba(255,255,255,.025);
+      text-align: left;
+    }
+    .auth-status[hidden] { display: none; }
+    .auth-status-icon {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border-radius: 9px;
+      background: rgba(245, 177, 57, .1);
+      color: #efae35;
+    }
+    .auth-status-icon svg { width: 18px; height: 18px; }
+    .auth-status-copy { min-width: 0; }
+    .auth-status-title { display: block; color: #f2f5f9; font-size: 11.5px; font-weight: 780; line-height: 1.3; }
+    .auth-status-message { display: block; margin-top: 2px; color: #8f9caf; font-size: 10.5px; line-height: 1.35; }
+    .auth-retry {
+      min-height: 34px;
+      padding: 0 14px;
+      border: 1px solid rgba(74, 145, 255, .72);
+      border-radius: 8px;
+      background: rgba(19, 78, 158, .08);
+      color: #69a8ff;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .auth-retry:hover { background: rgba(32, 111, 224, .14); border-color: #67a7ff; color: #fff; }
+    .auth-status[data-kind="cancelled"] { background: rgba(17, 29, 43, .68); }
+    .auth-status[data-kind="cancelled"] .auth-status-icon { background: rgba(133, 151, 175, .08); color: #8e9caf; }
+    .auth-status[data-kind="account"] .auth-status-icon { background: rgba(242, 157, 62, .09); color: #e9a34a; }
+    .auth-legal { margin: 18px 0 0; color: #7f8b9c; font-size: 9.5px; line-height: 1.5; }
+    .auth-status:not([hidden]) ~ .auth-legal { margin-top: 14px; }
+    .auth-legal a { color: #b7c1cf; font-weight: 700; text-underline-offset: 3px; }
+    .phone-dialog { width: min(480px, 100%); padding: 31px 36px 27px; }
+    .phone-dialog h3 { margin: 6px 0 8px; font-size: 25px; line-height: 1.15; letter-spacing: -.035em; }
+    .phone-kicker { color: #f0c34e; font-size: 12px; font-weight: 850; letter-spacing: .2em; }
+    .phone-copy { margin: 0 0 22px; color: #98a5b6; font-size: 13px; line-height: 1.5; }
+    .phone-label { display: block; margin: 0 0 7px; color: #b5c0ce; font-size: 11px; font-weight: 720; text-align: left; }
+    .phone-row { display: grid; grid-template-columns: 76px 1fr; overflow: hidden; border: 1px solid #33475d; border-radius: 11px; background: #101a25; transition: border-color .18s ease, box-shadow .18s ease; }
+    .phone-row:focus-within { border-color: #4b8fff; box-shadow: 0 0 0 3px rgba(65,130,255,.12); }
+    .country-code, .phone-input { min-height: 52px; border: 0; background: transparent; color: #fff; }
+    .country-code { display: flex; align-items: center; justify-content: center; gap: 7px; border-right: 1px solid rgba(69,91,116,.65); font-size: 14px; font-weight: 800; }
+    .country-code span { color: #77889c; font-size: 10px; }
+    .phone-input { width: 100%; padding: 0 15px; outline: 0; font-size: 15px; }
+    .phone-input:focus { box-shadow: none; }
+    .phone-submit { width: 100%; min-height: 52px; margin-top: 14px; border: 0; border-radius: 10px; background: linear-gradient(180deg,#2076f5,#0a50d8); color: #fff; font-size: 13px; font-weight: 850; cursor: pointer; }
+    .phone-submit:disabled { opacity: .38; cursor: not-allowed; }
+    .sms-note { margin: 15px 8px 0; color: #758399; font-size: 10px; line-height: 1.5; }
+    .different-account { margin-top: 17px; border: 0; background: none; color: #9eb0c5; font-size: 11px; text-decoration: none; cursor: pointer; }
+    .different-account:hover { color: #68a9ff; }
+    .phone-back { position: absolute; top: 15px; left: 15px; display: grid; width: 30px; height: 30px; place-items: center; border: 0; background: transparent; color: #9eabba; cursor: pointer; font-size: 22px; }
+    .otp-row { display: grid; grid-template-columns: repeat(6,1fr); gap: 8px; margin-top: 6px; }
+    .otp-input { width: 100%; min-width: 0; height: 57px; border: 1px solid #33475d; border-radius: 10px; background: #101a25; color: #fff; text-align: center; font-size: 22px; font-weight: 800; outline: 0; }
+    .otp-input:focus { border-color: #4b8fff; box-shadow: 0 0 0 3px rgba(65,130,255,.13); }
+    .phone-step[hidden] { display: none; }
+    .auth-dialog.pull-dialog { display: grid; grid-template-columns: 43% 57%; width: min(780px, 100%); min-height: 510px; max-height: calc(100dvh - 36px); overflow: hidden; padding: 0; border-color: #35506f; border-radius: 16px; background: #06111d; text-align: left; }
+    .pull-dialog::before { display: none; }
+    .pull-visual { position: relative; display: grid; place-items: center; min-width: 0; padding: 54px 28px 32px; border-right: 1px solid #20354c; background: radial-gradient(circle at 50% 44%, #15365f 0, #0a2342 46%, #071526 100%); }
+    .pull-visual::after { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(83,122,171,.44); border-radius: 13px; pointer-events: none; }
+    .pull-visual img { z-index: 1; display: block; max-width: 92%; max-height: 355px; object-fit: contain; filter: drop-shadow(0 20px 25px rgba(0,0,0,.52)); }
+    .pull-rarity { position: absolute; top: 30px; left: 30px; z-index: 2; display: inline-flex; padding: 6px 11px; border: 1px solid #804bc5; border-radius: 6px; background: rgba(31,11,57,.72); color: #d06aff; font-size: 10px; font-weight: 900; letter-spacing: .1em; }
+    #pullBackdrop[data-rarity="rare"] .pull-rarity { border-color: #3a7bc8; background: rgba(8,35,70,.78); color: #65aaff; }
+    #pullBackdrop[data-rarity="common"] .pull-rarity { border-color: #536476; background: rgba(21,31,43,.8); color: #b9c6d6; }
+    .pull-dialog-body { display: flex; min-width: 0; flex-direction: column; padding: 50px 40px 30px 34px; }
+    .pull-kicker { display: flex; align-items: center; gap: 8px; color: #408fff; font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+    .pull-kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #2f7cff; box-shadow: 0 0 10px rgba(47,124,255,.72); }
+    .pull-dialog h3 { margin: 25px 0 14px; max-width: 390px; font-size: 30px; line-height: 1.14; letter-spacing: -.035em; }
+    .pull-market-value { color: #3d8cff; font-size: 40px; font-weight: 900; letter-spacing: -.035em; line-height: 1; }
+    .pull-market-label { margin-top: 8px; color: #8b98aa; font-size: 12px; }
+    .pull-origin { margin-top: 30px; padding: 16px; border: 1px solid #263b52; border-radius: 11px; background: rgba(7,17,29,.74); }
+    .pull-origin-label { padding-bottom: 13px; border-bottom: 1px solid #213348; color: #8e9bad; font-size: 12px; }.pull-origin-label strong { color: #5c9fff; }
+    .pull-origin-detail { display: grid; grid-template-columns: 72px 1fr; align-items: center; gap: 14px; padding-top: 13px; }
+    .pull-origin img { width: 72px; height: 58px; padding: 5px; border: 1px solid #1d3147; border-radius: 8px; background: #081422; object-fit: contain; }
+    .pull-userline { display: grid; gap: 4px; color: #eef3fa; font-size: 13px; }.pull-userline span { color: #75849a; font-size: 12px; }
+    .pull-box-link { position: relative; display: flex; align-items: center; justify-content: center; min-height: 50px; margin-top: auto; border: 1px solid #3389ff; border-radius: 9px; background: linear-gradient(180deg,#1f7cff,#0753e4); color: #fff; box-shadow: 0 10px 25px rgba(5,81,224,.22); text-decoration: none; font-size: 13px; font-weight: 850; letter-spacing: .035em; transition: filter .18s ease,transform .18s ease; }
+    .pull-box-link span { position: absolute; right: 20px; font-size: 24px; font-weight: 300; }.pull-box-link:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+    @media (min-width: 931px) {
+      body { height: 100vh; overflow: hidden; }
+      .page { height: calc(100vh - 108px); overflow: hidden; }
+      .hero-banner-image { max-height: calc(100vh - 402px); object-fit: cover; object-position: center; }
+    }
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 90;
+      max-width: min(380px, calc(100vw - 44px));
+      border: 1px solid #3a506a;
+      border-radius: 12px;
+      padding: 13px 17px;
+      background: #0c1927;
+      color: #eef4ff;
+      box-shadow: 0 18px 50px #0008;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: .22s ease;
+    }
+    .toast.show { opacity: 1; transform: none; }
+
+    @media (max-width: 1180px) {
+      .hero { grid-template-columns: 1fr 46%; }
+      .hero-copy { padding-left: 40px; }
+      .hero h1 { font-size: clamp(42px, 5vw, 60px); }
+      .box-card { grid-template-columns: 52% 48%; }
+      .box-image { height: 195px; }
+      .box-info { padding-right: 15px; }
+    }
+
+    @media (max-width: 930px) {
+      .topbar { grid-template-columns: 1fr auto; }
+      .nav-links { display: none; }
+      .live-label { flex-basis: 145px; padding-left: 22px; }
+      .page { padding-top: 20px; }
+      .hero { grid-template-columns: 1fr; min-height: 610px; }
+      .hero.approved-banner { min-height: 0; }
+      .hero-copy { padding: 44px 34px 0; }
+      .hero-art-wrap { min-height: 340px; }
+      .hero-art { top: -8%; right: 0; width: 100%; height: 112%; }
+      .box-grid { grid-template-columns: 1fr; }
+      .box-card { grid-template-columns: 48% 52%; min-height: 260px; }
+      .box-image { height: 245px; }
+    }
+
+    @media (max-width: 590px) {
+      .topbar { height: 62px; padding: 0 18px; }
+      .logo { width: 125px; height: 36px; }
+      .account-actions .action-button:first-child { display: none; }
+      .account-actions .action-button.primary { min-width: 0; min-height: 40px; padding: 0 15px; font-size: 13px; }
+      .live-strip { height: 48px; }
+      .live-label { flex-basis: 112px; padding-left: 16px; font-size: 10px; }
+      .pull { min-width: 236px; padding-inline: 17px; }
+      .page { padding: 12px 14px 42px; }
+      .hero { min-height: 530px; border-radius: 15px; }
+      .hero.approved-banner { min-height: 0; border-radius: 0; }
+      .hero-banner-button { border-radius: 12px; }
+      .hero-copy { padding: 34px 21px 0; }
+      .hero h1 { font-size: 39px; }
+      .hero p { margin: 19px 0 24px; font-size: 15px; }
+      .hero-cta { min-width: 205px; min-height: 49px; font-size: 13px; }
+      .hero-art-wrap { min-height: 265px; }
+      .section-heading { margin-top: 23px; }
+      .section-heading h2 { font-size: 28px; }
+      .availability { font-size: 13px; }
+      .box-card { grid-template-columns: 45% 55%; min-height: 215px; }
+      .box-image { height: 190px; transform: scale(1.16); }
+      .box-info { padding: 18px 15px 18px 0; }
+      .box-price { font-size: 24px; }
+      .box-types { white-space: normal; }
+      .dialog-body { grid-template-columns: 1fr; padding: 27px; text-align: center; }
+      .dialog-image { margin: -10px auto -2px; height: 170px; }
+      .auth-dialog { padding: 27px 22px 23px; border-radius: 18px; }
+      .auth-logo { width: 108px; margin-bottom: 19px; }
+      .auth-provider { min-height: 50px; font-size: 14px; }
+      .auth-provider-icon { left: 16px; width: 20px; height: 20px; }
+      .auth-status { grid-template-columns: 30px minmax(0,1fr); }
+      .auth-retry { grid-column: 1 / -1; width: 100%; }
+      .auth-dialog.pull-dialog { display: block; width: min(430px,100%); min-height: 0; overflow-y: auto; padding: 0; border-radius: 16px; }
+      .pull-visual { min-height: 245px; padding: 48px 25px 25px; border-right: 0; border-bottom: 1px solid #20354c; }
+      .pull-visual::after { inset: 13px; }
+      .pull-visual img { max-height: 205px; }
+      .pull-rarity { top: 23px; left: 23px; }
+      .pull-dialog-body { padding: 28px 23px 23px; }
+      .pull-dialog h3 { margin-top: 18px; font-size: 24px; }
+      .pull-market-value { font-size: 34px; }
+      .pull-origin { margin-top: 20px; }
+      .pull-box-link { margin-top: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
+    /* Refined storefront pass: same structure, quieter and more precise. */
+    :root {
+      --page: #020911;
+      --surface: #07121d;
+      --surface-2: #0a1521;
+      --line: #1d3044;
+      --line-soft: #132335;
+      --muted: #8f9caf;
+      --blue: #317fff;
+      --radius: 15px;
+    }
+    body {
+      background:
+        linear-gradient(rgba(61, 101, 151, .018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61, 101, 151, .014) 1px, transparent 1px),
+        radial-gradient(800px 420px at 24% 40%, rgba(8, 73, 139, .13), transparent 68%),
+        #020911;
+      background-size: 40px 40px, 40px 40px, auto, auto;
+    }
+    .topbar {
+      height: 68px;
+      border-bottom-color: rgba(102, 129, 160, .2);
+      background: rgba(2, 9, 17, .94);
+    }
+    .logo { width: 148px; }
+    .nav-link { padding-block: 23px 21px; color: #cbd3dd; font-size: 15px; font-weight: 520; }
+    .nav-link::after { bottom: 9px; }
+    .balance-control, .account-button {
+      min-height: 42px;
+      border-color: #2a3d53;
+      background: rgba(7, 16, 26, .88);
+    }
+    .live-strip {
+      height: 46px;
+      border-bottom-color: #142638;
+      background: rgba(3, 11, 19, .96);
+    }
+    .live-label {
+      flex-basis: 158px;
+      border-right-color: #203348;
+      background: #030b13;
+      color: #dce4ee;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .live-dot { width: 7px; height: 7px; box-shadow: 0 0 10px rgba(52,127,255,.68); }
+    .pull { min-width: 250px; border-right-color: #1b2d40; }
+    .pull-user { font-size: 12px; font-weight: 650; }
+    .pull-product { color: #8492a5; font-size: 11px; }
+    .pull-value { color: #4594ff; font-weight: 700; }
+    .page { padding: 20px clamp(22px, 3.4vw, 56px) 24px; }
+    .hero-banner-button {
+      position: relative;
+      overflow: hidden;
+      border: 0;
+      border-radius: 0;
+      background: #06101b;
+      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+    }
+    .hero-banner-button::after {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      box-shadow: inset 0 1px rgba(255,255,255,.025), inset 0 -40px 80px rgba(0,13,28,.11);
+      content: "";
+    }
+    .hero-banner-image { border-radius: inherit; }
+    .hero-banner-button:hover { filter: brightness(1.025); transform: translateY(-1px); }
+    .hero-trust {
+      position: absolute;
+      bottom: 10.5%;
+      left: 3.6%;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #aeb9c7;
+      font-size: clamp(10px, .9vw, 14px);
+      font-weight: 560;
+      pointer-events: none;
+    }
+    .hero-trust::before {
+      display: inline-grid;
+      width: 20px;
+      height: 20px;
+      place-items: center;
+      border: 1px solid #3f82e7;
+      border-radius: 50%;
+      color: #67a5ff;
+      content: "✓";
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .section-heading { margin: 18px 4px 10px; }
+    .eyebrow {
+      margin-bottom: 4px;
+      color: #4d94f8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .section-heading h2 { font-size: 31px; font-weight: 780; letter-spacing: -.035em; }
+    .availability { color: #8491a3; font-size: 14px; }
+    .section-session-meta { display: grid; justify-items: end; gap: 7px; }
+    .box-grid { gap: 18px; }
+    .box-card {
+      --accent: #4f96ff;
+      grid-template-columns: minmax(190px, 55%) 1fr;
+      min-height: 238px;
+      border-color: #24374b;
+      border-radius: 15px;
+      background:
+        linear-gradient(145deg, rgba(10,22,36,.98), rgba(4,13,22,.98));
+      box-shadow: inset 0 1px rgba(255,255,255,.025), 0 16px 34px rgba(0,0,0,.12);
+    }
+    .box-card:nth-child(2) { --accent: #d852ce; }
+    .box-card:nth-child(3) { --accent: #e6ac2f; }
+    .box-card::before {
+      inset: auto 5% -42% 5%;
+      height: 62%;
+      opacity: .32;
+      filter: blur(36px);
+    }
+    .box-card:hover, .box-card.selected {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 47%, #30445a);
+      box-shadow: 0 20px 42px rgba(0,0,0,.25), 0 0 22px color-mix(in srgb, var(--accent) 7%, transparent);
+    }
+    .box-card.selected::after {
+      border-radius: 5px;
+      background: rgba(4,13,22,.92);
+      font-size: 8px;
+    }
+    .box-image { height: 220px; transform: scale(1.02); }
+    .box-card:hover .box-image { transform: scale(1.055) translateY(-2px); }
+    .box-info { padding: 20px 22px 20px 0; }
+    .box-name {
+      color: var(--accent);
+      font-size: 16px;
+      font-weight: 720;
+      letter-spacing: -.01em;
+      text-transform: none;
+    }
+    .box-price { margin-top: 5px; font-size: 30px; font-weight: 820; letter-spacing: -.035em; }
+    .box-rule { margin: 12px 0; background: #26384b; }
+    .box-detail, .box-types { color: #9aa6b6; font-size: 11px; letter-spacing: 0; }
+    .box-detail strong, .box-types strong { color: #cbd4df; font-weight: 650; }
+    .open-button {
+      height: 44px;
+      min-height: 44px;
+      margin-top: 2px;
+      border-color: #2d82f5;
+      border-radius: 8px;
+      background: rgba(6,15,25,.72);
+      font-size: 12px;
+      font-weight: 720;
+      letter-spacing: 0;
+    }
+    .open-button:hover { border-color:#ffd46c; background:#efc34e; color:#171005; }
+    @media (min-width: 931px) {
+      .page { height: calc(100vh - 114px); }
+      .hero-banner-image { max-height: calc(100vh - 430px); }
+    }
+    @media (max-width: 930px) {
+      .page { padding-top: 18px; }
+      .box-card { min-height: 250px; }
+    }
+    @media (max-width: 590px) {
+      .hero-trust { display: none; }
+      .section-heading { align-items: flex-start; }
+      .section-heading > div:first-child { min-width: 0; flex: 1; }
+      .heading-with-help { gap: 7px; }
+      .section-heading h2 { font-size: 26px; white-space: nowrap; }
+      .availability { width: 82px; margin-top: 30px; text-align: right; line-height: 1.35; }
+      .box-card { min-height: 220px; }
+      .box-image { height: 195px; }
+    }
+
+    /* Full-screen choose-and-reveal experience. */
+    body.box-experience-open { overflow: hidden !important; }
+    .box-experience {
+      position: fixed;
+      inset: 0;
+      z-index: 180;
+      display: grid;
+      overflow: hidden;
+      background:
+        radial-gradient(900px 520px at 50% 58%, rgba(17, 79, 170, .22), transparent 68%),
+        radial-gradient(620px 360px at 50% 45%, rgba(74, 52, 177, .11), transparent 72%),
+        #020812;
+      color: #f7f9fd;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .32s ease, visibility .32s ease;
+      isolation: isolate;
+    }
+    .box-experience::before {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(rgba(74, 126, 190, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(74, 126, 190, .018) 1px, transparent 1px);
+      background-size: 46px 46px;
+      content: "";
+      mask-image: linear-gradient(to bottom, transparent 4%, #000 38%, #000 82%, transparent);
+    }
+    .box-experience::after {
+      position: absolute;
+      right: -15%;
+      bottom: -27%;
+      left: -15%;
+      z-index: -1;
+      height: 58%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(19, 75, 157, .19), rgba(2, 8, 18, 0) 67%);
+      content: "";
+      transform: perspective(600px) rotateX(58deg);
+    }
+    .box-experience.open { opacity: 1; visibility: visible; }
+    .experience-topbar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      padding: 0 clamp(18px, 3vw, 48px);
+      border-bottom: 1px solid rgba(74, 105, 143, .2);
+      background: rgba(2, 8, 18, .58);
+      backdrop-filter: blur(18px);
+    }
+    .session-progress {
+      position: absolute;
+      top: 72px;
+      right: 0;
+      left: 0;
+      z-index: 7;
+      display: grid;
+      grid-template-columns: auto minmax(280px,760px) auto;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      height: 72px;
+      padding: 0 22px;
+      border-bottom: 1px solid rgba(74,105,143,.17);
+      background: rgba(3,10,19,.66);
+      backdrop-filter: blur(15px);
+    }
+    .session-progress[hidden] { display: none; }
+    .session-progress-label, .session-remaining { color: #8090a5; font-size: 10px; font-weight: 820; letter-spacing: .17em; white-space: nowrap; }
+    .session-progress-label strong { color: #61a5ff; }
+    .session-steps { display: flex; align-items: center; justify-content: center; }
+    .session-step { display: flex; flex: 1; align-items: center; color: #69778b; }
+    .session-step::after { width: 100%; height: 1px; margin: 0 11px; background: #28384d; content: ""; }
+    .session-step:last-child { flex: 0 0 auto; }
+    .session-step:last-child::after { display: none; }
+    .session-step-dot { display: grid; width: 27px; height: 27px; flex: 0 0 27px; place-items: center; border: 1px solid #354960; border-radius: 50%; color: #8c9aad; font-size: 10px; font-weight: 850; }
+    .session-step small { margin-left: 7px; font-size: 8px; font-weight: 820; letter-spacing: .12em; white-space: nowrap; }
+    .session-step.done { color: #45d887; }
+    .session-step.done .session-step-dot { border-color: #22965b; background: rgba(13,76,48,.38); color: #5be69b; }
+    .session-step.active { color: #61a7ff; }
+    .session-step.active .session-step-dot { border-color: #438eea; background: #1f76e8; color: #fff; box-shadow: 0 0 18px rgba(49,132,255,.42); }
+    .box-experience.multi-session .experience-stage { inset: 144px 0 0; }
+    .experience-logo { width: 132px; height: 38px; object-fit: contain; }
+    .experience-actions { display: flex; align-items: center; gap: 10px; }
+    .sound-toggle {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid #2b4058;
+      border-radius: 50%;
+      background: rgba(7, 16, 29, .78);
+      color: #9eb0c5;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .sound-toggle:hover, .sound-toggle[aria-pressed="true"] { color: #fff; border-color: #4b78ab; }
+    .experience-wallet {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      height: 40px;
+      padding: 0 15px;
+      border: 1px solid #2b4058;
+      border-radius: 11px;
+      background: rgba(7, 16, 29, .78);
+      color: #f5f7fb;
+      font-weight: 760;
+    }
+    .experience-wallet::before { display: none; content: ""; }
+    .experience-close {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid #2b4058;
+      border-radius: 50%;
+      background: rgba(7, 16, 29, .78);
+      color: #b9c4d2;
+      cursor: pointer;
+      font-size: 21px;
+    }
+    .experience-stage {
+      position: absolute;
+      inset: 72px 0 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      padding: clamp(26px, 4.2vh, 52px) 0 clamp(28px, 4vh, 48px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity .3s ease, transform .3s ease;
+      overflow: hidden;
+    }
+    .experience-stage.active { opacity: 1; pointer-events: auto; transform: none; }
+    .experience-heading { position: relative; z-index: 3; padding: 0 20px; text-align: center; transition: opacity .27s ease, transform .35s ease; }
+    .experience-kicker { color: #5aa2ff; font-size: 11px; font-weight: 850; letter-spacing: .25em; }
+    .experience-heading h2 { margin: 8px 0 6px; font-size: clamp(34px, 3.7vw, 56px); line-height: 1; letter-spacing: -.052em; }
+    .experience-heading p { margin: 0; color: #91a0b4; font-size: clamp(12px, 1.2vw, 16px); }
+    .choose-stage { padding-top: clamp(54px, 7vh, 78px); }
+    .choose-stage .experience-kicker { display: none; }
+    .choose-stage .experience-heading h2 { margin-top: 0; font-size: clamp(38px, 3.45vw, 58px); letter-spacing: .035em; }
+    .choose-stage .experience-heading p { margin-top: 12px; }
+    .carousel-viewport { position: relative; min-height: 0; touch-action: pan-y; cursor: grab; }
+    .carousel-viewport.dragging { cursor: grabbing; }
+    .carousel-track { position: absolute; inset: 0; perspective: 1200px; }
+    .carousel-box {
+      --offset: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: clamp(170px, 19vw, 318px);
+      aspect-ratio: 1;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      opacity: var(--box-opacity, 1);
+      transform: translate(calc(-50% + var(--box-x, 0px) + var(--drag-x, 0px) + var(--box-exit-x, 0px)), -50%) scale(var(--box-scale, 1)) rotateY(var(--box-rotate, 0deg));
+      transform-style: preserve-3d;
+      transition: transform 420ms cubic-bezier(.22,.8,.22,1), opacity 420ms ease, filter 420ms ease;
+      filter: brightness(var(--box-brightness, 1)) blur(var(--box-blur, 0px));
+      will-change: transform;
+    }
+    .carousel-box img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 26px 28px rgba(0,0,0,.62)); pointer-events: none; }
+    .carousel-box::after {
+      position: absolute;
+      right: 13%;
+      bottom: -4px;
+      left: 13%;
+      height: 18%;
+      border-radius: 50%;
+      background: rgba(20, 104, 255, .2);
+      content: "";
+      filter: blur(20px);
+      opacity: 0;
+      transition: opacity .35s ease;
+      z-index: -1;
+    }
+    .carousel-box.current::after { opacity: 1; }
+    .carousel-box.current img { filter: drop-shadow(0 0 10px rgba(54,131,255,.55)) drop-shadow(0 30px 32px rgba(0,0,0,.68)); }
+    .carousel-id { display: none; }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 6;
+      display: grid;
+      width: 48px;
+      height: 70px;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      color: #7db2ff;
+      cursor: pointer;
+      font-size: 46px;
+      font-weight: 200;
+      transform: translateY(-50%);
+      text-shadow: 0 0 18px rgba(41,116,255,.7);
+    }
+    .carousel-arrow:hover { color: #fff; }
+    .carousel-arrow:disabled { opacity: .16; cursor: default; text-shadow: none; }
+    .carousel-arrow.prev { left: clamp(10px, 2vw, 34px); }
+    .carousel-arrow.next { right: clamp(10px, 2vw, 34px); }
+    .carousel-controls { position: relative; z-index: 4; width: min(820px, calc(100% - 42px)); margin: 0 auto; text-align: center; transition: opacity .25s ease, transform .35s ease; }
+    .carousel-line { display: none; position: relative; height: 2px; margin-bottom: 17px; background: #203148; }
+    .carousel-line::before { position: absolute; top: -4px; left: var(--carousel-progress, 0%); width: 10px; height: 10px; border: 2px solid #fff; border-radius: 50%; background: #2d82ff; box-shadow: 0 0 14px #2d82ff; content: ""; transform: translateX(-50%); transition: left .45s ease; }
+    .carousel-instruction { display: none; color: #9eabba; font-size: 10px; font-weight: 750; letter-spacing: .27em; }
+    .carousel-count { margin-top: 0; color: #c4cede; font-size: 13px; letter-spacing: .22em; }
+    .carousel-count strong { color: #4e98ff; }
+    .select-box-button, .experience-primary {
+      min-width: 238px;
+      min-height: 48px;
+      margin-top: 16px;
+      border: 1px solid #2f86ff;
+      border-radius: 9px;
+      background: linear-gradient(180deg,#217aff,#0b53de);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 14px 35px rgba(0,70,220,.25), inset 0 1px rgba(255,255,255,.14);
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: .04em;
+    }
+    .select-box-button:hover, .experience-primary:hover { filter: brightness(1.12); transform: translateY(-1px); }
+    .select-box-button:disabled { cursor: default; }
+
+    /* The one-second programmatic handoff into the pre-rendered opening film. */
+    .choose-stage.selection-committing .carousel-box.current img { animation: selected-box-press 380ms cubic-bezier(.22,.8,.22,1) both; }
+    .choose-stage.selection-committing .carousel-box.current::after { animation: selection-halo-tighten 380ms cubic-bezier(.22,.8,.22,1) both; }
+    .choose-stage.selection-committing .select-box-button { animation: selection-button-press 180ms ease both; }
+    .choose-stage.selection-committing .carousel-arrow,
+    .choose-stage.selection-committing .carousel-box,
+    .choose-stage.selection-committing .select-box-button { pointer-events: none; }
+    .choose-stage.selection-exit .carousel-box:not(.current) { --box-exit-x: var(--box-exit-target, 0px); opacity: 0 !important; filter: brightness(.3) blur(5px); }
+    .choose-stage.selection-exit .carousel-arrow { opacity: 0; transition: opacity .22s ease; }
+    .choose-stage.selection-exit .carousel-controls { opacity: 0; transform: translateY(8px); }
+    .choose-stage.selection-exit .experience-heading { opacity: .42; transform: translateY(-5px); }
+    .choose-stage.selection-push .experience-heading { opacity: .035; transform: translateY(-12px); }
+    .choose-stage.selection-push .carousel-box.current {
+      transform: translate(-50%,-50%) scale(1.48);
+      filter: brightness(1.18);
+      transition: transform 350ms cubic-bezier(.16,.82,.18,1), filter 350ms ease;
+    }
+    .choose-stage.selection-push .carousel-box.current::after { opacity: 1; transform: scale(.68); filter: blur(29px); background: rgba(50,143,255,.64); }
+    .choose-stage.selection-push::after,
+    .video-handoff-stage::after {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(ellipse at 50% 69%, rgba(226,246,255,.72), rgba(49,139,255,.3) 19%, rgba(7,43,105,.08) 45%, transparent 69%);
+      content: "";
+      opacity: 0;
+      pointer-events: none;
+    }
+    .choose-stage.selection-push::after { animation: selection-transition-light 350ms ease-out forwards; }
+    @keyframes selected-box-press {
+      0% { transform: scale(1); filter: brightness(1); }
+      31.5% { transform: scale(.97); filter: brightness(.88); }
+      100% { transform: scale(1.03); filter: brightness(1.08); }
+    }
+    @keyframes selection-halo-tighten {
+      0% { opacity: .55; transform: scale(1); filter: blur(20px); }
+      100% { opacity: 1; transform: scale(.48); filter: blur(13px); }
+    }
+    @keyframes selection-button-press {
+      0% { transform: translateY(0); filter: brightness(1); }
+      66% { transform: translateY(2px) scale(.99); filter: brightness(.78); }
+      100% { transform: translateY(1px); filter: brightness(.88); }
+    }
+    @keyframes selection-transition-light { to { opacity: 1; } }
+
+    .video-handoff-stage { display: grid; place-items: center; padding: 72px 20px 20px; }
+    .video-handoff-stage::before {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-conic-gradient(from 90deg at 50% 71%, rgba(56,132,255,.075) 0 1deg, transparent 1deg 8deg),
+        radial-gradient(ellipse at 50% 71%, rgba(89,170,255,.34), rgba(9,43,98,.14) 29%, transparent 63%);
+      content: "";
+      opacity: .78;
+    }
+    .video-handoff-stage::after { opacity: 1; }
+    .handoff-box {
+      position: relative;
+      z-index: 4;
+      width: clamp(400px, 42vw, 670px);
+      max-height: 76vh;
+      object-fit: contain;
+      filter: brightness(1.12) drop-shadow(0 0 18px rgba(85,165,255,.9)) drop-shadow(0 35px 42px rgba(0,0,0,.72));
+      transform: translateY(2.5vh);
+      animation: handoff-arrive 180ms ease-out both;
+    }
+    .handoff-horizon {
+      position: absolute;
+      top: 69%;
+      left: 50%;
+      z-index: 3;
+      width: min(1120px,76vw);
+      height: 3px;
+      background: linear-gradient(90deg,transparent,#68b5ff 24%,#eefaff 50%,#68b5ff 76%,transparent);
+      box-shadow: 0 0 34px 13px rgba(60,150,255,.58), 0 0 110px 38px rgba(36,107,236,.32);
+      transform: translateX(-50%);
+    }
+    .handoff-status { position: absolute; z-index: 6; bottom: 22px; color: rgba(151,183,224,.52); font-size: 9px; font-weight: 800; letter-spacing: .24em; }
+    @keyframes handoff-arrive { from { opacity: .72; transform: translateY(2.5vh) scale(.97); } }
+
+    .locked-stage { grid-template-rows: auto minmax(0, 1fr) auto; }
+    .locked-visual { position: relative; display: grid; min-height: 0; place-items: center; }
+    .locked-ring, .opening-ring {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      width: clamp(270px, 31vw, 500px);
+      height: clamp(70px, 8vw, 120px);
+      border: 1px solid rgba(49,130,255,.62);
+      border-radius: 50%;
+      box-shadow: 0 0 28px rgba(36,111,255,.35), inset 0 0 24px rgba(36,111,255,.18);
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+    }
+    .locked-stage.sound-locking .locked-ring { animation: lock-scan 4.032s cubic-bezier(.18,.72,.2,1) both; }
+    @keyframes lock-scan {
+      0% { opacity: .18; transform: translate(-50%,-50%) scale(.72); }
+      24% { opacity: 1; box-shadow: 0 0 42px rgba(36,111,255,.72), inset 0 0 28px rgba(36,111,255,.3); }
+      68% { opacity: .82; transform: translate(-50%,-50%) scale(1.08); }
+      100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+    }
+    .locked-box { position: relative; z-index: 2; width: clamp(220px, 25vw, 390px); max-height: 44vh; object-fit: contain; pointer-events: none; filter: drop-shadow(0 0 13px rgba(72,138,255,.48)) drop-shadow(0 28px 30px rgba(0,0,0,.62)); animation: selected-float 3.2s ease-in-out infinite; }
+    @keyframes selected-float { 50% { transform: translateY(-9px) rotate(-.6deg); } }
+    .locked-id { position: absolute; top: calc(65% + clamp(55px, 6vw, 94px)); color: #4f99ff; font-size: 22px; font-weight: 850; pointer-events: none; }
+    .box-experience.multi-session .locked-box { width: clamp(210px,24vw,360px); max-height: 38vh; }
+    .locked-actions { display: grid; justify-items: center; }
+    .locked-actions .experience-primary { width: min(650px, calc(100vw - 42px)); margin-top: 0; }
+    .experience-secondary { margin-top: 10px; border: 0; padding: 8px 14px; background: transparent; color: #5fa5ff; cursor: pointer; }
+    .opening-stage { display: grid; place-items: center; padding: 72px 20px 20px; }
+    .opening-scene { position: relative; width: min(720px, 100%); height: min(620px, calc(100vh - 112px)); }
+    .opening-ring { top: 69%; }
+    .opening-core {
+      position: absolute;
+      top: 49%;
+      left: 50%;
+      width: clamp(245px, 30vw, 430px);
+      aspect-ratio: 1;
+      transform: translate(-50%,-50%);
+      transition: transform 1s cubic-bezier(.2,.7,.2,1), filter .8s ease, opacity .7s ease;
+    }
+    .opening-core>img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 30px 32px rgba(0,0,0,.65)); }
+    .opening-status { position: absolute; right: 0; bottom: 28px; left: 0; color: #76adff; font-size: 10px; font-weight: 820; letter-spacing: .3em; text-align: center; }
+    .opening-stage.phase-charge .opening-core { transform: translate(-50%,-54%) scale(1.05) rotate(-2deg); filter: drop-shadow(0 0 22px rgba(48,125,255,.7)) brightness(1.15); }
+    .opening-stage.phase-charge .opening-ring { animation: ring-pulse .8s ease-in-out infinite alternate; }
+    @keyframes ring-pulse { to { transform: translate(-50%,-50%) scale(1.08); opacity: .55; } }
+    .crystal-aperture { position: absolute; top: 49%; left: 50%; width: clamp(245px, 30vw, 430px); aspect-ratio: 1; opacity: 0; transform: translate(-50%,-50%); transition: opacity .25s ease; }
+    .crystal-panel { position: absolute; inset: 0; background: var(--experience-box-image, url('assets/boxzy/catalog/starter.png')) center/contain no-repeat; filter: drop-shadow(0 0 10px rgba(67,140,255,.5)); transition: transform 1.1s cubic-bezier(.18,.75,.2,1); }
+    .crystal-panel.top { clip-path: polygon(0 0,100% 0,50% 50%); }
+    .crystal-panel.right { clip-path: polygon(100% 0,100% 100%,50% 50%); }
+    .crystal-panel.bottom { clip-path: polygon(0 100%,100% 100%,50% 50%); }
+    .crystal-panel.left { clip-path: polygon(0 0,50% 50%,0 100%); }
+    .opening-stage.phase-unfold .opening-core { opacity: 0; transform: translate(-50%,-46%) scale(.9); }
+    .opening-stage.phase-unfold .crystal-aperture { opacity: 1; }
+    .opening-stage.phase-unfold .crystal-panel.top { transform: translateY(-48%) rotateX(24deg); }
+    .opening-stage.phase-unfold .crystal-panel.right { transform: translateX(48%) rotateY(24deg); }
+    .opening-stage.phase-unfold .crystal-panel.bottom { transform: translateY(48%) rotateX(-24deg); }
+    .opening-stage.phase-unfold .crystal-panel.left { transform: translateX(-48%) rotateY(-24deg); }
+    .reveal-beam { position: absolute; top: 11%; bottom: 26%; left: 50%; width: 34%; background: linear-gradient(90deg,transparent,rgba(66,139,255,.34),rgba(228,242,255,.52),rgba(66,139,255,.34),transparent); filter: blur(10px); opacity: 0; transform: translateX(-50%) scaleY(.2); transform-origin: bottom; transition: opacity .5s ease, transform .8s ease; }
+    .opening-stage.phase-unfold .reveal-beam { opacity: 1; transform: translateX(-50%) scaleY(1); }
+    .mystery-product {
+      position: absolute;
+      top: 43%;
+      left: 50%;
+      z-index: 3;
+      display: grid;
+      width: clamp(105px,11vw,165px);
+      aspect-ratio: .74;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(91,156,255,.66);
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg,rgba(40,109,211,.2),transparent 38%),
+        repeating-linear-gradient(135deg,rgba(88,154,255,.08) 0 1px,transparent 1px 12px),
+        linear-gradient(155deg,#101d31,#050d19 72%);
+      box-shadow: inset 0 0 38px rgba(46,119,229,.18), 0 0 30px rgba(50,128,255,.28), 0 24px 36px rgba(0,0,0,.58);
+      color: #7fb6ff;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%,22%) scale(.8);
+      transition: opacity .5s ease, transform 1s cubic-bezier(.18,.8,.2,1), visibility 0s linear .5s;
+    }
+    .mystery-product::before { position: absolute; inset: 9px; border: 1px solid rgba(104,167,255,.18); border-radius: 9px; content: ""; }
+    .mystery-product::after { position: absolute; width: 48%; aspect-ratio: 1; border: 1px solid rgba(91,157,255,.32); content: ""; transform: rotate(45deg); }
+    .mystery-product-mark { position: relative; z-index: 2; display: grid; gap: 9px; justify-items: center; }
+    .mystery-product-mark strong { display: grid; width: 48px; height: 48px; place-items: center; border: 1px solid #468de8; transform: rotate(45deg); box-shadow: 0 0 22px rgba(53,133,255,.28); }
+    .mystery-product-mark strong span { color: #a9cdff; font-size: 23px; transform: rotate(-45deg); }
+    .mystery-product-mark small { color: #6fa8f0; font-size: 7px; font-weight: 850; letter-spacing: .2em; }
+    .opening-stage.phase-unfold .mystery-product { opacity: 1; visibility: visible; transform: translate(-50%,-50%) scale(.94); transition-delay: 0s; }
+    .opening-stage.phase-reveal .mystery-product { animation: mystery-resolve 3.082s cubic-bezier(.2,.72,.2,1) both; }
+    .opening-reveal-product {
+      position: absolute;
+      top: 43%;
+      left: 50%;
+      z-index: 4;
+      width: clamp(145px,16vw,230px);
+      height: clamp(170px,25vh,290px);
+      object-fit: contain;
+      opacity: 0;
+      visibility: hidden;
+      filter: brightness(2.4) blur(9px) drop-shadow(0 24px 30px rgba(0,0,0,.6));
+      transform: translate(-50%,-46%) scale(.82);
+      pointer-events: none;
+    }
+    .opening-stage.phase-reveal .opening-reveal-product { visibility: visible; animation: opening-prize-reveal 3.082s cubic-bezier(.2,.72,.2,1) both; }
+    @keyframes mystery-resolve {
+      0% { filter: brightness(1); transform: translate(-50%,-50%) scale(.94); }
+      35% { opacity: 1; filter: brightness(1.45); transform: translate(-50%,-52%) scale(1.02); }
+      68% { opacity: .42; filter: brightness(2.3) blur(2px); transform: translate(-50%,-52%) scale(1.08); }
+      100% { opacity: 0; filter: brightness(3) blur(7px); transform: translate(-50%,-52%) scale(1.13); }
+    }
+    @keyframes opening-prize-reveal {
+      0%, 16% { opacity: 0; filter: brightness(2.5) blur(9px) drop-shadow(0 24px 30px rgba(0,0,0,.6)); transform: translate(-50%,-46%) scale(.82); }
+      48% { opacity: .58; filter: brightness(1.8) blur(3px) drop-shadow(0 24px 30px rgba(0,0,0,.6)); }
+      100% { opacity: 1; filter: brightness(1) blur(0) drop-shadow(0 24px 30px rgba(0,0,0,.6)); transform: translate(-50%,-50%) scale(1); }
+    }
+
+    .result-stage { grid-template-rows: auto minmax(0,1fr) auto; }
+    .result-stage .experience-heading h2 { font-size: clamp(26px, 2.8vw, 42px); }
+    .result-visual { position: relative; display: grid; min-height: 0; place-items: center; overflow: hidden; padding: 8px 20px; }
+    .result-visual::after { position: absolute; top: 70%; left: 50%; width: min(420px,70vw); height: 80px; border: 1px solid rgba(50,132,255,.55); border-radius: 50%; box-shadow: 0 0 36px rgba(45,121,255,.3); content: ""; transform: translate(-50%,-50%); }
+    .result-product { position: relative; z-index: 2; width: min(250px,20vw); height: min(32vh,300px); max-width: 100%; object-fit: contain; filter: drop-shadow(0 26px 28px rgba(0,0,0,.62)); animation: result-in .7s cubic-bezier(.16,.84,.25,1) both; }
+    .box-experience.multi-session .result-product { width: min(270px,21vw); height: min(31vh,290px); }
+    @keyframes result-in { from { opacity: 0; transform: translateY(35px) scale(.86); filter: brightness(2) blur(5px); } }
+    .result-meta { position: relative; z-index: 3; display: flex; justify-content: center; gap: 12px; margin-top: -2px; }
+    .result-pill { padding: 6px 11px; border: 1px solid #28784f; border-radius: 99px; background: rgba(8,45,31,.55); color: #55d58d; font-size: 9px; font-weight: 850; letter-spacing: .12em; }
+    .result-value { color: #66a7ff; font-size: 20px; font-weight: 850; }
+    .result-actions { position: relative; z-index: 5; display: grid; width: min(780px,calc(100vw - 42px)); margin: 0 auto; justify-items: stretch; gap: 12px; }
+    .result-decision-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .decision-button {
+      display: inline-flex;
+      min-height: 62px;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: .055em;
+      transition: filter .2s ease, transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .decision-button.sell {
+      border-color: rgba(80, 160, 255, .82);
+      background: linear-gradient(180deg,#2789ff 0%,#0861ec 100%);
+      box-shadow: 0 13px 32px rgba(0,91,232,.3), inset 0 1px rgba(255,255,255,.2);
+    }
+    .decision-button.open-again {
+      border-color: rgba(52, 127, 220, .82);
+      background: linear-gradient(180deg,rgba(15,40,72,.98),rgba(8,26,49,.98));
+      box-shadow: 0 13px 28px rgba(0,0,0,.22), inset 0 1px rgba(255,255,255,.035);
+    }
+    .decision-icon { width: 23px; height: 23px; flex: 0 0 23px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.75; }
+    .decision-button:hover { filter: brightness(1.12); transform: translateY(-1px); }
+    .result-keep-link {
+      justify-self: center;
+      border: 0;
+      padding: 5px 12px;
+      background: transparent;
+      color: #8c9caf;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+      transition: color .2s ease;
+    }
+    .result-keep-link:hover { color: #69aaff; }
+    .sale-success-stage {
+      grid-template-rows: auto minmax(0,1fr) auto;
+      padding-top: clamp(22px,3.4vh,40px);
+    }
+    .sale-success-heading { text-align: center; }
+    .sale-success-check {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 12px;
+      place-items: center;
+      border: 1px solid #24df91;
+      border-radius: 50%;
+      color: #32e69b;
+      box-shadow: 0 0 24px rgba(34,224,145,.2), inset 0 0 18px rgba(34,224,145,.08);
+    }
+    .sale-success-check svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+    .sale-success-kicker { color: #35dc99; font-size: 10px; font-weight: 850; letter-spacing: .26em; }
+    .sale-success-amount { margin: 7px 0 5px; color: #f5f7fb; font-size: clamp(34px,3.5vw,54px); line-height: 1; letter-spacing: -.045em; }
+    .sale-success-amount span { color: #559cff; }
+    .sale-success-copy { margin: 0; color: #a4b0c1; font-size: 14px; }
+    .sale-success-visual { position: relative; display: grid; min-height: 0; place-items: center; overflow: hidden; padding: 8px 20px; }
+    .sale-success-visual::after {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      width: min(430px,70vw);
+      height: 78px;
+      border: 1px solid rgba(45,132,255,.64);
+      border-radius: 50%;
+      box-shadow: 0 0 42px rgba(34,107,230,.32);
+      content: "";
+      transform: translate(-50%,-50%);
+    }
+    .sale-success-box { position: relative; z-index: 2; width: min(280px,22vw); height: min(35vh,320px); object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,.58)) drop-shadow(0 0 18px rgba(52,126,255,.22)); animation: result-in .65s cubic-bezier(.16,.84,.25,1) both; }
+    .sale-success-actions { position: relative; z-index: 4; display: grid; width: min(620px,calc(100vw - 42px)); margin: 0 auto; justify-items: stretch; gap: 12px; }
+    .sale-success-prompt { margin: 0 0 2px; color: #f4f7fb; font-size: 17px; font-weight: 850; letter-spacing: .14em; text-align: center; }
+    .sale-open-again {
+      display: inline-flex;
+      min-height: 62px;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      border: 1px solid rgba(81,161,255,.88);
+      border-radius: 12px;
+      background: linear-gradient(180deg,#2789ff 0%,#0861ec 100%);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(0,91,232,.34), inset 0 1px rgba(255,255,255,.2);
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 850;
+      letter-spacing: .06em;
+      transition: filter .2s ease, transform .2s ease;
+    }
+    .sale-open-again:hover { filter: brightness(1.12); transform: translateY(-1px); }
+    .sale-collection-link { justify-self: center; border: 0; padding: 5px 12px; background: transparent; color: #67a8ff; cursor: pointer; font-size: 13px; font-weight: 600; }
+    .sale-collection-link:hover { color: #9ac7ff; }
+    .decision-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(1,6,13,.76);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .22s ease, visibility .22s ease;
+    }
+    .decision-backdrop.open { opacity: 1; visibility: visible; }
+    .decision-dialog {
+      position: relative;
+      width: min(500px,100%);
+      border: 1px solid #304b69;
+      border-radius: 18px;
+      padding: 28px;
+      background: linear-gradient(145deg,#101b29,#08111d 70%);
+      box-shadow: 0 28px 90px rgba(0,0,0,.58), 0 0 42px rgba(27,99,210,.12);
+    }
+    .decision-dialog h3 { margin: 0; font-size: 25px; letter-spacing: -.03em; }
+    .decision-dialog > p { margin: 7px 0 20px; color: #91a0b4; font-size: 13px; line-height: 1.55; }
+    .decision-close { position: absolute; top: 17px; right: 17px; border: 0; background: none; color: #9aa9bb; cursor: pointer; font-size: 22px; }
+    .sell-product-card { display: grid; grid-template-columns: 78px 1fr; align-items: center; gap: 15px; border: 1px solid #20344d; border-radius: 12px; padding: 12px; background: #091525; }
+    .sell-product-card img { width: 78px; height: 68px; object-fit: contain; }
+    .sell-product-card strong { display: block; font-size: 14px; }
+    .sell-product-card span { display: inline-block; margin-top: 7px; color: #718499; font-size: 10px; font-weight: 750; letter-spacing: .09em; }
+    .offer-row { display: flex; justify-content: space-between; margin: 20px 2px 10px; color: #b6c2d0; font-size: 13px; }
+    .offer-row strong { color: #fff; font-size: 19px; }
+    .dialog-primary, .dialog-secondary { width: 100%; min-height: 50px; border-radius: 11px; color: #fff; cursor: pointer; font-size: 14px; font-weight: 820; }
+    .dialog-primary { border: 1px solid #3288ff; background: linear-gradient(180deg,#237dff,#0a53df); }
+    .dialog-secondary { margin-top: 10px; border: 1px solid #26384d; background: #111a25; }
+    .decision-terms { margin: 13px 0 0; color: #607087; font-size: 9px; line-height: 1.5; text-align: center; }
+    .opening-skip { position: absolute; right: 28px; bottom: 24px; z-index: 8; border: 0; background: none; color: #728197; cursor: pointer; font-size: 11px; }
+
+    @media (max-width: 760px) {
+      .experience-topbar { height: 62px; }
+      .session-progress { top: 62px; grid-template-columns: 1fr auto; height: 58px; gap: 10px; padding: 0 14px; }
+      .session-steps { grid-column: 1 / -1; grid-row: 1; }
+      .session-progress-label, .session-remaining { display: none; }
+      .session-step small { display: none; }
+      .session-step::after { margin: 0 7px; }
+      .box-experience.multi-session .experience-stage { inset: 120px 0 0; padding-top: 18px; }
+      .experience-logo { width: 108px; }
+      .experience-wallet { height: 36px; padding: 0 11px; font-size: 12px; }
+      .experience-close { width: 36px; height: 36px; }
+      .sound-toggle { width: 36px; height: 36px; }
+      .experience-stage { inset: 62px 0 0; padding-top: 28px; }
+      .experience-heading h2 { font-size: 36px; }
+      .carousel-box { width: min(54vw, 260px); }
+      .carousel-arrow { width: 34px; font-size: 36px; }
+      .carousel-controls { padding-bottom: max(6px,env(safe-area-inset-bottom)); }
+      .carousel-instruction { letter-spacing: .18em; }
+      .handoff-box { width: min(82vw,520px); }
+      .locked-box { width: min(68vw,360px); }
+      .opening-scene { height: calc(100dvh - 92px); }
+      .opening-skip { right: 16px; bottom: max(16px,env(safe-area-inset-bottom)); }
+      .result-stage { padding-bottom: max(18px,env(safe-area-inset-bottom)); }
+      .result-product, .box-experience.multi-session .result-product { width: min(220px,58vw); height: min(29vh,250px); }
+      .result-actions { gap: 9px; }
+      .decision-button { min-height: 56px; font-size: 13px; }
+      .sale-success-box { width: min(240px,62vw); height: min(31vh,270px); }
+      .sale-success-actions { gap: 9px; }
+      .sale-open-again { min-height: 56px; font-size: 13px; }
+      .decision-dialog { padding: 24px 20px; }
+    }
+    @media (max-width: 520px) {
+      .result-decision-row { grid-template-columns: 1fr; }
+    }
+
+    /* Fixed 16:9 opening theatre. Selection, film and result share one frame. */
+    .box-experience {
+      place-items: center;
+      padding: 24px;
+      background: rgba(1, 6, 13, .76);
+      backdrop-filter: blur(7px) saturate(.72);
+    }
+    .box-experience::before,
+    .box-experience::after { display: none; }
+    .experience-shell {
+      position: relative;
+      width: min(1280px, calc(100vw - 48px), calc((100dvh - 48px) * 1.77778));
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1px solid rgba(91, 145, 211, .42);
+      border-radius: 24px;
+      background:
+        radial-gradient(680px 390px at 50% 61%, rgba(18, 81, 176, .23), transparent 69%),
+        radial-gradient(420px 250px at 50% 53%, rgba(77, 60, 184, .1), transparent 74%),
+        #020812;
+      box-shadow: 0 34px 110px rgba(0, 0, 0, .72), inset 0 1px rgba(255,255,255,.035);
+      isolation: isolate;
+    }
+    .experience-shell::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(rgba(73, 126, 191, .02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(73, 126, 191, .017) 1px, transparent 1px);
+      background-size: 42px 42px;
+      content: "";
+      mask-image: linear-gradient(to bottom, transparent, #000 34%, #000 85%, transparent);
+    }
+    .experience-topbar {
+      height: 64px;
+      padding: 0 28px;
+      border-bottom-color: rgba(74,105,143,.16);
+      background: rgba(2,8,18,.7);
+    }
+    .experience-logo { width: 116px; height: 32px; }
+    .sound-toggle,
+    .experience-close { width: 38px; height: 38px; }
+    .experience-wallet { height: 38px; padding-inline: 14px; }
+    .experience-stage { inset: 64px 0 0; padding: 35px 0 30px; }
+    .box-experience.multi-session .experience-stage { inset: 124px 0 0; }
+    .session-progress { top: 64px; height: 60px; }
+    .choose-stage { padding-top: 40px; }
+    .choose-stage .experience-kicker { display: block; }
+    .choose-stage .experience-heading h2 { margin-top: 9px; font-size: clamp(34px, 3.05vw, 46px); letter-spacing: .035em; }
+    .choose-stage .experience-heading p { margin-top: 10px; font-size: 14px; }
+    .carousel-box { width: clamp(145px, 15vw, 238px); }
+    .carousel-arrow { width: 42px; height: 60px; font-size: 42px; }
+    .carousel-arrow.prev { left: 22px; }
+    .carousel-arrow.next { right: 22px; }
+    .carousel-controls { width: min(520px, calc(100% - 40px)); }
+    .carousel-count { font-size: 12px; }
+    .select-box-button { min-width: 270px; min-height: 52px; margin-top: 14px; }
+
+    .video-handoff-stage {
+      inset: 64px 0 0;
+      display: block;
+      padding: 0;
+      background: #020812;
+    }
+    .opening-film {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #020812;
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+    .video-handoff-stage.video-playing .opening-film { opacity: 1; }
+    .video-handoff-stage::before,
+    .video-handoff-stage::after,
+    .handoff-horizon { display: none; }
+    .handoff-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: min(410px, 38%);
+      transform: translate(-50%, -46%);
+      transition: opacity 180ms ease, transform 260ms ease;
+    }
+    .video-handoff-stage.video-playing .handoff-box { opacity: 0; transform: translate(-50%, -46%) scale(1.045); }
+    .opening-film-status {
+      position: absolute;
+      right: 0;
+      bottom: 24px;
+      left: 0;
+      z-index: 4;
+      color: rgba(198,216,239,.72);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-align: center;
+      pointer-events: none;
+    }
+    .opening-film-skip {
+      position: absolute;
+      right: 24px;
+      bottom: 22px;
+      z-index: 5;
+      min-width: 132px;
+      height: 42px;
+      border: 1px solid rgba(110,165,237,.6);
+      border-radius: 10px;
+      background: rgba(2,10,22,.72);
+      color: #edf5ff;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity .2s ease, transform .2s ease, background .2s ease;
+      backdrop-filter: blur(10px);
+    }
+    .opening-film-skip.available { opacity: 1; pointer-events: auto; transform: none; }
+    .opening-film-skip:hover { background: rgba(15,59,116,.85); }
+    .opening-film-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 6;
+      min-width: 190px;
+      min-height: 52px;
+      border: 1px solid #338cff;
+      border-radius: 10px;
+      background: linear-gradient(180deg,#217aff,#0b53de);
+      color: #fff;
+      font-weight: 850;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transform: translate(-50%,-50%);
+    }
+    .opening-film-play[hidden] { display: none; }
+
+    .result-stage {
+      grid-template-rows: auto minmax(0,1fr) auto;
+      padding: 25px 36px 22px;
+      isolation: isolate;
+    }
+    .result-background-video {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #020812;
+    }
+    .result-stage::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(180deg, rgba(1,6,15,.56) 0%, rgba(1,7,17,.08) 39%, rgba(1,6,15,.2) 68%, rgba(1,6,15,.72) 100%),
+        radial-gradient(ellipse at 50% 46%, transparent 20%, rgba(0,5,13,.18) 72%);
+      content: "";
+      pointer-events: none;
+    }
+    .result-stage .experience-heading { padding-inline: 46px; }
+    .result-stage .experience-heading h2 {
+      margin: 8px 0 7px;
+      font-size: clamp(32px, 3.05vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      text-shadow: 0 3px 22px rgba(0,0,0,.58);
+    }
+    .result-meta { align-items: center; gap: 16px; }
+    .result-pill {
+      padding: 7px 17px;
+      border-color: #2b89ff;
+      background: rgba(5,28,61,.58);
+      color: #62a8ff;
+      font-size: 10px;
+      letter-spacing: .16em;
+    }
+    .result-value { color: #3f91ff; font-size: 25px; text-shadow: 0 0 25px rgba(41,132,255,.32); }
+    .result-visual { padding: 2px 20px 0; overflow: visible; }
+    .result-visual::after { display: none; }
+    .result-product,
+    .box-experience.multi-session .result-product {
+      width: min(310px, 28vw);
+      height: min(330px, 39vh);
+      filter: drop-shadow(0 24px 28px rgba(0,0,0,.52)) drop-shadow(0 0 18px rgba(41,126,255,.18));
+    }
+    .result-actions { width: min(780px, calc(100% - 40px)); gap: 9px; }
+    .decision-button { min-height: 56px; border-radius: 10px; }
+    .decision-button.open-again {
+      border-color: rgba(80,160,255,.82);
+      background: linear-gradient(180deg,#2789ff 0%,#0861ec 100%);
+      box-shadow: 0 13px 32px rgba(0,91,232,.3), inset 0 1px rgba(255,255,255,.2);
+    }
+    .result-keep-link { color: #8091a8; font-size: 12px; font-weight: 750; letter-spacing: .045em; text-transform: uppercase; }
+
+    @media (max-width: 760px) {
+      .box-experience { padding: 10px; }
+      .experience-shell { width: min(calc(100vw - 20px), calc((100dvh - 20px) * 1.77778)); border-radius: 16px; }
+      .experience-topbar { height: 52px; padding: 0 14px; }
+      .experience-logo { width: 88px; }
+      .sound-toggle, .experience-close { width: 34px; height: 34px; }
+      .experience-wallet { height: 34px; font-size: 12px; }
+      .experience-stage, .video-handoff-stage { inset: 52px 0 0; }
+      .choose-stage { padding-top: 14px; padding-bottom: 14px; }
+      .choose-stage .experience-kicker { font-size: 8px; }
+      .choose-stage .experience-heading h2 { margin-top: 5px; font-size: 22px; }
+      .choose-stage .experience-heading p { margin-top: 5px; font-size: 10px; }
+      .carousel-box { width: min(150px, 26vw); }
+      .carousel-controls { transform: scale(.84); transform-origin: bottom center; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/boxzy/header.css?v=20260902-1">
+  <link rel="stylesheet" href="assets/boxzy/home-refined.css?v=20260902-2">
+  <link rel="stylesheet" href="assets/boxzy/black-gold.css?v=20260910-5">
+<link rel="stylesheet" href="assets/boxzy/desktop-ui.css?v=20260928-2"><link rel="stylesheet" href="assets/boxzy/ui-20261012.css">
+<link rel="stylesheet" href="assets/boxzy/approved-ui.css?v=20261013-full-width-banner">
+</head>
+<body class="ui-approved desktop-ui home-refined">
+  <div class="boxzy-gate boxzy-boot-screen" data-boxzy-boot aria-label="BOXZY is loading" aria-live="polite">
+    <div class="gate-center"><img class="gate-logo" src="assets/boxzy/boxzy-logo-white.png" alt="BOXZY"><p class="gate-loading-copy">Loading...</p><div class="gate-dots" aria-hidden="true"><span class="gate-dot"></span><span class="gate-dot"></span><span class="gate-dot"></span></div></div>
+  </div>
+  <header class="topbar boxzy-header" data-boxzy-header data-active="box"></header>
+  <script src="assets/boxzy/header.js?v=20260910-1"></script>
+
+  <div class="live-strip" aria-label="Recent pulls">
+    <div class="live-label"><span class="live-dot"></span>Live pulls</div>
+    <div class="live-window">
+      <div class="live-track" id="liveTrack"></div>
+    </div>
+  </div>
+
+  <main class="page" id="top">
+    <section class="hero approved-banner" aria-label="Open a box. Discover what’s sealed.">
+      <button class="hero-banner-button" id="exploreButton" type="button" aria-label="Explore mystery boxes">
+        <img class="hero-banner-image" src="assets/boxzy/banner-wide-2128x739.png" width="2128" height="739" alt="Open a box. Discover what’s sealed. One authentic Pokémon TCG sealed product in every box.">
+        <span class="hero-trust">Authentic products. Verified pulls.</span>
+      </button>
+    </section>
+
+    <section class="box-section" id="boxes" aria-labelledby="boxes-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Mystery boxes</div>
+          <div class="heading-with-help"><h2 id="boxes-title">Choose your box</h2></div>
+        </div>
+        <div class="section-session-meta"><div class="availability">4 boxes available</div></div>
+      </div>
+
+      <div class="box-grid" id="boxGrid">
+        <article class="box-card" tabindex="0" data-box="discovery" aria-label="View Starter Box, 5 dollars">
+          <img class="box-image" src="assets/boxzy/catalog/starter.png" alt="Starter Box" width="1254" height="1254">
+          <div class="box-info"><div class="box-name">Starter</div><div class="box-price">$5</div>
+            <div class="box-detail">Min value <strong>$20</strong></div><div class="box-types">Max value <strong>$1,175</strong></div>
+            <button class="open-button" type="button" aria-label="Buy Starter Box for 5 dollars">Buy now</button>
+          </div>
+        </article>
+        <article class="box-card" tabindex="0" data-box="collector" aria-label="View Super Box, 10 dollars">
+          <img class="box-image" src="assets/boxzy/catalog/super.png" alt="Super Box" width="1254" height="1254">
+          <div class="box-info"><div class="box-name">Super</div><div class="box-price">$10</div>
+            <div class="box-detail">Min value <strong>$20</strong></div><div class="box-types">Max value <strong>$1,175</strong></div>
+            <button class="open-button" type="button" aria-label="Buy Super Box for 10 dollars">Buy now</button>
+          </div>
+        </article>
+        <article class="box-card" tabindex="0" data-box="elite" aria-label="View Elite Box, 20 dollars">
+          <img class="box-image" src="assets/boxzy/catalog/elite.png" alt="Elite Box" width="1254" height="1254">
+          <div class="box-info"><div class="box-name">Elite</div><div class="box-price">$20</div>
+            <div class="box-detail">Min value <strong>—</strong></div><div class="box-types">Max value <strong>—</strong></div>
+            <button class="open-button" type="button" aria-label="Buy Elite Box for 20 dollars">Buy now</button>
+          </div>
+        </article>
+        <article class="box-card" tabindex="0" data-box="vault" aria-label="View Ultra Box, 100 dollars">
+          <img class="box-image" src="assets/boxzy/catalog/ultra.png" alt="Ultra Box" width="1254" height="1254">
+          <div class="box-info"><div class="box-name">Ultra</div><div class="box-price">$100</div>
+            <div class="box-detail">Min value <strong>$20</strong></div><div class="box-types">Max value <strong>$1,175</strong></div>
+            <button class="open-button" type="button" aria-label="Buy Ultra Box for 100 dollars">Buy now</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="dialog-backdrop" id="authBackdrop" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="dialog auth-dialog">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+      <img class="auth-logo" src="assets/boxzy/boxzy-logo-white.png" alt="BOXZY">
+      <h3 class="auth-title" id="authTitle">Welcome to BOXZY</h3>
+      <p class="auth-subtitle">Sign in to open boxes and manage your collection.</p>
+      <button class="auth-provider google" type="button" data-auth-provider="Google">
+        <img class="auth-provider-icon" src="assets/boxzy/google-login.svg" alt="">
+        Continue with Google
+      </button>
+      <div class="auth-status" id="authStatus" data-kind="network" role="status" aria-live="polite" hidden>
+        <span class="auth-status-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.2 18.2H6a4 4 0 0 1-.5-8A6.6 6.6 0 0 1 18.2 8a5.1 5.1 0 0 1 .4 10.2H17"/><path d="m9.5 15 5 5m0-5-5 5"/></svg>
+        </span>
+        <span class="auth-status-copy"><span class="auth-status-title" id="authStatusTitle"></span><span class="auth-status-message" id="authStatusMessage"></span></span>
+        <button class="auth-retry" id="authRetry" type="button">Retry</button>
+      </div>
+      <p class="auth-legal">By continuing, you agree to our <a href="legal/terms.html" target="_blank" rel="noopener">Terms</a> and <a href="legal/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+    </div>
+  </div>
+
+  <div class="dialog-backdrop" id="phoneBackdrop" role="dialog" aria-modal="true" aria-labelledby="phoneTitle">
+    <div class="dialog auth-dialog phone-dialog">
+      <button class="phone-back" type="button" data-different-account aria-label="Back to sign in">‹</button>
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+      <div class="phone-step" id="phoneStep">
+        <div class="phone-kicker">SECURE SIGN IN</div>
+        <h3 id="phoneTitle">Verify your phone number</h3>
+        <p class="phone-copy">We'll send you a verification code to confirm it's you.</p>
+        <label class="phone-label" for="phoneInput">Phone number</label>
+        <div class="phone-row"><div class="country-code">+1 <span aria-hidden="true">⌄</span></div><input class="phone-input" id="phoneInput" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(555) 123-4567" aria-label="US phone number"></div>
+        <button class="phone-submit" id="sendCode" type="button" disabled>Send code</button>
+        <p class="sms-note">Standard messaging rates may apply. By continuing, you agree to receive a one-time SMS.</p>
+        <button class="different-account" type="button" data-different-account>Use different account</button>
+      </div>
+      <div class="phone-step" id="codeStep" hidden>
+        <h3>Enter verification code</h3>
+        <p class="phone-copy" id="codeCopy">We sent a 6-digit code to your phone.</p>
+        <div class="otp-row" id="otpRow"><input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Verification code digit 1"><input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Verification code digit 2"><input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Verification code digit 3"><input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Verification code digit 4"><input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Verification code digit 5"><input class="otp-input" inputmode="numeric" maxlength="1" aria-label="Verification code digit 6"></div>
+        <button class="phone-submit" id="verifyCode" type="button" disabled>Verify phone</button>
+        <button class="different-account" id="editPhone" type="button">Change phone number</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-backdrop" id="pullBackdrop" role="dialog" aria-modal="true" aria-labelledby="pullModalTitle">
+    <div class="dialog auth-dialog pull-dialog">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+      <div class="pull-visual"><div class="pull-rarity" id="pullModalRarity">RARE</div><img id="pullModalImage" alt=""></div>
+      <div class="pull-dialog-body"><div class="pull-kicker">LIVE PULL</div><h3 id="pullModalTitle"></h3><div class="pull-market-value" id="pullModalValue"></div><div class="pull-market-label">Estimated market value</div><div class="pull-origin"><div class="pull-origin-label">Pulled from <strong id="pullModalBox"></strong></div><div class="pull-origin-detail"><img id="pullModalBoxImage" alt=""><div class="pull-userline"><strong id="pullModalUser"></strong><span id="pullModalTime"></span></div></div></div><a class="pull-box-link" id="pullModalBoxLink" href="boxzy-box.html">VIEW BOX <span>›</span></a></div>
+    </div>
+  </div>
+
+  <div class="dialog-backdrop" id="logicBackdrop" role="dialog" aria-modal="true" aria-labelledby="logicTitle">
+    <div class="dialog auth-dialog logic-dialog"><button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button><div class="logic-kicker">PRODUCT SPEC</div><h3 id="logicTitle"></h3><p class="logic-intro" id="logicIntro"></p><ul class="logic-list" id="logicList"></ul></div>
+  </div>
+
+  <div class="dialog-backdrop" id="simpleBackdrop" role="dialog" aria-modal="true" aria-labelledby="simpleTitle">
+    <div class="dialog simple-dialog">
+      <button class="dialog-close" type="button" data-close-dialog aria-label="Close dialog">×</button>
+      <h3 id="simpleTitle">Log in</h3>
+      <p id="simpleCopy">Account authentication would open here in the production experience.</p>
+      <button class="confirm-button" type="button" data-close-dialog>GOT IT</button>
+    </div>
+  </div>
+
+  <section class="box-experience" id="boxExperience" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Choose and open your BOXZY box">
+    <div class="experience-shell">
+    <header class="experience-topbar">
+      <img class="experience-logo" src="assets/boxzy/boxzy-logo-white.png" alt="BOXZY">
+      <div class="experience-actions">
+        <button class="sound-toggle" id="soundToggle" type="button" aria-label="Mute interaction sounds" aria-pressed="false">♪</button>
+        <div class="experience-wallet" id="experienceWallet">$100.00</div>
+        <button class="experience-close" id="experienceClose" type="button" aria-label="Close box selection">×</button>
+      </div>
+    </header>
+
+    <div class="session-progress" id="sessionProgress" hidden>
+      <div class="session-progress-label" id="sessionProgressLabel"><strong>BOX 1</strong> OF 3</div>
+      <div class="session-steps" id="sessionSteps" aria-label="Opening session progress"></div>
+      <div class="session-remaining" id="sessionRemaining">3 BOXES REMAINING</div>
+    </div>
+
+    <div class="experience-stage choose-stage active" id="chooseStage">
+      <div class="experience-heading">
+        <div class="experience-kicker" id="chooseKicker">YOUR STARTER BOX IS READY</div>
+        <h2 id="chooseTitle">CHOOSE YOUR BOX</h2>
+        <p id="chooseCopy">Slide through the sealed collection, then make your pick.</p>
+      </div>
+      <div class="carousel-viewport" id="carouselViewport">
+        <button class="carousel-arrow prev" id="carouselPrev" type="button" aria-label="Previous box">‹</button>
+        <div class="carousel-track" id="carouselTrack" role="listbox" aria-label="Available sealed boxes"></div>
+        <button class="carousel-arrow next" id="carouselNext" type="button" aria-label="Next box">›</button>
+      </div>
+      <div class="carousel-controls">
+        <div class="carousel-line" id="carouselLine"></div>
+        <div class="carousel-instruction">DRAG OR SWIPE TO EXPLORE</div>
+        <div class="carousel-count">BOX <strong id="carouselCurrent">07</strong> OF <span id="carouselTotal">24</span></div>
+        <button class="select-box-button" id="selectCarouselBox" type="button">SELECT BOX 07</button>
+      </div>
+    </div>
+
+    <div class="experience-stage video-handoff-stage" id="videoHandoffStage" aria-live="polite" aria-label="Opening video ready">
+      <div class="handoff-horizon" aria-hidden="true"></div>
+      <img class="handoff-box" id="handoffBoxImage" src="assets/boxzy/catalog/starter.png" alt="Selected closed BOXZY box">
+      <video class="opening-film" id="openingFilm" preload="auto" playsinline>
+        <source src="assets/boxzy/video/starter-opening-0910.mp4?v=20260910-1" type="video/mp4">
+      </video>
+      <div class="opening-film-status" id="openingFilmStatus">PREPARING REVEAL</div>
+      <button class="opening-film-skip" id="revealNow" type="button">REVEAL NOW</button>
+      <button class="opening-film-play" id="playOpeningFilm" type="button" hidden>PLAY OPENING</button>
+    </div>
+
+    <div class="experience-stage locked-stage" id="lockedStage">
+      <div class="experience-heading">
+        <div class="experience-kicker">SELECTION LOCKED</div>
+        <h2>Box <span id="lockedHeadingId">07</span> is yours.</h2>
+        <p>Ready to reveal what’s sealed inside?</p>
+      </div>
+      <div class="locked-visual">
+        <div class="locked-ring" aria-hidden="true"></div>
+        <img class="locked-box" id="lockedBoxImage" src="assets/boxzy/catalog/starter.png" alt="Selected BOXZY box">
+        <div class="locked-id" id="lockedVisualId">07</div>
+      </div>
+      <div class="locked-actions">
+        <button class="experience-primary" id="openLockedBox" type="button">OPEN BOX 07</button>
+        <button class="experience-secondary" id="chooseAnotherBox" type="button">Choose another box</button>
+      </div>
+    </div>
+
+    <div class="experience-stage opening-stage" id="openingStage" aria-live="polite">
+      <div class="opening-scene">
+        <div class="opening-ring" aria-hidden="true"></div>
+        <div class="reveal-beam" aria-hidden="true"></div>
+        <div class="opening-core"><img id="openingBoxImage" src="assets/boxzy/catalog/starter.png" alt="BOXZY box opening"></div>
+        <div class="crystal-aperture" aria-hidden="true">
+          <i class="crystal-panel top"></i><i class="crystal-panel right"></i><i class="crystal-panel bottom"></i><i class="crystal-panel left"></i>
+        </div>
+        <div class="mystery-product" id="openingMystery" aria-label="Mystery sealed product">
+          <div class="mystery-product-mark"><strong><span>?</span></strong><small>SEALED PRODUCT</small></div>
+        </div>
+        <img class="opening-reveal-product" id="openingRevealProduct" alt="">
+        <div class="opening-status" id="openingStatus">SELECTION LOCKED</div>
+      </div>
+      <button class="opening-skip" id="skipOpening" type="button">Skip animation</button>
+    </div>
+
+    <div class="experience-stage result-loading-stage" id="resultLoadingStage" aria-labelledby="resultStatusTitle">
+      <div class="result-status-content">
+        <div class="result-status-icon" id="resultStatusIcon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 6a18 18 0 0 1 18 18"/></svg></div>
+        <div role="status" aria-live="polite"><h2 id="resultStatusTitle" tabindex="-1">Loading…</h2><p id="resultStatusMessage"></p></div>
+        <p class="opening-reference"><code id="resultOpeningReference"></code></p>
+        <div class="result-status-actions"><button type="button" id="retryOpeningResult" hidden>Check again</button><button type="button" id="leaveOpeningResult">View later in Collection</button></div>
+        <a id="openingResultSupport" href="boxzy-support.html" hidden>Contact support</a>
+        <small id="resultRetryNote" hidden></small>
+      </div>
+    </div>
+
+    <div class="experience-stage result-stage" id="resultStage">
+      <video class="result-background-video" id="resultBackgroundVideo" muted playsinline preload="none" aria-hidden="true"></video>
+      <div class="experience-heading">
+        <div class="experience-kicker" id="resultKicker">YOU PULLED</div>
+        <h2 id="resultName">Prismatic Evolutions Booster Bundle</h2>
+        <div class="result-meta"><span class="result-pill" id="resultRarity">UNCOMMON</span><strong class="result-value" id="resultValue">$69</strong></div>
+      </div>
+      <div class="result-visual">
+        <div class="result-image-fallback" id="resultImageFallback" hidden><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m8 15 16-9 16 9-16 9-16-9Zm0 0v18l16 9 16-9V15M24 24v18"/></svg><span>Image unavailable</span><small>Your prize details are shown above.</small></div>
+        <img class="result-product" id="resultProduct" src="assets/pokemon-tcg-sealed/booster-bundle/prismatic-evolutions-bundle-alt.png" alt="Revealed sealed product">
+      </div>
+      <div class="result-actions">
+        <div class="result-decision-row">
+          <button class="decision-button sell" id="sellResult" type="button">
+            <svg class="decision-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3.8 12.2V6.9a3.1 3.1 0 0 1 3.1-3.1h5.3l8 8-8.4 8.4-8-8Z"></path>
+              <circle cx="8.1" cy="8.1" r="1.15"></circle>
+              <path d="M13.1 9v6.1m2-4.7c-.5-.8-1.3-1.2-2.2-1.1-1 .1-1.7.6-1.7 1.4 0 1.9 4 1 4 2.8 0 .8-.8 1.4-1.8 1.5-.9.1-1.9-.3-2.5-1"></path>
+            </svg>
+            <span>SELL IT</span>
+          </button>
+          <button class="decision-button open-again" id="openAnotherBox" type="button">
+            <svg class="decision-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m4.5 9 6.5-3.5L17.5 9 11 12.5 4.5 9Z"></path>
+              <path d="M4.5 9v7l6.5 3.5 6.5-3.5V9M11 12.5v7"></path>
+              <path d="M7.4 3.9A8.5 8.5 0 0 1 19 6.4"></path>
+              <path d="M15.7 6.4H19V3.1"></path>
+            </svg>
+            <span>OPEN AGAIN</span>
+          </button>
+        </div>
+        <button class="result-keep-link" id="keepResult" type="button">Keep in my collection</button>
+      </div>
+    </div>
+
+    <div class="experience-stage sale-success-stage" id="saleSuccessStage" aria-live="polite">
+      <div class="sale-success-heading">
+        <div class="sale-success-check" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"></path></svg>
+        </div>
+        <div class="sale-success-kicker">SOLD</div>
+        <h2 class="sale-success-amount">+<span id="saleSuccessAmount">$62.10</span></h2>
+        <p class="sale-success-copy">Added to your BOXZY balance</p>
+      </div>
+      <div class="sale-success-visual">
+        <img class="sale-success-box" id="saleSuccessBox" src="assets/boxzy/catalog/starter.png" alt="Starter Box">
+      </div>
+      <div class="sale-success-actions">
+        <h3 class="sale-success-prompt" id="saleSuccessBoxName">SUPER BOX</h3>
+        <button class="sale-open-again" id="saleOpenAgain" type="button">
+          <svg class="decision-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m4.5 9 6.5-3.5L17.5 9 11 12.5 4.5 9Z"></path>
+            <path d="M4.5 9v7l6.5 3.5 6.5-3.5V9M11 12.5v7"></path>
+            <path d="M7.4 3.9A8.5 8.5 0 0 1 19 6.4"></path>
+            <path d="M15.7 6.4H19V3.1"></path>
+          </svg>
+          <span>OPEN AGAIN</span>
+        </button>
+        <button class="sale-collection-link" id="saleGoToCollection" type="button">Go to collection</button>
+      </div>
+    </div>
+
+    <div class="decision-backdrop" id="sellBackdrop" aria-hidden="true">
+      <section class="decision-dialog" role="dialog" aria-modal="true" aria-labelledby="sellDialogTitle">
+        <button class="decision-close" id="closeSellDialog" type="button" aria-label="Close sell offer">×</button>
+        <h3 id="sellDialogTitle">Instant sell offer</h3>
+        <p>Sell this sealed product back to BOXZY and receive account credit immediately.</p>
+        <div class="sell-product-card">
+          <img id="sellProductImage" alt="">
+          <div><strong id="sellProductName"></strong><span id="sellProductRarity"></span></div>
+        </div>
+        <div class="offer-row"><span>90% instant buyback</span><strong id="sellOfferAmount">$0.00</strong></div>
+        <button class="dialog-primary" id="confirmSell" type="button">SELL FOR $0.00</button>
+        <button class="dialog-secondary" id="cancelSell" type="button">KEEP PRODUCT</button>
+        <div class="decision-terms">By confirming, this product will not be added to your collection. The account credit is applied immediately.</div>
+      </section>
+    </div>
+
+    </div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const boxData = Object.fromEntries(Object.entries(BoxzyCatalog.boxes).map(([key,box]) => [key,{
+        ...box,
+        openingVideo: key === 'elite' ? '' : `assets/boxzy/video/${key === 'discovery' ? 'starter' : key === 'collector' ? 'super' : 'ultra'}-opening-0910.mp4`,
+        resultVideo: ''
+      }]));
+
+      const pulls = BoxzyCatalog.products.map((product,index)=>({user:['MikeA87','PikaChase22','CardKing_USA'][index],product:product.name,value:`$${product.value}`,rarity:product.rarity,box:'Starter Box',boxImage:BoxzyCatalog.boxes.discovery.image,time:`${index+2} minutes ago`,image:product.image}));
+
+      const revealProducts = BoxzyCatalog.products;
+
+      const liveTrack = document.getElementById('liveTrack');
+      const renderPull = (pull, index) => `
+        <button class="pull" type="button" data-pull="${index % pulls.length}" aria-label="View ${pull.product} pulled by ${pull.user}">
+          <img src="${pull.image}" alt="">
+          <div class="pull-copy"><div class="pull-user">${pull.user}</div><div class="pull-product">${pull.product}</div></div>
+          <div class="pull-value">${pull.value}</div>
+        </button>`;
+      liveTrack.innerHTML = [...pulls, ...pulls].map(renderPull).join('');
+      [...liveTrack.children].slice(pulls.length).forEach(el=>{el.tabIndex=-1;el.setAttribute('aria-hidden','true');});
+
+      const cards = [...document.querySelectorAll('.box-card')];
+      cards.forEach(card=>{if(!BoxzyCatalog.canUse(card.dataset.box)){card.classList.add('is-unavailable');const button=card.querySelector('button');if(button){button.disabled=true;button.textContent='Unavailable';}}});
+      const authBackdrop = document.getElementById('authBackdrop');
+      const phoneBackdrop = document.getElementById('phoneBackdrop');
+      const pullBackdrop = document.getElementById('pullBackdrop');
+      const logicBackdrop = document.getElementById('logicBackdrop');
+      const simpleBackdrop = document.getElementById('simpleBackdrop');
+      const toast = document.getElementById('toast');
+      const boxExperience = document.getElementById('boxExperience');
+      const experienceWallet = document.getElementById('experienceWallet');
+      const experienceClose = document.getElementById('experienceClose');
+      const chooseStage = document.getElementById('chooseStage');
+      const videoHandoffStage = document.getElementById('videoHandoffStage');
+      const openingFilm = document.getElementById('openingFilm');
+      const openingFilmStatus = document.getElementById('openingFilmStatus');
+      const revealNow = document.getElementById('revealNow');
+      const playOpeningFilm = document.getElementById('playOpeningFilm');
+      const resultBackgroundVideo = document.getElementById('resultBackgroundVideo');
+      const lockedStage = document.getElementById('lockedStage');
+      const openingStage = document.getElementById('openingStage');
+      const resultStage = document.getElementById('resultStage');
+      const resultLoadingStage = document.getElementById('resultLoadingStage');
+      const saleSuccessStage = document.getElementById('saleSuccessStage');
+      const carouselViewport = document.getElementById('carouselViewport');
+      const carouselTrack = document.getElementById('carouselTrack');
+      const carouselCurrent = document.getElementById('carouselCurrent');
+      const carouselLine = document.getElementById('carouselLine');
+      const selectCarouselBox = document.getElementById('selectCarouselBox');
+      const soundToggle = document.getElementById('soundToggle');
+      const sellBackdrop = document.getElementById('sellBackdrop');
+      const sessionProgress = document.getElementById('sessionProgress');
+      const sessionProgressLabel = document.getElementById('sessionProgressLabel');
+      const sessionSteps = document.getElementById('sessionSteps');
+      const sessionRemaining = document.getElementById('sessionRemaining');
+      const SESSION_KEY = 'boxzyOpeningSession';
+      const SESSION_VERSION = 5;
+      const MAX_UNOPENED = 10;
+      const SELL_RATE = .9;
+      const LOCK_SOUND_MS = 4032;
+      const UNFOLD_SOUND_MS = 2040;
+      const REVEAL_SOUND_MS = 3082;
+      const OPENING_DURATION = UNFOLD_SOUND_MS + REVEAL_SOUND_MS;
+      const experienceSounds = {
+        lock: new Audio('assets/boxzy/sfx/box-lock.mp3'),
+        unfold: new Audio('assets/boxzy/sfx/box-unfold.mp3'),
+        reveal: new Audio('assets/boxzy/sfx/final-reveal.mp3')
+      };
+      experienceSounds.lock.volume = .34;
+      experienceSounds.unfold.volume = .42;
+      experienceSounds.reveal.volume = .46;
+      Object.values(experienceSounds).forEach(audio => { audio.preload = 'auto'; });
+      let selectedKey = 'discovery';
+      const PURCHASE_QUANTITY = 1;
+      let toastTimer;
+      let activeBoxIndex = 6;
+      let experienceItem = boxData.discovery;
+      let experienceCharged = false;
+      let openingSession = null;
+      let currentResult = null;
+      let currentResultReady = false;
+      let resultImageGeneration = 0;
+      let currentResultSaved = false;
+      let picksRemaining = 1;
+      let lockSoundTimer;
+      let openingTimers = [];
+      let selectionTimers = [];
+      let selectionInProgress = false;
+      let dragStartX = null;
+      let dragDeltaX = 0;
+      let wheelLocked = false;
+      let soundMuted = BoxzyStorage.getItem('boxzySoundMuted') === 'true';
+      let soundContext;
+      let lastNavSoundAt = 0;
+      let pendingPurchaseKey = null;
+      let pendingResultRepurchase = false;
+      let purchaseProcessing = false;
+
+      const readBalance = () => {
+        const stored = BoxzyStorage.getItem('boxzyBalance');
+        return Number(stored === null ? 100 : stored);
+      };
+      const formatMoney = value => `$${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      const stageList = [chooseStage, videoHandoffStage, lockedStage, openingStage, resultLoadingStage, resultStage, saleSuccessStage];
+
+      const resultDemoCase = BoxzyCatalog.isolated ? new URLSearchParams(location.search).get('resultCase') : null;
+      const resultFlow = BoxzyOpeningResults.create({
+        storage: BoxzyStorage,
+        fetchResult: async ({openingId,record,signal}) => {
+          if (window.BoxzyOpeningAPI?.getResult) return window.BoxzyOpeningAPI.getResult({openingId,signal});
+          await new Promise((resolve,reject) => {
+            const timer = setTimeout(resolve,650);
+            signal.addEventListener('abort',()=>{clearTimeout(timer);reject(new Error('Aborted'));},{once:true});
+          });
+          if (resultDemoCase === 'timeout') return {status:'pending',openingId};
+          if (resultDemoCase === 'updating') return {status:'updating',openingId};
+          if (resultDemoCase === 'failed') return {status:'failed',openingId};
+          if (resultDemoCase === 'empty') return {status:'ready',openingId,product:null};
+          if (resultDemoCase === 'network') throw new Error('Demo connection unavailable');
+          if (resultDemoCase === 'slow' && Date.now()-Date.parse(record.createdAt)<12000) return {status:'pending',openingId};
+          return {status:'ready',openingId,product:resultDemoCase === 'image' ? {...record.demoProduct,image:''} : record.demoProduct};
+        },
+        onState: renderOpeningResultState
+      });
+      function currentOpeningId() {
+        const entitlement = openingSession?.entitlementIds?.[0];
+        return entitlement ? `entitlement-${entitlement}` : `${openingSession?.id || 'opening'}-${openingSession?.completed?.length || 0}`;
+      }
+      function renderOpeningResultState({state,record,openingId}) {
+        if (!boxExperience.classList.contains('open')) return;
+        if (state === 'ready') { renderOpeningResultState({state:'loading',record,openingId});  presentResolvedPrize(record.product); return; }
+        const copy = {
+          loading:['Loading…',''], slow:['Loading…',''],
+          timeout:['Still checking your result','Your opening is saved. Check again or return to Collection.'],
+          network:['Unable to load your result','Your opening is saved. Please check again.'],
+          unavailable:['Unable to load your result','Your opening is saved. Please check again.'],
+          failed:['Sorry, opening failed','Your unopened box is in My Collection.'],
+          updating:['New prizes on the way','Open once the update is complete.'],
+          'storage-error':['Unable to save your result','Please keep this page open and contact support.'],
+          resolved:['Opening completed','Find your prize in My Collection.']
+        }[state] || ['Unable to load your result','Please check again.'];
+        const loading = state === 'loading' || state === 'slow';
+        const wasActive = resultLoadingStage.classList.contains('active');
+        setExperienceStage(resultLoadingStage);
+        resultLoadingStage.dataset.state=state;
+        resultLoadingStage.setAttribute('aria-busy',String(loading));
+        document.getElementById('resultStatusTitle').textContent=copy[0];
+        document.getElementById('resultStatusMessage').textContent=copy[1];
+        document.getElementById('resultOpeningReference').textContent=openingId;
+        document.getElementById('retryOpeningResult').hidden=loading || ['failed','updating','resolved','storage-error'].includes(state);
+        document.getElementById('retryOpeningResult').disabled=loading;
+        document.getElementById('openingResultSupport').hidden=state!=='storage-error';
+        document.getElementById('openingResultSupport').href=BoxzyCatalog.route('boxzy-support.html')+'#opening-'+encodeURIComponent(openingId);
+        document.getElementById('leaveOpeningResult').hidden=loading || state==='storage-error';
+        document.getElementById('leaveOpeningResult').textContent='Go to collection';
+        document.getElementById('resultStatusMessage').hidden=loading;
+        document.querySelector('.opening-reference').hidden=true;
+        if (!wasActive) requestAnimationFrame(()=>document.getElementById('resultStatusTitle').focus({preventScroll:true}));
+      }
+      function leavePendingOpening() {
+        resultFlow.stop();
+        closeExperience(true);
+        setOpeningRoute(false);
+        window.location.href=BoxzyCatalog.route('boxzy-collection.html');
+      }
+      function presentResolvedPrize(product) {
+        const token=++resultImageGeneration;
+        currentResult=product;
+        currentResultReady=false;
+        document.getElementById('resultName').textContent=product.name;
+        document.getElementById('resultRarity').textContent=product.rarity;
+        document.getElementById('resultRarity').dataset.rarity=product.rarity.toLowerCase();
+        document.getElementById('resultValue').textContent=`$${product.value}`;
+        document.querySelector('#sellResult span').textContent='SELL FOR '+formatMoney(Math.round(product.value*SELL_RATE*100)/100);
+        document.querySelector('#openAnotherBox span').textContent=(openingSession?.queue?.length > 1) ? 'OPEN NEXT BOX' : 'OPEN AGAIN · $'+experienceItem.price;
+        const target=document.getElementById('resultProduct');
+        const fallback=document.getElementById('resultImageFallback');
+        const preload=new Image();
+        let imageDone=false;
+        const finish=loaded=>{
+          if(imageDone)return;
+          imageDone=true;clearTimeout(imageTimer);preload.onload=null;preload.onerror=null;
+          if(token!==resultImageGeneration || !boxExperience.classList.contains('open'))return;
+          target.hidden=!loaded;fallback.hidden=loaded;
+          if(loaded){target.src=product.image;target.alt=product.name;}
+          else target.removeAttribute('src');
+          currentResultReady=true;
+          updateSessionUI('result');setExperienceStage(resultStage);
+          requestAnimationFrame(()=>document.getElementById('sellResult').focus({preventScroll:true}));
+        };
+        const imageTimer=setTimeout(()=>finish(false),4000);
+        preload.onload=()=>finish(true);preload.onerror=()=>finish(false);
+        if(product.image)preload.src=product.image;else finish(false);
+      }
+
+      function readOpeningSession() {
+        try {
+          const saved = JSON.parse(BoxzyStorage.getItem(SESSION_KEY) || 'null');
+          if (!saved || !Array.isArray(saved.queue) || !saved.queue.length) return null;
+          if (saved.queue.some(key => !BoxzyCatalog.canUse(key))) return null;
+          if (!saved.queue.length) return null;
+          saved.completed = Array.isArray(saved.completed) ? saved.completed : [];
+          // V2 appended a new checkout to an older queue. Keep only the latest
+          // purchase when migrating so a one-box checkout cannot reopen as 3.
+          if (saved.version !== SESSION_VERSION) {
+            const latestQuantity = 1;
+            saved.queue = saved.queue.slice(-latestQuantity);
+            saved.version = SESSION_VERSION;
+            saved.completed = [];
+            BoxzyStorage.setItem(SESSION_KEY, JSON.stringify(saved));
+          } else if (saved.completed.length + saved.queue.length > MAX_UNOPENED) {
+            saved.completed = [];
+            BoxzyStorage.setItem(SESSION_KEY, JSON.stringify(saved));
+          }
+          return saved;
+        } catch (_) {
+          return null;
+        }
+      }
+
+      function persistOpeningSession() {
+        if (!openingSession?.queue?.length) {
+          BoxzyStorage.removeItem(SESSION_KEY);
+          openingSession = null;
+        } else {
+          BoxzyStorage.setItem(SESSION_KEY, JSON.stringify(openingSession));
+        }
+      }
+
+      function updateSessionUI(mode = 'choose') {
+        if (!openingSession) return;
+        const completed = openingSession.completed.length;
+        const remaining = openingSession.queue.length;
+        const total = completed + remaining;
+        const position = completed + 1;
+        const showProgress = total > 1;
+        sessionProgress.hidden = !showProgress;
+        boxExperience.classList.toggle('multi-session', showProgress);
+        sessionProgressLabel.innerHTML = `<strong>BOX ${position}</strong> OF ${total}`;
+        sessionRemaining.textContent = `${remaining} BOX${remaining === 1 ? '' : 'ES'} REMAINING`;
+        const visibleCount = Math.min(total, 5);
+        const activeIndex = completed;
+        const start = total <= 5 ? 0 : Math.max(0, Math.min(total - visibleCount, activeIndex - 2));
+        sessionSteps.innerHTML = Array.from({ length: visibleCount }, (_, offset) => {
+          const index = start + offset;
+          const state = index < activeIndex ? 'done' : index === activeIndex ? 'active' : '';
+          const label = index < activeIndex ? 'DONE' : index === activeIndex ? (mode === 'result' ? 'DECIDE' : 'CHOOSE') : 'READY';
+          return `<div class="session-step ${state}"><span class="session-step-dot">${index < activeIndex ? '✓' : index + 1}</span><small>${label}</small></div>`;
+        }).join('');
+        const oneBoxType = new Set(openingSession.queue).size === 1;
+        document.getElementById('chooseKicker').textContent = oneBoxType
+          ? `${remaining} ${experienceItem.name.toUpperCase()}${remaining === 1 ? '' : 'ES'} READY`
+          : `${remaining} BOXES READY`;
+        document.getElementById('chooseTitle').textContent = showProgress ? `CHOOSE BOX ${position} OF ${total}` : 'CHOOSE YOUR BOX';
+        document.getElementById('chooseCopy').textContent = completed ? 'Your previous pull is safely resolved.' : 'Slide through the sealed collection, then make your pick.';
+        document.getElementById('resultKicker').textContent = showProgress ? `BOX ${position} OF ${total} · YOU PULLED` : 'YOU PULLED';
+      }
+
+      function updateSoundToggle() {
+        soundToggle.textContent = soundMuted ? '↯' : '♪';
+        soundToggle.setAttribute('aria-pressed', String(soundMuted));
+        soundToggle.setAttribute('aria-label', soundMuted ? 'Turn on interaction sounds' : 'Mute interaction sounds');
+        openingFilm.muted = soundMuted;
+      }
+
+      function playTone(kind) {
+        if (soundMuted) return;
+        const now = performance.now();
+        if (kind === 'nav' && now - lastNavSoundAt < 75) return;
+        if (kind === 'nav') lastNavSoundAt = now;
+        soundContext ||= new (window.AudioContext || window.webkitAudioContext)();
+        const context = soundContext;
+        if (context.state === 'suspended') context.resume();
+        const start = context.currentTime;
+        const master = context.createGain();
+        master.gain.setValueAtTime(.0001, start);
+        master.gain.exponentialRampToValueAtTime(kind === 'nav' ? .08 : .13, start + .008);
+        master.connect(context.destination);
+        const tones = [[620,.055],[880,.09]];
+        tones.forEach(([frequency,duration], index) => {
+          const oscillator = context.createOscillator();
+          const gain = context.createGain();
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(frequency, start + index * .035);
+          gain.gain.setValueAtTime(.0001, start + index * .035);
+          gain.gain.exponentialRampToValueAtTime(index ? .26 : .4, start + index * .035 + .01);
+          gain.gain.exponentialRampToValueAtTime(.0001, start + duration);
+          oscillator.connect(gain).connect(master);
+          oscillator.start(start + index * .035);
+          oscillator.stop(start + duration + .02);
+        });
+        const end = Math.max(...tones.map(tone => tone[1])) + .06;
+        master.gain.exponentialRampToValueAtTime(.0001, start + end);
+      }
+
+      function playSelectionCue(cue) {
+        if (soundMuted) return;
+        soundContext ||= new (window.AudioContext || window.webkitAudioContext)();
+        const context = soundContext;
+        if (context.state === 'suspended') context.resume();
+        const start = context.currentTime;
+        const settings = {
+          press: { from: 92, to: 68, duration: .11, type: 'sine', gain: .13 },
+          gather: { from: 150, to: 430, duration: .26, type: 'triangle', gain: .085 },
+          whoosh: { from: 520, to: 145, duration: .25, type: 'sawtooth', gain: .035 },
+          rise: { from: 310, to: 880, duration: .31, type: 'sine', gain: .075 }
+        }[cue];
+        if (!settings) return;
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        oscillator.type = settings.type;
+        oscillator.frequency.setValueAtTime(settings.from, start);
+        oscillator.frequency.exponentialRampToValueAtTime(settings.to, start + settings.duration);
+        gain.gain.setValueAtTime(.0001, start);
+        gain.gain.exponentialRampToValueAtTime(settings.gain, start + .012);
+        gain.gain.exponentialRampToValueAtTime(.0001, start + settings.duration);
+        oscillator.connect(gain).connect(context.destination);
+        oscillator.start(start);
+        oscillator.stop(start + settings.duration + .02);
+      }
+
+      function playExperienceSound(name) {
+        if (soundMuted) return;
+        const audio = experienceSounds[name];
+        if (!audio) return;
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      }
+
+      function stopExperienceSounds() {
+        Object.values(experienceSounds).forEach(audio => {
+          audio.pause();
+          audio.currentTime = 0;
+        });
+      }
+
+      function setDecisionDialog(backdrop, open) {
+        backdrop.classList.toggle('open', open);
+        backdrop.setAttribute('aria-hidden', String(!open));
+        if (open) requestAnimationFrame(() => backdrop.querySelector('.dialog-primary')?.focus({ preventScroll: true }));
+      }
+
+      function setExperienceStage(stage) {
+        stageList.forEach(item => item.classList.toggle('active', item === stage));
+        resultBackgroundVideo.pause();
+        boxExperience.dataset.stage=stage.id;
+        stageList.forEach(item=>{item.setAttribute('aria-hidden',String(item!==stage));item.inert=item!==stage;});
+        experienceClose.hidden = false;
+        experienceClose.disabled = false;
+        boxExperience.scrollTop = 0;
+      }
+
+      function refreshExperienceWallet() {
+        const balance = formatMoney(readBalance());
+        experienceWallet.textContent = balance;
+        document.querySelectorAll('.balance-control>span,.balance>span,[data-balance]').forEach(element => { element.textContent = balance; });
+      }
+
+      function carouselImage() {
+        return experienceItem.image;
+      }
+
+      function renderCarousel() {
+        carouselTrack.innerHTML = Array.from({ length: 24 }, (_, index) => {
+          const id = String(index + 1).padStart(2, '0');
+          return `<button class="carousel-box" type="button" role="option" data-carousel-index="${index}" aria-label="Box ${id}"><img src="${carouselImage()}" alt=""><span class="carousel-id">${id}</span></button>`;
+        }).join('');
+        carouselTrack.querySelectorAll('.carousel-box').forEach(button => button.addEventListener('click', () => {
+          const index = Number(button.dataset.carouselIndex);
+          if (index === activeBoxIndex) beginSelectionTransition();
+          else moveCarousel(index);
+        }));
+        updateCarouselPositions(false);
+      }
+
+      function updateCarouselPositions(announce = true) {
+        const mobile = innerWidth < 760;
+        const shellWidth = boxExperience.querySelector('.experience-shell')?.clientWidth || innerWidth;
+        const step = mobile ? 190 : 236;
+        carouselTrack.querySelectorAll('.carousel-box').forEach((button, index) => {
+          const delta = index - activeBoxIndex;
+          const distance = Math.abs(delta);
+          button.classList.toggle('current', delta === 0);
+          button.setAttribute('aria-selected', String(delta === 0));
+          button.tabIndex = delta === 0 ? 0 : -1;
+          button.style.setProperty('--box-x', `${delta * step}px`);
+          button.style.setProperty('--box-scale', String(distance === 0 ? 1 : .80));
+          button.style.setProperty('--box-rotate', '0deg');
+          button.style.setProperty('--box-opacity', distance > 2 ? '0' : distance === 0 ? '1' : '.40');
+          button.style.setProperty('--box-brightness', '1');
+          button.style.setProperty('--box-blur', '0px');
+          button.style.setProperty('--box-exit-target', '0px');
+          button.style.pointerEvents = distance > 2 ? 'none' : '';
+          button.style.zIndex = String(20 - distance);
+        });
+        const id = String(activeBoxIndex + 1).padStart(2, '0');
+        carouselCurrent.textContent = id;
+        selectCarouselBox.textContent = `SELECT BOX ${id}`;
+        carouselLine.style.setProperty('--carousel-progress', `${(activeBoxIndex / 23) * 100}%`);
+        document.getElementById('carouselPrev').disabled = activeBoxIndex === 0;
+        document.getElementById('carouselNext').disabled = activeBoxIndex === 23;
+        if (announce) carouselTrack.querySelector('.carousel-box.current')?.focus({ preventScroll: true });
+      }
+
+      function moveCarousel(index, announce = true) {
+        if (selectionInProgress) return;
+        const nextIndex = Math.max(0, Math.min(23, index));
+        if (nextIndex === activeBoxIndex) return;
+        activeBoxIndex = nextIndex;
+        playTone('nav');
+        updateCarouselPositions(announce);
+      }
+
+      function prepareSessionItem() {
+        if (!BoxzyCatalog.guard(openingSession?.queue?.[0])) return;
+        selectedKey = openingSession.queue[0];
+        experienceItem = boxData[selectedKey];
+        for(const id of ['lockedBoxImage','openingBoxImage','handoffBoxImage']) {const image=document.getElementById(id);image.src=experienceItem.image;image.alt=experienceItem.name;}
+        picksRemaining = openingSession.queue.length;
+        currentResultSaved = false;
+        currentResultReady = false;
+        currentResult = null;
+        resultFlow.stop();
+        if (experienceItem.openingVideo && openingFilm.dataset.source !== experienceItem.openingVideo) {
+          openingFilm.pause();
+          openingFilm.src = experienceItem.openingVideo;
+          openingFilm.dataset.source = experienceItem.openingVideo;
+          openingFilm.load();
+        }
+        if (experienceItem.resultVideo && resultBackgroundVideo.dataset.source !== experienceItem.resultVideo) {
+          resultBackgroundVideo.pause();
+          resultBackgroundVideo.src = experienceItem.resultVideo;
+          resultBackgroundVideo.dataset.source = experienceItem.resultVideo;
+          resultBackgroundVideo.load();
+        }
+        boxExperience.style.setProperty('--experience-box-image', `url('${experienceItem.image}')`);
+        renderCarousel();
+        updateSessionUI('choose');
+      }
+
+      function startExperience() {
+        openingSession = readOpeningSession();
+        if (!openingSession) {
+          showToast(BoxzyCatalog.message, 'error');
+          return;
+        }
+        experienceCharged = true;
+        setDecisionDialog(sellBackdrop, false);
+        activeBoxIndex = 6;
+        selectionTimers.forEach(clearTimeout);
+        selectionTimers = [];
+        selectionInProgress = false;
+        chooseStage.classList.remove('selection-committing', 'selection-exit', 'selection-push');
+        openingFilm.pause();
+        openingFilm.currentTime = 0;
+        resultBackgroundVideo.pause();
+        resultBackgroundVideo.currentTime = 0;
+        videoHandoffStage.classList.remove('video-playing');
+        revealNow.classList.remove('available');
+        playOpeningFilm.textContent = 'PLAY OPENING';
+        playOpeningFilm.hidden = true;
+        selectCarouselBox.disabled = false;
+        carouselTrack.style.setProperty('--drag-x', '0px');
+        prepareSessionItem();
+        refreshExperienceWallet();
+        setExperienceStage(chooseStage);
+        boxExperience.classList.add('open');
+        boxExperience.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('box-experience-open');
+        const pending=resultFlow.read(currentOpeningId());
+        if(pending){activeBoxIndex=pending.boxNumber-1;showResult();}
+        else requestAnimationFrame(() => selectCarouselBox.focus({ preventScroll: true }));
+      }
+
+      function setOpeningRoute(active) {
+        const params=new URLSearchParams(location.search);
+        if(active)params.set('open','1');else params.delete('open');
+        history.replaceState(null,'','boxzy-interactive.html'+(params.toString()?'?'+params:'')+'#boxes');
+      }
+
+      function enterOpening() {
+        setOpeningRoute(true);
+        startExperience();
+      }
+
+      function closeExperience(force = false) {
+        resultFlow.stop();
+        resultImageGeneration++;
+        if (experienceCharged && !force && (videoHandoffStage.classList.contains('active') || lockedStage.classList.contains('active') || openingStage.classList.contains('active'))) {
+          return;
+        }
+        selectionTimers.forEach(clearTimeout);
+        selectionTimers = [];
+        selectionInProgress = false;
+        chooseStage.classList.remove('selection-committing', 'selection-exit', 'selection-push');
+        clearTimeout(lockSoundTimer);
+        lockedStage.classList.remove('sound-locking');
+        openingTimers.forEach(clearTimeout);
+        openingTimers = [];
+        stopExperienceSounds();
+        openingFilm.pause();
+        openingFilm.currentTime = 0;
+        resultBackgroundVideo.pause();
+        resultBackgroundVideo.currentTime = 0;
+        videoHandoffStage.classList.remove('video-playing');
+        revealNow.classList.remove('available');
+        playOpeningFilm.textContent = 'PLAY OPENING';
+        playOpeningFilm.hidden = true;
+        boxExperience.classList.remove('open');
+        boxExperience.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('box-experience-open');
+      }
+
+      async function playOpeningVideo() {
+        openingFilm.muted = soundMuted;
+        openingFilm.volume = soundMuted ? 0 : 1;
+        playOpeningFilm.hidden = true;
+        openingFilmStatus.textContent = `OPENING BOX ${String(activeBoxIndex + 1).padStart(2, '0')}`;
+        try {
+          await openingFilm.play();
+        } catch (_) {
+          openingFilmStatus.textContent = 'READY TO OPEN';
+          playOpeningFilm.hidden = false;
+        }
+      }
+
+      function showVideoHandoff() {
+        if (!experienceItem.openingVideo) {setExperienceStage(lockedStage);startOpening();return;}
+        const id = String(activeBoxIndex + 1).padStart(2, '0');
+        document.getElementById('handoffBoxImage').src = experienceItem.image;
+        document.getElementById('handoffBoxImage').alt = `Selected closed BOXZY box ${id}`;
+        document.getElementById('openingBoxImage').src = experienceItem.image;
+        try { openingFilm.currentTime = 0; } catch (_) {}
+        revealNow.classList.remove('available');
+        playOpeningFilm.textContent = 'PLAY OPENING';
+        playOpeningFilm.hidden = true;
+        refreshExperienceWallet();
+        setExperienceStage(videoHandoffStage);
+        playOpeningVideo();
+      }
+
+      function beginSelectionTransition(event) {
+        event?.preventDefault();
+        if (!chooseStage.classList.contains('active') || selectionInProgress) return;
+        selectionInProgress = true;
+        selectCarouselBox.disabled = true;
+        chooseResult();
+        playSelectionCue('press');
+        showVideoHandoff();
+      }
+
+      function lockSelection() {
+        const id = String(activeBoxIndex + 1).padStart(2, '0');
+        stopExperienceSounds();
+        playExperienceSound('lock');
+        lockedStage.classList.remove('sound-locking');
+        void lockedStage.offsetWidth;
+        lockedStage.classList.add('sound-locking');
+        clearTimeout(lockSoundTimer);
+        lockSoundTimer = setTimeout(() => lockedStage.classList.remove('sound-locking'), LOCK_SOUND_MS);
+        document.getElementById('lockedHeadingId').textContent = id;
+        document.getElementById('lockedVisualId').textContent = id;
+        document.getElementById('lockedBoxImage').src = experienceItem.image;
+        document.getElementById('openingBoxImage').src = experienceItem.image;
+        document.getElementById('openLockedBox').textContent = `OPEN BOX ${id}`;
+        refreshExperienceWallet();
+        setExperienceStage(lockedStage);
+        requestAnimationFrame(() => document.getElementById('openLockedBox').focus({ preventScroll: true }));
+      }
+
+      function chooseResult() {
+        const tierOffset = selectedKey === 'vault' ? 4 : selectedKey === 'collector' ? 2 : 0;
+        const record = resultFlow.ensure(currentOpeningId(),{
+          boxKey:selectedKey,boxNumber:activeBoxIndex+1,poolVersion:BoxzyCatalog.boxes[selectedKey].poolVersion,
+          demoProduct:window.BoxzyOpeningAPI?.getResult ? null : revealProducts[(activeBoxIndex+tierOffset)%revealProducts.length]
+        });
+        activeBoxIndex=record.boxNumber-1;
+        currentResult=null;currentResultSaved=false;currentResultReady=false;
+      }
+
+      function startOpening(event) {
+        if (!BoxzyCatalog.guard(selectedKey)) return;
+        event?.preventDefault();
+        if (!lockedStage.classList.contains('active')) return;
+        clearTimeout(lockSoundTimer);
+        lockedStage.classList.remove('sound-locking');
+        stopExperienceSounds();
+        chooseResult();
+        openingTimers.forEach(clearTimeout);
+        openingTimers = [];
+        openingStage.classList.remove('phase-charge', 'phase-unfold', 'phase-reveal');
+        document.getElementById('openingStatus').textContent = 'SELECTION LOCKED';
+        setExperienceStage(openingStage);
+        const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) {
+          openingTimers.push(setTimeout(showResult, 450));
+          return;
+        }
+        openingTimers.push(setTimeout(() => {
+          openingStage.classList.add('phase-charge');
+          openingStage.classList.add('phase-unfold');
+          document.getElementById('openingStatus').textContent = 'UNSEALING PRODUCT';
+          playExperienceSound('unfold');
+        }, 50));
+        openingTimers.push(setTimeout(() => {
+          openingStage.classList.add('phase-reveal');
+          document.getElementById('openingStatus').textContent = 'PRODUCT FOUND';
+          playExperienceSound('reveal');
+        }, 50 + UNFOLD_SOUND_MS));
+        openingTimers.push(setTimeout(showResult, 50 + OPENING_DURATION));
+      }
+
+      function showResult() {
+        if (!boxExperience.classList.contains('open') || resultStage.classList.contains('active') || resultLoadingStage.classList.contains('active')) return;
+        openingTimers.forEach(clearTimeout);openingTimers=[];stopExperienceSounds();openingFilm.pause();
+        videoHandoffStage.classList.remove('video-playing');revealNow.classList.remove('available');playOpeningFilm.hidden=true;
+        try {
+          if(!resultFlow.read(currentOpeningId()))chooseResult();
+          resultFlow.update(currentOpeningId(),{videoEnded:true});
+          resultFlow.check(currentOpeningId());
+        } catch (_) {renderOpeningResultState({state:'storage-error',openingId:currentOpeningId()});}
+      }
+
+      function saveCurrentResult() {
+        if (!currentResultReady || currentResultSaved) return;
+        const saved = JSON.parse(BoxzyStorage.getItem('boxzyWonItems') || '[]');
+        const openedAt = new Date().toISOString();
+        if(saved.some(item=>item.id===`pull-${currentOpeningId()}`)){currentResultSaved=true;return;}
+        saved.unshift({ ...currentResult, id: `pull-${currentOpeningId()}`, status: 'vault', box: experienceItem.name, boxNumber: activeBoxIndex + 1, openedAt });
+        BoxzyStorage.setItem('boxzyWonItems', JSON.stringify(saved.slice(0, 50)));
+        currentResultSaved = true;
+      }
+
+      function recordResolvedResult() {
+        const count = Number(BoxzyStorage.getItem('boxzyOpenedCount') || 0);
+        BoxzyStorage.setItem('boxzyOpenedCount', String(count + 1));
+      }
+
+      function consumeSessionItem(decision) {
+        if (!openingSession?.queue?.length) return;
+        const orderIds = Array.isArray(openingSession.orderIds) && openingSession.orderIds.length
+          ? openingSession.orderIds
+          : [openingSession.id];
+        resultFlow.resolve(currentOpeningId(),decision);
+        currentResultReady=false;
+        const boxKey = openingSession.queue.shift();
+        const entitlementId = Array.isArray(openingSession.entitlementIds) ? openingSession.entitlementIds.shift() : null;
+        openingSession.completed.push({
+          decision,
+          boxKey,
+          boxNumber: activeBoxIndex + 1,
+          product: currentResult.name,
+          value: currentResult.value,
+          resolvedAt: new Date().toISOString()
+        });
+        if (entitlementId) {
+          try {
+            const unopened = JSON.parse(BoxzyStorage.getItem('boxzyUnopenedBoxes') || '[]');
+            if (Array.isArray(unopened)) {
+              BoxzyStorage.setItem('boxzyUnopenedBoxes', JSON.stringify(unopened.filter(box => box.id !== entitlementId)));
+            }
+            const pending = JSON.parse(BoxzyStorage.getItem('boxzyPendingOpen') || 'null');
+            if (pending?.entitlementId === entitlementId) BoxzyStorage.removeItem('boxzyPendingOpen');
+          } catch (_) {}
+        }
+        persistOpeningSession();
+        try {
+          const orders = JSON.parse(BoxzyStorage.getItem('boxzyOrders') || '[]');
+          orders.filter(item => orderIds.includes(item.id)).forEach(order => {
+            order.status = openingSession?.queue?.length ? 'opening' : 'completed';
+            order.updatedAt = new Date().toISOString();
+            if (order.status === 'completed') order.completedAt = order.updatedAt;
+          });
+          BoxzyStorage.setItem('boxzyOrders', JSON.stringify(orders));
+        } catch (_) {}
+        picksRemaining = openingSession?.queue?.length || 0;
+      }
+
+      function advanceAfterResult(message, decision) {
+        recordResolvedResult();
+        consumeSessionItem(decision);
+        if (openingSession?.queue?.length) {
+          activeBoxIndex = (activeBoxIndex + 3) % 24;
+          prepareSessionItem();
+          setExperienceStage(chooseStage);
+          requestAnimationFrame(() => selectCarouselBox.focus({ preventScroll: true }));
+          return;
+        }
+        closeExperience(true);
+        setOpeningRoute(false);
+      }
+
+      function closeRevealedResult() {
+        if(!currentResultReady)return;
+        saveCurrentResult();
+        recordResolvedResult();
+        consumeSessionItem('keep');
+        const remaining = openingSession?.queue?.length || 0;
+        if (remaining) {
+          activeBoxIndex = (activeBoxIndex + 3) % 24;
+          prepareSessionItem();
+          setExperienceStage(chooseStage);
+          requestAnimationFrame(() => selectCarouselBox.focus({ preventScroll: true }));
+          return;
+        }
+        closeExperience(true);
+        setOpeningRoute(false);
+      }
+
+      function openAnotherBoxFromResult() {
+        if(!currentResultReady)return;
+        const hasPrepaidNextBox = (openingSession?.queue?.length || 0) > 1;
+        if (!hasPrepaidNextBox) {
+          if (BoxzyStorage.getItem('boxzyAuthenticated') !== 'true') {
+            pendingResultRepurchase = true;
+            pendingPurchaseKey = selectedKey;
+            sessionStorage.setItem('boxzyPendingPurchase', JSON.stringify({ box: selectedKey, quantity: PURCHASE_QUANTITY }));
+            authBackdrop.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => authBackdrop.querySelector('.dialog-close').focus());
+            return;
+          }
+          const repeatPrice = boxData[selectedKey].price;
+          if (readBalance() < repeatPrice) {
+            openDepositForPurchase(repeatPrice - readBalance(), openAnotherBoxFromResult);
+            return;
+          }
+        }
+        saveCurrentResult();
+        recordResolvedResult();
+        consumeSessionItem('keep');
+        if (openingSession?.queue?.length) {
+          activeBoxIndex = (activeBoxIndex + 3) % 24;
+          prepareSessionItem();
+          setExperienceStage(chooseStage);
+          requestAnimationFrame(() => selectCarouselBox.focus({ preventScroll: true }));
+          return;
+        }
+        purchaseBoxes();
+      }
+
+      function openSellOffer() {
+        if(!currentResultReady)return;
+        const offer = Math.round(currentResult.value * SELL_RATE * 100) / 100;
+        document.getElementById('sellProductImage').src = currentResult.image;
+        document.getElementById('sellProductImage').alt = currentResult.name;
+        document.getElementById('sellProductName').textContent = currentResult.name;
+        document.getElementById('sellProductRarity').textContent = `${currentResult.rarity} · MARKET VALUE ${formatMoney(currentResult.value)}`;
+        document.getElementById('sellOfferAmount').textContent = formatMoney(offer);
+        document.getElementById('confirmSell').textContent = `SELL FOR ${formatMoney(offer)}`;
+        setDecisionDialog(sellBackdrop, true);
+      }
+
+      function showSaleSuccess(offer) {
+        document.getElementById('saleSuccessAmount').textContent = formatMoney(offer);
+        const boxImage = document.getElementById('saleSuccessBox');
+        boxImage.src = experienceItem.image;
+        boxImage.alt = experienceItem.name;
+        document.getElementById('saleSuccessBoxName').textContent=experienceItem.name.toUpperCase();
+        document.querySelector('#saleOpenAgain span').textContent=openingSession?.queue?.length ? 'OPEN NEXT BOX' : 'OPEN AGAIN · $'+experienceItem.price;
+        setExperienceStage(saleSuccessStage);
+        requestAnimationFrame(() => document.getElementById('saleOpenAgain').focus({ preventScroll: true }));
+      }
+
+      function openAgainAfterSale() {
+        if (openingSession?.queue?.length) {
+          activeBoxIndex = (activeBoxIndex + 3) % 24;
+          prepareSessionItem();
+          setExperienceStage(chooseStage);
+          requestAnimationFrame(() => selectCarouselBox.focus({ preventScroll: true }));
+          return;
+        }
+        purchaseBoxes();
+      }
+
+      function confirmSellResult() {
+        if(!currentResultReady || currentResultSaved)return;
+        const offer = Math.round(currentResult.value * SELL_RATE * 100) / 100;
+        const sold = JSON.parse(BoxzyStorage.getItem('boxzySoldItems') || '[]');
+        sold.unshift({ ...currentResult, credit: offer, box: experienceItem.name, boxNumber: activeBoxIndex + 1, soldAt: new Date().toISOString() });
+        BoxzyStorage.setItem('boxzySoldItems', JSON.stringify(sold.slice(0, 50)));
+        currentResultSaved = true;
+        const nextBalance = readBalance() + offer;
+        BoxzyStorage.setItem('boxzyBalance', String(nextBalance));
+        dispatchEvent(new CustomEvent('boxzy-balance-updated', { detail: { balance: nextBalance } }));
+        refreshExperienceWallet();
+        setDecisionDialog(sellBackdrop, false);
+        recordResolvedResult();
+        consumeSessionItem('sell');
+        showSaleSuccess(offer);
+      }
+
+      function openDepositForPurchase(shortfall, onSuccess) {
+        window.boxzyDeposit?.open({
+          amount: Math.max(5, Math.ceil(shortfall)),
+          onSuccess: () => {
+            onSuccess?.();
+          }
+        });
+      }
+
+      function purchaseBoxes() {
+        if (!BoxzyCatalog.guard(selectedKey)) return;
+        if (purchaseProcessing) return;
+        if (BoxzyStorage.getItem('boxzyAuthenticated') !== 'true') {
+          pendingPurchaseKey = selectedKey;
+          sessionStorage.setItem('boxzyPendingPurchase', JSON.stringify({ box: selectedKey, quantity: PURCHASE_QUANTITY }));
+          closeDialogs();
+          authBackdrop.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          requestAnimationFrame(() => authBackdrop.querySelector('.dialog-close').focus());
+          return;
+        }
+        const item = boxData[selectedKey];
+        const total = item.price;
+        if (readBalance() < total) {
+          closeDialogs();
+          openDepositForPurchase(total - readBalance(), purchaseBoxes);
+          return;
+        }
+        purchaseProcessing = true;
+        const previousBalance = readBalance();
+        const previousSession = BoxzyStorage.getItem(SESSION_KEY);
+        const previousOrders = BoxzyStorage.getItem('boxzyOrders');
+        const previousUnopened = BoxzyStorage.getItem('boxzyUnopenedBoxes');
+        const nextBalance = previousBalance - total;
+        const orderId = `order-${Date.now()}`;
+        try {
+          const createdAt = new Date().toISOString();
+          const entitlementId = `entitlement-${Date.now()}`;
+          const previousOpening = previousSession ? JSON.parse(previousSession) : null;
+          openingSession = {
+            id: orderId,
+            orderIds: [orderId],
+            entitlementIds: [entitlementId],
+            version: SESSION_VERSION,
+            purchaseQuantity: PURCHASE_QUANTITY,
+            queue: [selectedKey],
+            completed: [],
+            amount: total,
+            status: 'paid',
+            createdAt,
+            updatedAt: createdAt
+          };
+          const orders = JSON.parse(previousOrders || '[]');
+          if (previousOpening?.queue?.length) {
+            const previousOrderIds = previousOpening.orderIds || [previousOpening.id];
+            orders.filter(order => previousOrderIds.includes(order.id)).forEach(order => {
+              order.status = 'unopened';
+              order.updatedAt = createdAt;
+              order.savedAt = createdAt;
+            });
+          }
+          orders.unshift({ id: orderId, boxKey: selectedKey, quantity: PURCHASE_QUANTITY, amount: total, status: 'paid', createdAt });
+          const collectionImages = {
+            discovery: 'assets/boxzy/catalog/starter.png',
+            collector: 'assets/boxzy/catalog/super.png',
+            elite: 'assets/boxzy/catalog/elite.png',
+            vault: 'assets/boxzy/catalog/ultra.png'
+          };
+          const unopened = JSON.parse(previousUnopened || '[]');
+          const safeUnopened = Array.isArray(unopened) ? unopened : [];
+          safeUnopened.unshift({ id: entitlementId, orderId, name: item.name, boxKey: selectedKey, price: item.price, source: 'purchase', acquiredAt: createdAt, image: collectionImages[selectedKey] });
+          BoxzyStorage.setItem('boxzyBalance', String(nextBalance));
+          BoxzyStorage.setItem(SESSION_KEY, JSON.stringify(openingSession));
+          BoxzyStorage.setItem('boxzyOrders', JSON.stringify(orders.slice(0, 100)));
+          BoxzyStorage.setItem('boxzyUnopenedBoxes', JSON.stringify(safeUnopened));
+          dispatchEvent(new CustomEvent('boxzy-balance-updated', { detail: { balance: nextBalance } }));
+          closeDialogs();
+          enterOpening();
+        } catch (error) {
+          BoxzyStorage.setItem('boxzyBalance', String(previousBalance));
+          if (previousSession === null) BoxzyStorage.removeItem(SESSION_KEY); else BoxzyStorage.setItem(SESSION_KEY, previousSession);
+          if (previousOrders === null) BoxzyStorage.removeItem('boxzyOrders'); else BoxzyStorage.setItem('boxzyOrders', previousOrders);
+          if (previousUnopened === null) BoxzyStorage.removeItem('boxzyUnopenedBoxes'); else BoxzyStorage.setItem('boxzyUnopenedBoxes', previousUnopened);
+          openingSession = readOpeningSession();
+          showToast('Payment failed. Please try again.', 'error');
+        } finally {
+          purchaseProcessing = false;
+        }
+      }
+
+      function selectCard(key) {
+        selectedKey = key;
+        cards.forEach(card => card.classList.toggle('selected', card.dataset.box === key));
+      }
+
+      function openPurchase(key) {
+        if (!BoxzyCatalog.guard(key)) return;
+        if (BoxzyStorage.getItem('boxzyAuthenticated') !== 'true') {
+          pendingPurchaseKey = key;
+          sessionStorage.setItem('boxzyPendingPurchase', JSON.stringify({ box: key, quantity: 1 }));
+          authBackdrop.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          requestAnimationFrame(() => authBackdrop.querySelector('.dialog-close').focus());
+          return;
+        }
+        selectCard(key);
+        purchaseBoxes();
+      }
+
+      function closeDialogs() {
+        authBackdrop.classList.remove('open');
+        phoneBackdrop.classList.remove('open');
+        pullBackdrop.classList.remove('open');
+        logicBackdrop.classList.remove('open');
+        simpleBackdrop.classList.remove('open');
+        cards.forEach(card => card.classList.remove('selected'));
+        document.body.style.overflow = '';
+      }
+
+      function showToast(message, type = 'info') {
+        if (window.boxzyToast) {
+          window.boxzyToast(message, { type });
+          return;
+        }
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+      }
+
+      cards.forEach(card => {
+        const open = () => {
+          window.location.href = BoxzyCatalog.route(`boxzy-box.html?box=${encodeURIComponent(card.dataset.box)}`);
+        };
+        card.addEventListener('click', open);
+        card.querySelector('.open-button').addEventListener('click', event => {
+          event.stopPropagation();
+          openPurchase(card.dataset.box);
+        });
+        card.addEventListener('keydown', event => {
+          if(event.target!==card)return;
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            open();
+          }
+        });
+      });
+
+      document.getElementById('exploreButton').addEventListener('click', () => {
+        document.getElementById('boxes').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => cards[0].focus(), 550);
+      });
+
+      document.getElementById('carouselPrev').addEventListener('click', () => moveCarousel(activeBoxIndex - 1));
+      document.getElementById('carouselNext').addEventListener('click', () => moveCarousel(activeBoxIndex + 1));
+      selectCarouselBox.addEventListener('click', beginSelectionTransition);
+      document.getElementById('chooseAnotherBox').addEventListener('click', () => {
+        clearTimeout(lockSoundTimer);
+        lockedStage.classList.remove('sound-locking');
+        stopExperienceSounds();
+        setExperienceStage(chooseStage);
+        requestAnimationFrame(() => selectCarouselBox.focus({ preventScroll: true }));
+      });
+      document.getElementById('openLockedBox').onclick = startOpening;
+      document.getElementById('skipOpening').onclick = showResult;
+      openingFilm.addEventListener('playing', () => {
+        videoHandoffStage.classList.add('video-playing');
+        openingFilmStatus.textContent = '';
+      });
+      openingFilm.addEventListener('timeupdate', () => {
+        revealNow.classList.toggle('available', openingFilm.currentTime >= 2.2);
+      });
+      openingFilm.addEventListener('ended', showResult);
+      openingFilm.addEventListener('error', () => {
+        videoHandoffStage.classList.remove('video-playing');
+        openingFilmStatus.textContent = 'VIDEO UNAVAILABLE';
+        playOpeningFilm.textContent = 'REVEAL PRIZE';
+        playOpeningFilm.hidden = false;
+      });
+      revealNow.addEventListener('click', showResult);
+      playOpeningFilm.addEventListener('click', () => {
+        if (openingFilm.error) showResult();
+        else playOpeningVideo();
+      });
+      experienceClose.addEventListener('click', async () => {
+        if (saleSuccessStage.classList.contains('active')) {
+          closeExperience(true);
+          setOpeningRoute(false);
+          return;
+        }
+        if (resultStage.classList.contains('active')) {
+          closeRevealedResult();
+          return;
+        }
+        if(resultLoadingStage.classList.contains('active') || resultFlow.read(currentOpeningId())){leavePendingOpening();return;}
+        if ((chooseStage.classList.contains('active') || videoHandoffStage.classList.contains('active') || lockedStage.classList.contains('active') || openingStage.classList.contains('active')) && openingSession?.queue?.length) {
+          const shouldLeave = await window.boxzyConfirm.open({
+            title: 'Leave opening?',
+            message: 'Your purchase is final and non-refundable. Any unopened boxes will be saved to your Collection, so you can come back and open them anytime.',
+            note: '',
+            confirmLabel: 'Leave for now',
+            cancelLabel: 'Continue opening'
+          });
+          if (shouldLeave) {
+            const abandonedAt = new Date().toISOString();
+            const abandonedOrderIds = openingSession?.orderIds || [openingSession?.id];
+            try {
+              const orders = JSON.parse(BoxzyStorage.getItem('boxzyOrders') || '[]');
+              orders.filter(order => abandonedOrderIds.includes(order.id)).forEach(order => {
+                order.status = 'unopened';
+                order.updatedAt = abandonedAt;
+                order.savedAt = abandonedAt;
+              });
+              BoxzyStorage.setItem('boxzyOrders', JSON.stringify(orders));
+            } catch (_) {}
+            BoxzyStorage.removeItem(SESSION_KEY);
+            openingSession = null;
+            closeExperience(true);
+            setOpeningRoute(false);
+          }
+          return;
+        }
+        closeExperience();
+      });
+      document.getElementById('keepResult').addEventListener('click', () => {
+        if(!currentResultReady)return;
+        saveCurrentResult();
+        advanceAfterResult(`${currentResult.name} was kept in your collection.`, 'keep');
+      });
+      document.getElementById('retryOpeningResult').addEventListener('click',()=>resultFlow.check(currentOpeningId()));
+      document.getElementById('leaveOpeningResult').addEventListener('click',leavePendingOpening);
+      document.getElementById('sellResult').addEventListener('click', openSellOffer);
+      document.getElementById('openAnotherBox').addEventListener('click', openAnotherBoxFromResult);
+      document.getElementById('saleOpenAgain').addEventListener('click', openAgainAfterSale);
+      document.getElementById('saleGoToCollection').addEventListener('click', () => {
+        closeExperience(true);
+        setOpeningRoute(false);
+        window.location.href = BoxzyCatalog.route('boxzy-collection.html');
+      });
+      document.getElementById('confirmSell').addEventListener('click', confirmSellResult);
+      document.getElementById('cancelSell').addEventListener('click', () => setDecisionDialog(sellBackdrop, false));
+      document.getElementById('closeSellDialog').addEventListener('click', () => setDecisionDialog(sellBackdrop, false));
+      [sellBackdrop].forEach(backdrop => backdrop.addEventListener('click', event => {
+        if (event.target === backdrop) setDecisionDialog(backdrop, false);
+      }));
+      soundToggle.addEventListener('click', () => {
+        soundMuted = !soundMuted;
+        BoxzyStorage.setItem('boxzySoundMuted', String(soundMuted));
+        if (soundMuted) stopExperienceSounds();
+        updateSoundToggle();
+        if (!soundMuted) playTone('nav');
+      });
+      updateSoundToggle();
+      carouselViewport.addEventListener('pointerdown', event => {
+        if (event.target.closest('button')) return;
+        dragStartX = event.clientX;
+        dragDeltaX = 0;
+        carouselViewport.classList.add('dragging');
+        carouselViewport.setPointerCapture?.(event.pointerId);
+      });
+      carouselViewport.addEventListener('pointermove', event => {
+        if (dragStartX === null) return;
+        dragDeltaX = event.clientX - dragStartX;
+        const visualDrag = Math.max(-120, Math.min(120, dragDeltaX));
+        carouselTrack.style.setProperty('--drag-x', `${visualDrag}px`);
+      });
+      const finishCarouselDrag = event => {
+        if (dragStartX === null) return;
+        if (Math.abs(dragDeltaX) > 34) moveCarousel(activeBoxIndex + (dragDeltaX < 0 ? 1 : -1), false);
+        dragStartX = null;
+        dragDeltaX = 0;
+        carouselTrack.style.setProperty('--drag-x', '0px');
+        carouselViewport.classList.remove('dragging');
+        carouselViewport.releasePointerCapture?.(event.pointerId);
+      };
+      carouselViewport.addEventListener('pointerup', finishCarouselDrag);
+      carouselViewport.addEventListener('pointercancel', finishCarouselDrag);
+      carouselViewport.addEventListener('wheel', event => {
+        if (wheelLocked || Math.abs(event.deltaX) + Math.abs(event.deltaY) < 8) return;
+        event.preventDefault();
+        wheelLocked = true;
+        moveCarousel(activeBoxIndex + ((event.deltaX || event.deltaY) > 0 ? 1 : -1), false);
+        setTimeout(() => { wheelLocked = false; }, 420);
+      }, { passive: false });
+      addEventListener('resize', () => {
+        if (boxExperience.classList.contains('open')) updateCarouselPositions(false);
+      });
+      addEventListener('boxzy-balance-updated', refreshExperienceWallet);
+
+      document.querySelectorAll('[data-close-dialog]').forEach(button => button.addEventListener('click', () => {
+        if (button.closest('#authBackdrop,#phoneBackdrop')) {
+          pendingPurchaseKey = null;
+          pendingResultRepurchase = false;
+          sessionStorage.removeItem('boxzyPendingPurchase');
+        }
+        closeDialogs();
+      }));
+      [authBackdrop, phoneBackdrop, pullBackdrop, logicBackdrop, simpleBackdrop].forEach(backdrop => backdrop.addEventListener('click', event => {
+        if (event.target === backdrop) {
+          if (backdrop === authBackdrop || backdrop === phoneBackdrop) {
+            pendingPurchaseKey = null;
+            pendingResultRepurchase = false;
+            sessionStorage.removeItem('boxzyPendingPurchase');
+          }
+          closeDialogs();
+        }
+      }));
+      document.addEventListener('keydown', event => {
+        if (document.querySelector('.boxzy-confirm-backdrop.open')) return;
+        if (boxExperience.classList.contains('open')) {
+          if (event.key === 'Escape' && sellBackdrop.classList.contains('open')) { event.preventDefault(); setDecisionDialog(sellBackdrop, false); return; }
+          if (event.key === 'ArrowLeft' && chooseStage.classList.contains('active')) { event.preventDefault(); moveCarousel(activeBoxIndex - 1); }
+          if (event.key === 'ArrowRight' && chooseStage.classList.contains('active')) { event.preventDefault(); moveCarousel(activeBoxIndex + 1); }
+          if (event.key === 'Escape') { event.preventDefault(); experienceClose.click(); }
+          return;
+        }
+        if (event.key === 'Escape') closeDialogs();
+      });
+
+      document.querySelectorAll('[data-auth-dialog]').forEach(button => button.addEventListener('click', () => {
+        authBackdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        authBackdrop.querySelector('.dialog-close').focus();
+      }));
+      const authStatus = document.getElementById('authStatus');
+      const authStatusTitle = document.getElementById('authStatusTitle');
+      const authStatusMessage = document.getElementById('authStatusMessage');
+      const authRetry = document.getElementById('authRetry');
+      let lastAuthProvider = 'Google';
+      const authErrorCopy = {
+        network: provider => ({ title: `Couldn't connect to ${provider}`, message: 'Check your connection and try again.' }),
+        cancelled: () => ({ title: 'Sign-in was cancelled', message: 'Nothing changed. Try again whenever you’re ready.' }),
+        account: provider => ({ title: `${provider} account unavailable`, message: 'Try another Google account and sign in again.' })
+      };
+      function clearAuthStatus() {
+        authStatus.hidden = true;
+        const provider=authBackdrop.querySelector('[data-auth-provider]');
+        provider.lastChild.textContent=' Continue with Google';
+      }
+      function showAuthStatus(kind = 'network', provider = lastAuthProvider) {
+        lastAuthProvider = provider || lastAuthProvider;
+        const safeKind = authErrorCopy[kind] ? kind : 'network';
+        const copy = authErrorCopy[safeKind](lastAuthProvider);
+        authStatus.dataset.kind = safeKind;
+        authStatusTitle.textContent = copy.title;
+        authStatusMessage.textContent = copy.message;
+        authStatus.hidden = false;
+        authBackdrop.classList.add('open');
+        phoneBackdrop.classList.remove('open');
+        document.body.style.overflow = 'hidden';
+        const providerButton=authBackdrop.querySelector('[data-auth-provider]');
+        providerButton.lastChild.textContent=' Try again with Google';
+        requestAnimationFrame(() => providerButton.focus());
+      }
+      function continueProviderAuth(provider) {
+        lastAuthProvider = provider;
+        clearAuthStatus();
+        authBackdrop.classList.remove('open');
+        phoneBackdrop.classList.add('open');
+        document.getElementById('phoneInput').focus();
+      }
+      document.querySelectorAll('[data-auth-provider]').forEach(button => button.addEventListener('click', () => continueProviderAuth(button.dataset.authProvider)));
+      authRetry.addEventListener('click', () => continueProviderAuth(lastAuthProvider));
+      addEventListener('boxzy-auth-error', event => showAuthStatus(event.detail?.reason, event.detail?.provider));
+      const phoneInput = document.getElementById('phoneInput');
+      const sendCode = document.getElementById('sendCode');
+      const phoneStep = document.getElementById('phoneStep');
+      const codeStep = document.getElementById('codeStep');
+      const otpInputs = [...document.querySelectorAll('.otp-input')];
+      const verifyCode = document.getElementById('verifyCode');
+      phoneInput.addEventListener('input', () => { sendCode.disabled = !phoneInput.value.trim(); });
+      sendCode.addEventListener('click', () => {
+        phoneStep.hidden = true; codeStep.hidden = false;
+        document.getElementById('codeCopy').textContent = `We sent a 6-digit code to +1 ${phoneInput.value}.`;
+        otpInputs[0].focus();
+      });
+      otpInputs.forEach((input, index) => input.addEventListener('input', () => {
+        input.value = input.value.slice(-1);
+        if (input.value && otpInputs[index + 1]) otpInputs[index + 1].focus();
+        verifyCode.disabled = !otpInputs.every(item => /^\d$/.test(item.value));
+      }));
+      function renderAccount() {
+        window.boxzyHeader?.refresh();
+      }
+      if (BoxzyStorage.getItem('boxzyAuthenticated') === 'true') renderAccount();
+      const authParams = new URLSearchParams(location.search);
+        if(authParams.has('deposit')){sessionStorage.setItem('boxzyDepositAfterLogin','true');if(BoxzyStorage.getItem('boxzyAuthenticated')==='true')setTimeout(()=>window.boxzyDeposit?.open(),0);else authBackdrop.classList.add('open');}
+      if (authParams.has('signedout')) {
+        history.replaceState(null, '', 'boxzy-interactive.html');
+      } else if (authParams.has('auth') && BoxzyStorage.getItem('boxzyAuthenticated') !== 'true') {
+        authBackdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        const demoAuthError = authParams.get('authError');
+        const demoAuthProvider = authParams.get('provider') === 'Apple' ? 'Apple' : 'Google';
+        if (demoAuthError) showAuthStatus(demoAuthError, demoAuthProvider);
+        else requestAnimationFrame(() => authBackdrop.querySelector('.dialog-close').focus());
+      }
+      verifyCode.addEventListener('click', () => {
+        try {
+          if (!otpInputs.every(item => /^\d$/.test(item.value))) throw new Error('Invalid verification code');
+          BoxzyStorage.setItem('boxzyAuthenticated', 'true');
+          closeDialogs();
+          renderAccount();
+          dispatchEvent(new Event('boxzy-authenticated'));
+          const pending = JSON.parse(sessionStorage.getItem('boxzyPendingPurchase') || 'null');
+          if (pending?.box && boxData[pending.box]) {
+            sessionStorage.removeItem('boxzyPendingPurchase');
+            pendingPurchaseKey = null;
+            selectCard(pending.box);
+            if (pendingResultRepurchase) {
+              pendingResultRepurchase = false;
+              openAnotherBoxFromResult();
+              return;
+            }
+            purchaseBoxes();
+            return;
+          }
+          const next = sessionStorage.getItem('boxzyAuthNext');
+          if (next) {
+            sessionStorage.removeItem('boxzyAuthNext');
+            setTimeout(() => { location.href = BoxzyCatalog.route(next); }, 250);
+          } else if (authParams.has('auth')) {
+            history.replaceState(null, '', 'boxzy-interactive.html');
+          }
+        } catch (error) {
+          showToast('Sign in failed. Please try again.', 'error');
+        }
+      });
+      document.getElementById('editPhone').addEventListener('click', () => { codeStep.hidden = true; phoneStep.hidden = false; phoneInput.focus(); });
+      document.querySelectorAll('[data-different-account]').forEach(button => button.addEventListener('click', () => { phoneBackdrop.classList.remove('open'); authBackdrop.classList.add('open'); requestAnimationFrame(() => authBackdrop.querySelector('[data-auth-provider]').focus()); }));
+      document.querySelectorAll('[data-pull]').forEach(button => button.addEventListener('click', () => {
+        const pull = pulls[Number(button.dataset.pull)];
+        document.getElementById('pullModalImage').src = pull.image;
+        document.getElementById('pullModalImage').alt = pull.product;
+        document.getElementById('pullModalTitle').textContent = pull.product;
+        document.getElementById('pullModalValue').textContent = pull.value;
+        document.getElementById('pullModalRarity').textContent = pull.rarity;
+        document.getElementById('pullModalBox').textContent = pull.box;
+        document.getElementById('pullModalBoxImage').src = pull.boxImage;
+        document.getElementById('pullModalUser').textContent = pull.user;
+        document.getElementById('pullModalTime').textContent = pull.time;
+        pullBackdrop.dataset.rarity = pull.rarity.toLowerCase();
+        const boxKeys = { 'Starter Box': 'discovery', 'Super Box': 'collector', 'Elite Box': 'elite', 'Ultra Box': 'vault' };
+        const boxLink = document.getElementById('pullModalBoxLink');
+        boxLink.href = `boxzy-box.html?box=${boxKeys[pull.box] || 'discovery'}`;
+        boxLink.firstChild.textContent = `VIEW ${pull.box.toUpperCase()} `;
+        pullBackdrop.classList.add('open');
+      }));
+      const logicContent = {
+        live: { title: 'LIVE PULLS｜实时开盒播报', intro: '通过持续展示其他用户刚刚抽中的产品，强化平台真实感、稀缺感和参与氛围。', items: ['<strong>展示内容：</strong>用户昵称、奖品缩略图、奖品名称和抽中时的产品价值。','<strong>数据规则：</strong>产品初期使用预置假数据保证页面不为空；真实开盒上线后，逐步替换为真实抽奖结果，并优先展示最近发生的记录。','<strong>展示方式：</strong>记录横向循环滚动；鼠标悬停时暂停，避免用户无法点击目标。','<strong>点击行为：</strong>点击任意记录，弹窗展示奖品大图、价值、稀有度、来源 Box、抽中用户和时间。','<strong>边界状态：</strong>没有真实记录时继续展示预置内容；奖品已下架时仍保留历史播报，但不可进入购买。'] },
+        banner: { title: 'Homepage Banner｜首页主视觉', intro: '用于快速向首次访问用户说明 Boxzy 的核心价值：购买 Mystery Box，获得一件真实的 Pokémon TCG sealed product。', items: ['<strong>展示内容：</strong>品牌主张、真实产品视觉和核心卖点；当前版本整张 Banner 固定展示。','<strong>点击行为：</strong>点击 Banner 后定位到下方盒子选择区域，缩短从理解产品到选择购买的路径。','<strong>运营规则：</strong>第一阶段不提供后台编辑、轮播或定时发布，内容随产品版本统一更新。','<strong>适配规则：</strong>桌面端保持完整横幅比例；移动端优先保证核心文案和产品主体可见。'] },
+        boxes: { title: 'Choose your box｜盒子选择', intro: '帮助用户比较不同价格档位，并进入适合自己的 Box 详情页。', items: ['<strong>展示内容：</strong>盒子名称、盒子图、购买费用、最低产品价值和最高产品价值。','<strong>后台能力：</strong>运营可配置费用、价值区间、展示顺序以及是否在前台展示。','<strong>数量适配：</strong>展示 3 个时使用三列；2 个时两列居中；1 个时单列居中；移动端统一改为单列。','<strong>点击行为：</strong>点击整张盒子卡片或 Open this box，进入对应盒子详情页。','<strong>下架规则：</strong>关闭展示后首页不再出现该盒子，但已购买用户的订单、抽奖结果和收藏记录仍然可查看。'] }
+      };
+      document.querySelectorAll('[data-logic]').forEach(button => button.addEventListener('click', event => {
+        event.stopPropagation(); const content = logicContent[button.dataset.logic];
+        document.getElementById('logicTitle').textContent = content.title;
+        document.getElementById('logicIntro').textContent = content.intro;
+        document.getElementById('logicList').innerHTML = content.items.map(item => `<li>${item}</li>`).join('');
+        logicBackdrop.classList.add('open');
+      }));
+
+      document.querySelectorAll('[data-simple-dialog]').forEach(button => button.addEventListener('click', () => {
+        const type = button.dataset.simpleDialog;
+        document.getElementById('simpleTitle').textContent = type === 'login' ? 'Log in to BOXZY' : 'Start your collection';
+        document.getElementById('simpleCopy').textContent = type === 'login'
+          ? 'Account authentication would open here in the production experience.'
+          : 'Create an account to purchase boxes, track sealed products, and appear on the leaderboard.';
+        simpleBackdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        simpleBackdrop.querySelector('.dialog-close').focus();
+      }));
+
+      document.querySelectorAll('.nav-link').forEach(button => button.addEventListener('click', () => {
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.toggle('active', link === button));
+        if (button.dataset.view === 'boxes') {
+          document.getElementById('boxes').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+        if (button.dataset.view === 'collection') {
+          if (BoxzyStorage.getItem('boxzyAuthenticated') === 'true') window.location.href = BoxzyCatalog.route('boxzy-collection.html');
+          else authBackdrop.classList.add('open');
+          return;
+        }
+        if (button.dataset.view === 'leaderboard') {
+          window.location.href = BoxzyCatalog.route('boxzy-leaderboard.html');
+          return;
+        }
+        document.getElementById('simpleTitle').textContent = button.dataset.view === 'collection' ? 'Your Collection' : 'Leaderboard';
+        document.getElementById('simpleCopy').textContent = button.dataset.view === 'collection'
+          ? 'Sign in to see every sealed product you have pulled and manage shipping.'
+          : 'The live collector leaderboard will appear here once accounts and pull history are connected.';
+        simpleBackdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }));
+
+      const demoView = authParams.get('screen');
+      if (BoxzyCatalog.isolated && ['choose','result','sold','loading','failed','updating'].includes(demoView)) {
+        const key=boxData[authParams.get('box')] ? authParams.get('box') : 'collector';
+        const eid='preview-'+key+'-'+Date.now();
+        const owned=JSON.parse(BoxzyStorage.getItem('boxzyUnopenedBoxes')||'[]');
+        if(!owned.some(b=>b.id===eid)) {owned.push({id:eid,boxKey:key,name:boxData[key].name,price:boxData[key].price,source:'purchase',image:boxData[key].image,acquiredAt:new Date().toISOString()});BoxzyStorage.setItem('boxzyUnopenedBoxes',JSON.stringify(owned));}
+        BoxzyStorage.setItem(SESSION_KEY,JSON.stringify({id:'preview-opening',version:SESSION_VERSION,queue:[key],entitlementIds:[eid],completed:[],status:'paid',createdAt:new Date().toISOString()}));
+        startExperience();
+        const id=currentOpeningId();
+        resultFlow.ensure(id,{boxKey:key,boxNumber:7,demoProduct:revealProducts[0]});
+        if(demoView==='result'){resultFlow.update(id,{status:'ready',product:revealProducts[0],videoEnded:true});presentResolvedPrize(revealProducts[0]);}
+        else if(demoView==='sold'){currentResult=revealProducts[0];consumeSessionItem('sell');showSaleSuccess(62.10);}
+        else if(['loading','failed','updating'].includes(demoView)){if(demoView!=='loading')resultFlow.update(id,{status:demoView});renderOpeningResultState({state:demoView,openingId:id});}
+      } else if (authParams.get('open') === '1') {
+        if (readOpeningSession()) requestAnimationFrame(startExperience);
+        else setOpeningRoute(false);
+      }
+    })();
+  </script>
+  <script src="assets/boxzy/deposit.js"></script>
+  <script src="assets/boxzy/boot-loader.js"></script>
+<script src="assets/boxzy/desktop-ui.js?v=20261012-final"></script><script src="assets/boxzy/pc-frame.js"></script><script src="review/preview.js"></script></body>
+</html>

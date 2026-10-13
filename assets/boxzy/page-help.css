@@ -1,0 +1,29 @@
+.boxzy-help-anchor{position:relative!important}
+.boxzy-context-help-button{position:absolute;top:7px;right:7px;z-index:12;display:grid;place-items:center;width:20px;height:20px;flex:0 0 auto;padding:0;border:1px solid #41678e;border-radius:50%;background:rgba(7,20,34,.96);color:#8fc0ff;box-shadow:0 5px 14px rgba(0,0,0,.42),0 0 10px rgba(47,124,255,.18);cursor:pointer;font:900 11px/1 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backdrop-filter:blur(10px);transition:border-color .16s ease,color .16s ease,background .16s ease}
+.boxzy-context-help-button.boxzy-context-help-inline{position:absolute;right:auto;margin:0}
+.boxzy-context-help-button:hover{border-color:#79afff;background:#122a45;color:#fff}
+.boxzy-context-help-button[hidden]{display:none}
+.boxzy-context-help-button:focus-visible,.boxzy-page-help-close:focus-visible{outline:2px solid #79a8ff;outline-offset:3px}
+.boxzy-page-help-backdrop{position:fixed;inset:0;z-index:1000;display:none;place-items:center;padding:20px;background:rgba(0,5,11,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.boxzy-page-help-backdrop.open{display:grid;animation:boxzy-help-fade .18s ease}
+.boxzy-page-help-panel{width:min(760px,100%);max-height:calc(100dvh - 40px);overflow:auto;border:1px solid #35506d;border-radius:18px;background:radial-gradient(620px 280px at 50% 0,rgba(29,82,153,.16),transparent 72%),linear-gradient(155deg,#0b1827,#050e18 78%);color:#f5f8fc;box-shadow:0 34px 110px rgba(0,0,0,.68);font:14px/1.55 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.boxzy-page-help-header{position:sticky;top:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:28px 30px 18px;border-bottom:1px solid rgba(46,70,96,.72);background:rgba(8,20,34,.94);backdrop-filter:blur(16px)}
+.boxzy-page-help-kicker{color:#5ca1ff;font-size:10px;font-weight:900;letter-spacing:.17em}
+.boxzy-page-help-title{margin:6px 0 0;font-size:25px;line-height:1.2;letter-spacing:-.025em}
+.boxzy-page-help-close{display:grid;place-items:center;width:34px;height:34px;flex:0 0 auto;padding:0;border:1px solid #30455d;border-radius:50%;background:#0d1b2a;color:#aeb9c8;cursor:pointer;font:300 23px/1 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.boxzy-page-help-close:hover{border-color:#55789d;color:#fff}
+.boxzy-page-help-body{padding:22px 30px 30px}
+.boxzy-page-help-intro{margin:0 0 18px;color:#9dabbc;font-size:13px}
+.boxzy-page-help-sections{display:grid;gap:12px}
+.boxzy-page-help-section{padding:17px 18px;border:1px solid #243b53;border-radius:12px;background:rgba(8,20,34,.78)}
+.boxzy-page-help-section h3{display:flex;align-items:center;gap:9px;margin:0 0 11px;font-size:15px}
+.boxzy-page-help-section h3::before{content:"";width:7px;height:7px;border-radius:50%;background:#2f7cff;box-shadow:0 0 10px rgba(47,124,255,.6)}
+.boxzy-page-help-section:nth-child(2) h3::before{background:#5bd6b2;box-shadow:0 0 10px rgba(91,214,178,.45)}
+.boxzy-page-help-section:nth-child(3) h3::before{background:#ff9f55;box-shadow:0 0 10px rgba(255,159,85,.45)}
+.boxzy-page-help-section ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.boxzy-page-help-section li{position:relative;padding-left:16px;color:#b7c2d0;font-size:13px}
+.boxzy-page-help-section li::before{content:"—";position:absolute;left:0;color:#667a90}
+html.boxzy-page-help-open,body.boxzy-page-help-open{overflow:hidden}
+@keyframes boxzy-help-fade{from{opacity:0}to{opacity:1}}
+@media(max-width:590px){.boxzy-context-help-button{width:19px;height:19px;font-size:10px}.boxzy-page-help-backdrop{align-items:end;padding:8px}.boxzy-page-help-panel{max-height:calc(100dvh - 16px);border-radius:16px}.boxzy-page-help-header{padding:23px 20px 15px}.boxzy-page-help-title{font-size:21px}.boxzy-page-help-body{padding:18px 16px 22px}.boxzy-page-help-section{padding:15px}.boxzy-page-help-section li{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.boxzy-page-help-backdrop,.boxzy-context-help-button{animation:none;transition:none}}

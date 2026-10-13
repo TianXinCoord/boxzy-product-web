@@ -1,0 +1,25 @@
+{
+  "source": "output/BOXZY-RARITY-PREVIEW.html",
+  "tiers": {
+    "common": "#ADB5BF",
+    "uncommon": "#7FB59A",
+    "rare": "#83A9D1",
+    "epic": "#B09BCC",
+    "legendary": "#D9BC79",
+    "grail": "#D99C78"
+  },
+  "legacyJackpot": "#D9BC79",
+  "badge": {
+    "height": 26,
+    "radius": 5,
+    "font": 10,
+    "backgroundAlpha": 0.1,
+    "borderAlpha": 0.26
+  },
+  "retainedOdds": [
+    50,
+    49,
+    1
+  ],
+  "retainedProductCount": 7
+}

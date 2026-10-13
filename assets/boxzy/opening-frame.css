@@ -1,0 +1,63 @@
+/* All three concepts share the reference theatre, independent of animation. */
+body.desktop-ui[data-opening-concept]{height:100dvh;min-height:0;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#171006 0,transparent 70%),#050504;color:#faf8f2}
+body.desktop-ui .concept-frame{position:fixed;inset:auto;left:50%;top:50%;width:1280px;height:720px;min-height:0;transform:translate(-50%,-50%) scale(var(--theatre-scale));transform-origin:center;overflow:hidden;isolation:isolate;border:1px solid #73531d;border-radius:24px;background:radial-gradient(680px 390px at 50% 61%,rgba(177,119,19,.12),transparent 69%),#080704;box-shadow:0 34px 110px #000b;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body.desktop-ui .concept-frame :is(.prototype-header,.topbar){position:absolute;inset:0 0 auto;height:64px;padding:0 28px;display:flex;align-items:center;justify-content:space-between;background:#080704;border:0;backdrop-filter:none;z-index:80}
+body.desktop-ui .concept-frame :is(.prototype-header,.topbar)>img{width:116px;height:32px;object-fit:contain}
+body.desktop-ui .concept-frame :is(.header-actions,.top-actions){display:flex;gap:10px;align-items:center}
+body.desktop-ui .concept-frame :is(.circle-control,.round,.balance){height:38px;color:#ded6c6;background:#100d07;border:1px solid #70551e}
+body.desktop-ui .concept-frame :is(.circle-control,.round){width:38px;border-radius:50%;font-size:20px}
+body.desktop-ui .concept-frame .balance{min-width:98px;padding:0 14px;border-radius:11px;font-size:16px;font-weight:760;display:grid;place-items:center}
+body.desktop-ui .concept-frame main{margin:0;padding:0;max-width:none}
+body.desktop-ui .concept-frame .stage{position:absolute;inset:64px 0 0;min-height:0;height:auto;padding:0;overflow:hidden}
+body.desktop-ui .concept-frame #chooseStage.active{display:block}
+body.desktop-ui .concept-frame #chooseStage :is(.stage-copy,.copy){position:absolute;inset:40px 0 auto;text-align:center;width:100%}
+body.desktop-ui .concept-frame #chooseStage :is(.eyebrow,.copy>span){display:block;color:#e9b83f;font-size:11px;font-weight:850;letter-spacing:.28em}
+body.desktop-ui .concept-frame #chooseStage h1{font-size:46px;font-weight:800;line-height:1.1;letter-spacing:.035em;margin:12px 0 10px}
+body.desktop-ui .concept-frame #chooseStage :is(.stage-copy,.copy)>p{margin:0;color:#b7aa96;font-size:14px;line-height:1.5}
+body.desktop-ui .concept-frame :is(.box-carousel,.carousel){position:absolute;top:214px;left:0;display:flex;align-items:center;justify-content:space-around;width:100%;max-width:none;height:300px;gap:0;margin:0;padding:0 16px}
+body.desktop-ui .concept-frame :is(.box-pick,.box-option){flex:0 0 190px;width:190px;max-width:none;padding:0;opacity:1;transform:none;border:0;background:none}
+body.desktop-ui .concept-frame :is(.box-pick,.box-option).selected{flex-basis:238px;width:238px;max-width:none;transform:translateY(-5px)}
+body.desktop-ui .concept-frame :is(.box-pick,.box-option)>img{display:block;width:100%;max-height:270px;object-fit:contain;filter:brightness(.53) saturate(.7)}
+body.desktop-ui .concept-frame :is(.box-pick,.box-option):is(:first-child,:last-child)>img{filter:brightness(.3) saturate(.7)}
+body.desktop-ui .concept-frame :is(.box-pick,.box-option).selected>img{filter:drop-shadow(0 12px 22px #0009) drop-shadow(0 0 22px #d89d254d) brightness(1.05)}
+body.desktop-ui .concept-frame :is(.box-pick>small,.box-option>b,.position-line,.floor-rings){display:none}
+body.desktop-ui .concept-frame :is(.choose-footer,.choose-controls){position:absolute;left:50%;bottom:30px;width:520px;max-width:none;padding:0;transform:translateX(-50%);text-align:center}
+body.desktop-ui .concept-frame :is(.box-position,.choose-controls>p){margin:0 0 14px;color:#c2b8a7;font-size:12px;line-height:18px;letter-spacing:.18em}
+body.desktop-ui .concept-frame :is(.box-position strong,.choose-controls strong){color:#e9b83f}
+body.desktop-ui .concept-frame .primary{min-width:270px;height:52px;border:1px solid #f2ca67;border-radius:9px;background:linear-gradient(#f2c95f,#d89d25);color:#171005;font-size:14px;font-weight:850;letter-spacing:.04em;box-shadow:inset 0 1px #fff5}
+body.desktop-ui .concept-frame :is(.locked-stage,.result-stage){padding:35px 32px 30px;flex-direction:column;align-items:center}
+body.desktop-ui .concept-frame :is(.locked-stage,.result-stage) h1{font-size:38px;margin:12px 0 6px}
+body.desktop-ui .concept-frame .locked-box{width:280px}
+body.desktop-ui .concept-frame .locked-actions{width:520px}
+body.desktop-ui .concept-frame .opening-copy{top:24px}
+body.desktop-ui .concept-frame .opening-scene{width:1180px;height:590px}
+body.desktop-ui .concept-frame .opening-box{width:300px}
+body.desktop-ui .concept-frame .reveal-now{position:absolute;right:28px;bottom:24px}
+body.desktop-ui .concept-frame .opening-stage.finishing:after{position:absolute}
+body.desktop-ui .concept-frame :is(.opening,.result){inset:0;background:#080704}
+body.desktop-ui .concept-frame .result-copy{top:88px}
+body.desktop-ui .concept-frame :is(button,a):focus-visible{outline:2px solid #f2c95f;outline-offset:4px}
+
+/* Shared result UI, matching the final interactive page rather than old prototypes. */
+body.desktop-ui .concept-frame #resultStage{inset:64px 0 0;padding:0;isolation:isolate;background:#080704}
+body.desktop-ui .concept-frame #resultStage.active{display:block}
+body.desktop-ui .concept-frame #resultStage :is(.result-bg,.result-box,.result-ring){display:none}
+body.desktop-ui .concept-frame .unified-result-video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+body.desktop-ui .concept-frame #resultStage:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#080603a8,transparent 40%,#08060335 65%,#080603cc);pointer-events:none}
+body.desktop-ui .concept-frame #resultStage :is(.stage-copy,.result-copy){position:absolute;top:25px;left:40px;width:calc(100% - 80px);text-align:center;z-index:10}
+body.desktop-ui .concept-frame #resultStage :is(.eyebrow,.result-copy>span){display:block;color:#e9b83f;font-size:11px;font-weight:850;letter-spacing:.28em}
+body.desktop-ui .concept-frame #resultStage h1{max-width:none;margin:10px 0;font-size:38px;line-height:1.1;font-weight:800;letter-spacing:-.025em;color:#faf8f2}
+body.desktop-ui .concept-frame #resultStage :is(.result-meta,.result-copy>div){display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px}
+body.desktop-ui .concept-frame #resultStage :is(.rarity,.result-copy b){border:1px solid #b88a2d;border-radius:999px;padding:7px 17px;font-size:10px;font-weight:850;letter-spacing:.16em;color:#efc568;background:#1b140a99}
+body.desktop-ui .concept-frame #resultStage :is(.result-value,.result-copy strong){font-size:25px;font-weight:850;color:#efc568}
+body.desktop-ui .concept-frame #resultStage :is(.result-visual,.result-hero){position:absolute;inset:160px 0 128px;display:grid;place-items:center;width:100%;height:auto;max-width:none;z-index:2}
+body.desktop-ui .concept-frame #resultStage .result-product{position:relative;inset:auto;width:310px;height:330px;max-height:100%;max-width:100%;object-fit:contain;transform:none;animation:unified-result-in .6s ease-out both;filter:drop-shadow(0 24px 28px #0008)}
+body.desktop-ui .concept-frame #resultStage .result-actions{position:absolute;inset:auto auto 22px 50%;width:780px;display:grid;grid-template-columns:1fr 1fr;gap:9px 12px;transform:translateX(-50%);margin:0;z-index:20}
+body.desktop-ui .concept-frame #resultStage .result-actions>button:not(#keepCollection){display:flex;align-items:center;justify-content:center;gap:12px;min-width:0;height:56px;border:1px solid #f2ca67;border-radius:10px;background:linear-gradient(#f2c95f,#d89d25);color:#171005;font-size:14px;font-weight:850;letter-spacing:.04em;box-shadow:inset 0 1px #fff5}
+body.desktop-ui .concept-frame #keepCollection{grid-column:1/-1;justify-self:center;border:0;background:none;color:#c1b5a1;font-size:12px;font-weight:750;letter-spacing:.045em;padding:5px 12px;text-transform:uppercase}
+body.desktop-ui .concept-frame .decision-icon{width:23px;height:23px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.75}
+body.desktop-ui .concept-frame .opening-copy{z-index:45;left:0;right:0;width:100%;text-align:center}
+body.desktop-ui .concept-frame .opening-copy h1{font-size:38px;line-height:1.1;font-weight:800;letter-spacing:-.025em;margin:10px 0}
+body.desktop-ui .concept-frame .opening-copy p{font-size:14px;color:#b7aa96}
+body.desktop-ui .concept-frame :is(.reveal,.reveal-now){position:absolute;right:28px;bottom:24px;width:170px;height:48px;border:1px solid #b88a2d;border-radius:9px;background:#100d07e6;color:#efc568;font-size:13px;font-weight:800;letter-spacing:.05em}
+@keyframes unified-result-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}

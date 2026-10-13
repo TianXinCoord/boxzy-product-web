@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="assets/boxzy/catalog.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Starter Box — BOXZY</title>
+  <link rel="stylesheet" href="assets/boxzy/box-detail.css?v=20260902-3">
+  <link rel="stylesheet" href="assets/boxzy/deposit.css?v=20260902-2">
+  <link rel="stylesheet" href="assets/boxzy/feedback.css?v=20260902-2">
+  <script src="assets/boxzy/feedback.js?v=20260902-2"></script>
+  <link rel="stylesheet" href="assets/boxzy/header.css?v=20260902-1">
+  <link rel="stylesheet" href="assets/boxzy/black-gold.css?v=20260910-4">
+<link rel="stylesheet" href="assets/boxzy/desktop-ui.css?v=20260928-2"><link rel="stylesheet" href="assets/boxzy/ui-20261012.css">
+<link rel="stylesheet" href="assets/boxzy/approved-ui.css?v=20261013-final-banner">
+</head>
+<body class="ui-approved desktop-ui box-detail-refined black-gold-ui box-detail-black-gold">
+  <svg class="icon-library" aria-hidden="true">
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.3 8.3-8 10-4.7-1.7-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-5"/></symbol>
+  </svg>
+
+  <header class="site-header boxzy-header" data-boxzy-header data-active="box" data-initial-balance="450"></header>
+  <script src="assets/boxzy/header.js?v=20260910-1"></script>
+
+  <main class="box-page">
+    <aside class="box-summary" aria-labelledby="boxName">
+      <div class="summary-inner">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="boxzy-interactive.html#boxes">Boxes</a><span>/</span><span>Starter Box</span></nav>
+        <div class="box-visual"><img src="assets/boxzy/catalog/starter.png" alt="Starter Box"></div>
+        <h1 id="boxName">Starter Box</h1>
+        <p class="box-copy">Begin your collection journey.</p>
+        <div class="box-price"><strong>$5</strong><span>per box</span></div>
+        <button class="open-box" id="openBox" type="button">Buy now</button>
+        <div class="seal-note"><svg><use href="#i-shield"/></svg><span>100% sealed</span><i>•</i><span>Provably fair</span></div>
+
+        <section class="range-odds" aria-labelledby="rangeOddsTitle">
+          <div class="range-title"><h2 id="rangeOddsTitle">ODDS BY VALUE RANGE</h2><button class="icon-button" type="button" data-explain aria-label="Explain range odds"><svg><use href="#i-info"/></svg></button></div>
+          <div class="range-row common"><div><span>COMMON</span><small>$20–$45</small><strong>50%</strong></div><i><b></b></i></div>
+          <div class="range-row uncommon"><div><span>UNCOMMON</span><small>$50–$99.99</small><strong>49%</strong></div><i><b></b></i></div>
+          <div class="range-row rare"><div><span>RARE</span><small>$100–$100,000</small><strong>1%</strong></div><i><b></b></i></div>
+          <p>A value range is selected first, then a product within that range.</p>
+        </section>
+      </div>
+    </aside>
+
+    <section class="prize-area" aria-labelledby="prizeTitle">
+      <div class="prize-heading">
+        <div><span class="eyebrow">PRIZE POOL</span><h2 id="prizeTitle">Possible sealed products</h2><p>Products shown are possible outcomes from this box.</p></div>
+        <label class="sort-wrap"><select id="sort" aria-label="Sort possible products"><option value="high">Value: high to low</option><option value="low">Value: low to high</option></select></label>
+      </div>
+      <button class="pool-note" type="button" data-explain><svg><use href="#i-info"/></svg><span>Published range odds 100%</span><i>•</i><span>7 products</span></button>
+      <div class="prize-grid" id="productGrid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div class="box-dialog-backdrop" id="productDialog" role="dialog" aria-modal="true" aria-labelledby="productDialogTitle">
+    <section class="box-dialog product-dialog"><button class="dialog-close" type="button" data-close aria-label="Close">×</button><div class="dialog-product-image"><img id="dialogProductImage" alt=""></div><span class="dialog-tier" id="dialogTier"></span><h2 id="productDialogTitle"></h2><strong class="dialog-value" id="dialogValue"></strong><small>Estimated market value</small><section class="dialog-availability" aria-labelledby="availableInTitle"><h3 id="availableInTitle">Available in</h3><div class="available-boxes" id="dialogAvailableBoxes"></div></section><div class="dialog-sealed-note"><svg><use href="#i-shield"/></svg><span>100% sealed product</span></div></section>
+  </div>
+  <div class="box-dialog-backdrop" id="explainDialog" role="dialog" aria-modal="true" aria-labelledby="explainTitle">
+    <section class="box-dialog explain-dialog"><button class="dialog-close" type="button" data-close aria-label="Close">×</button><span class="eyebrow">HOW ODDS WORK</span><h2 id="explainTitle">Range odds, then product selection</h2><p>Each opening first selects one published value range. A product is then selected from the eligible products inside that range.</p><ol><li><strong>Common · 50%</strong><span>Products valued from $20 to $45.</span></li><li><strong>Uncommon · 49%</strong><span>Products valued from $50 to $99.99.</span></li><li><strong>Rare · 1%</strong><span>Products valued from $100 to $100,000.</span></li></ol><p class="explain-note">Individual product weights and inventory are managed internally and are not shown on this page.</p></section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="assets/boxzy/box-detail.js?v=20260904-1"></script>
+  <script src="assets/boxzy/deposit.js"></script>
+<script src="assets/boxzy/desktop-ui.js?v=20260928-1"></script><script src="review/preview.js"></script></body>
+</html>
