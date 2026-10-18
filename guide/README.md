@@ -1,19 +1,15 @@
 # BOXZY Web 产品说明
 
-2026-10-13 最终 Web PC 产品说明。打开 `START-HERE.html`（或 `index.html`）。`BOXZY-WEB-PRODUCT-GUIDE.html` 为同内容入口。
-
-## 阅读与部署
-
-本说明已完整放在 Web 仓库的 `guide/` 子目录。打开 `guide/START-HERE.html` 或 `guide/index.html`。
-
-36 个当前页面预览通过 `../boxzy-*.html` 引用同一仓库根目录的 Demo；图片引用保留在 `guide/` 内。下载或部署完整 Web 仓库即可，无需额外下载另一个仓库。
+打开 [START-HERE.html](START-HERE.html) 或 [index.html](index.html)。[BOXZY-WEB-PRODUCT-GUIDE.html](BOXZY-WEB-PRODUCT-GUIDE.html) 为同内容入口。[下载 ZIP](BOXZY-WEB-PRODUCT-GUIDE-updated.zip)。
 
 ## 当前内容
 
-- 38 个 UI 区域：36 个当前 Web 页面／状态预览、1 个实际素材区、1 个色值规范区。
-- 首页最终 Banner、收藏首屏适配等调整已直接写入对应 UI 区域，不另设“最近更新”版块。
-- 前端统一参数、功能与交互说明、异常状态、开发提示。
-- 旧图折叠在历史参考中，不作为当前 UI。
-- `implementation.json` 为页面索引，`visual-sync-audit.json` 为同步记录。
+- 28 个页面与状态，桌面左图右说明，窄屏上下排列。
+- 首页、未开盒收藏、寄送确认、个人账户、修改用户名五个模块在目录中标注“已更新”；其余沿用原版。
+- 首页、未开盒收藏、寄送确认和个人账户直接嵌入指定的线上 Demo HTML；需要联网，并提供原尺寸查看入口。
+- 修改用户名保留老版金色弹窗图片和内容；其他图片与说明保留离线阅读和图片放大。
+- 已删除开场介绍、版本栏、文档口径和开发阅读约定。
 
-预览来源是实际 Demo HTML，不是重新生成的静态截图。已做资源引用与源码／逻辑检查；受当前环境限制，未完成实际浏览器视觉验收。此目录为静态交付成品，不包含依赖工作区历史素材的生成工具。
+`implementation.json` 是本版章节与预览索引。`delivery-verification.json` 记录静态检查；不代表真实支付、服务端业务或浏览器视觉验收。
+
+本次仅发布已确认的说明书；产品页面源码未修改。

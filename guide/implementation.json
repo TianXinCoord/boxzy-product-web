@@ -2,1986 +2,252 @@
   {
     "id": "home-desktop",
     "title": "选盒首页 · 四档盒子",
-    "status": "retain",
-    "priority": "保留",
-    "why": [
-      "用户已明确选择保留老版本首页，不采用本轮新排版。",
-      "保留现有四档盒子、横幅、盒子素材和已确认底影映射。"
-    ],
-    "changes": [],
-    "interaction": "本轮不修改首页视觉和购盒入口；充值后自动继续购买是否告知用户，仍作为独立流程问题记录。",
-    "parameters": [
-      {
-        "element": "PC 内容区 / Banner",
-        "min": "calc(100% - 64px)",
-        "max": "1600px",
-        "rule": "Banner 与盒卡整行共用宽度，禁止单独收窄 Banner。"
-      },
-      {
-        "element": "Banner 画框",
-        "min": "4.1:1",
-        "max": "4.4:1",
-        "rule": "常规 4.1:1；宽≥1500px、高640–760px 时 4.4:1；cover 等比显示。"
-      },
-      {
-        "element": "购买按钮",
-        "min": 44,
-        "max": 44,
-        "rule": "优先保证首行购买区同屏可见，极短窗口自然滚动。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/catalog.js:26",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/deposit.js:101"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "user_decision": "2026-10-13 用户：还是老版好看一些，保留老版本。",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "保留已确认的首页盒卡排版和四档商品；Banner 以最终上传图为基础重排为宽幅图；与下方四张盒卡共用内容区，左右边缘严格对齐；PC 常规画框 4.1:1，仅裁上下装饰背景，保留主要文案和商品。",
-      "Starter 金 / Super 粉 / Elite 紫 / Ultra 蓝底影继续沿用。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=demo",
-    "historical_image": "evidence/home-desktop-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&guide=doc-home-desktop-v3",
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "live_html",
+    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-interactive.html?preview=demo&guide=doc-home-desktop-v3",
     "browser_visual_verified": false
   },
   {
     "id": "box-desktop",
-    "title": "盒子详情、奖品池与概率",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "商品、概率与价格需要在购买前同时读清，稀有度及说明小字偏弱。",
-      "源码按档位复用 Drop Chance，且与公布的区间概率含义冲突；不能靠改视觉解决。"
-    ],
-    "changes": [
-      "保留左侧购盒摘要、原七件商品及 50%/49%/1% 区间概率。",
-      "商品卡改为中性底，辅助决策文字至少 12px；统一概率标签位置。"
-    ],
-    "interaction": "Drop Chance 是单商品还是区间概率需业务确认；不补造数值，不改原七商品。",
-    "parameters": [
-      {
-        "element": "左侧摘要宽度",
-        "min": 280,
-        "max": 320,
-        "rule": "px；概率说明不能被压成不可读的小字。"
-      },
-      {
-        "element": "商品卡间距",
-        "min": 16,
-        "max": 24,
-        "rule": "px；保留原七件商品和现有排序含义。"
-      },
-      {
-        "element": "概率及稀有度文字",
-        "min": 12,
-        "max": 14,
-        "rule": "px；50%/49%/1% 保持原值，单商品概率不造数。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/box-detail.js:2",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/box-detail.js:65",
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-box.html:60"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "保留原七件商品、原排序及 50% / 49% / 1% 概率。",
-      "商品卡、辅助面板中性化，稀有度和概率文字至少 12px。"
-    ],
-    "web_route": "boxzy-box.html?box=discovery&preview=demo",
-    "historical_image": "evidence/box-desktop-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-box.html?box=discovery&preview=demo&guide=doc-box-desktop-v3",
+    "title": "盒子详情",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "login",
     "title": "登录",
-    "status": "retain",
-    "priority": "P1",
-    "why": [
-      "单一 Google 登录入口已清楚，保留现有布局。",
-      "源码 Terms/Privacy 指向不存在的锚点；保留外观不等于链接已修复。"
-    ],
-    "changes": [],
-    "interaction": "继续登录前需能打开真实条款和隐私内容；本次仅保留视觉方案，链接待开发修正。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html:1820"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "外观保留。Terms / Privacy 已改为本包本地文档链接；法律文本沿用既有草稿，未新增条款。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=clean&auth=login",
-    "historical_image": "evidence/login-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=clean&auth=login&guide=doc-login-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "login-error",
     "title": "登录失败",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "失败提示已有原因与 Retry，但主登录按钮和 Retry 同时抢操作重点。"
-    ],
-    "changes": [
-      "错误原因单独一行，辅助说明另起一行。",
-      "合并为一个 Try again with Google 主操作，避免 Retry 与登录按钮重复。"
-    ],
-    "interaction": "Retry 重试同一登录流程；不得展示成功状态直到登录结果明确。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/desktop-ui.js:14"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "错误原因和恢复说明分行；主按钮改为 Try again with Google，隐藏重复 Retry。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=clean&auth=login&authError=network",
-    "historical_image": "evidence/login-error-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=clean&auth=login&authError=network&guide=doc-login-error-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "concept-a",
-    "title": "编号选盒 · Starter",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "居中 Starter 金色原盒和单一选择按钮已聚焦，无需重画。",
-      "1280×720 整体缩放会缩小控件，较窄窗口可用性尚未实测。"
-    ],
-    "changes": [],
-    "interaction": "保留编号选择与 1280×720 舞台；后续实现须保证关闭、音量、选择按钮的实际点击尺寸。",
-    "parameters": [
-      {
-        "element": "舞台宽度",
-        "min": 1280,
-        "max": 1280,
-        "rule": "px；舞台高度固定 720px，不修改已确认构图。"
-      },
-      {
-        "element": "实际操作点击高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；实现时核查整体缩小后的可用尺寸，不能仅看设计尺寸。"
-      },
-      {
-        "element": "状态辅助文字",
-        "min": 14,
-        "max": 16,
-        "rule": "px；使用当前短文案，保持失败与更新中区别。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-opening-concept-a.html",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/pc-frame.js:5"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=choose&box=discovery",
-    "historical_image": "evidence/concept-a-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=choose&box=discovery&guide=doc-concept-a-v3",
+    "title": "选盒 A · Starter",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "concept-b",
-    "title": "编号选盒 · Super",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "Super 粉色原盒与统一居中布局已成立。",
-      "小窗口整体缩放带来的文字和控件变小仍待实现检查。"
-    ],
-    "changes": [],
-    "interaction": "保留已有选盒流程及原图；选择按钮文案与当前编号一致。",
-    "parameters": [
-      {
-        "element": "舞台宽度",
-        "min": 1280,
-        "max": 1280,
-        "rule": "px；舞台高度固定 720px，不修改已确认构图。"
-      },
-      {
-        "element": "实际操作点击高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；实现时核查整体缩小后的可用尺寸，不能仅看设计尺寸。"
-      },
-      {
-        "element": "状态辅助文字",
-        "min": 14,
-        "max": 16,
-        "rule": "px；使用当前短文案，保持失败与更新中区别。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-opening-concept-b.html",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/pc-frame.js:5"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=choose&box=collector",
-    "historical_image": "evidence/concept-b-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=choose&box=collector&guide=doc-concept-b-v3",
+    "title": "选盒 B · Super",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "concept-c",
-    "title": "编号选盒 · Ultra",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "Ultra 镭射原盒已承担视觉重点，不需额外背景效果。",
-      "固定舞台缩放不代表窄桌面已通过可用性验证。"
-    ],
-    "changes": [],
-    "interaction": "保留 1280×720 编号选盒，不改变 Ultra 原图颜色。",
-    "parameters": [
-      {
-        "element": "舞台宽度",
-        "min": 1280,
-        "max": 1280,
-        "rule": "px；舞台高度固定 720px，不修改已确认构图。"
-      },
-      {
-        "element": "实际操作点击高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；实现时核查整体缩小后的可用尺寸，不能仅看设计尺寸。"
-      },
-      {
-        "element": "状态辅助文字",
-        "min": 14,
-        "max": 16,
-        "rule": "px；使用当前短文案，保持失败与更新中区别。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-opening-concept-c.html",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/pc-frame.js:5"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=choose&box=vault",
-    "historical_image": "evidence/concept-c-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=choose&box=vault&guide=doc-concept-c-v3",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "result",
-    "title": "奖品展示 · Web 补齐页面",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "奖品与金额具有清楚高潮，但 Keep in my collection 过弱。",
-      "揭晓示例商品与原奖池数据存在来源差异；视觉稿不能证明结果数据已统一。"
-    ],
-    "changes": [
-      "保留原奖品图、金色粒子及 1280×720 舞台。",
-      "统一售价、稀有度和操作对齐，提高 Keep 路径可读性。"
-    ],
-    "interaction": "保留 Sell for 金额、明确付费 Open again 与 Keep；不新增免费换盒；后台结果与扣款未验证。",
-    "parameters": [
-      {
-        "element": "舞台宽度",
-        "min": 1280,
-        "max": 1280,
-        "rule": "px；画布高度固定 720px，保留粒子和原商品图。"
-      },
-      {
-        "element": "主要操作高度",
-        "min": 48,
-        "max": 56,
-        "rule": "px；明确 Sell 金额和付费 Open again。"
-      },
-      {
-        "element": "Keep 文字",
-        "min": 14,
-        "max": 16,
-        "rule": "px；具有清楚点击区域，不伪装辅助备注。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html:1996",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/catalog.js:32",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/box-detail.js:2"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "继续使用奖品展示独立状态，保留 1280×720 舞台与庆祝素材。",
-      "Keep in my collection 改为明确的次按钮；出售与再开金额保持原逻辑。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=result&box=collector",
-    "historical_image": "evidence/result-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=result&box=collector&guide=doc-result-v3",
+    "title": "选盒 C · Ultra",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "sale-success",
-    "title": "出售成功 · 到账与继续开盒",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "到账金额、余额归属、明确价格的下一次开盒与收藏出口已清楚。",
-      "收藏出售目前缺少同等明确成功反馈，不能以该页代替修复。"
-    ],
-    "changes": [],
-    "interaction": "保留现有成功页；收藏出售另需精简到账提示，不强制再次开盒。",
-    "parameters": [
-      {
-        "element": "舞台宽度",
-        "min": 1280,
-        "max": 1280,
-        "rule": "px；舞台高度固定 720px，不修改已确认构图。"
-      },
-      {
-        "element": "实际操作点击高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；实现时核查整体缩小后的可用尺寸，不能仅看设计尺寸。"
-      },
-      {
-        "element": "状态辅助文字",
-        "min": 14,
-        "max": 16,
-        "rule": "px；使用当前短文案，保持失败与更新中区别。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html:1996",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:393"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "保留独立的出售成功页和到账金额，不替代开奖结果页。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=sold&box=collector",
-    "historical_image": "evidence/sale-success-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=sold&box=collector&guide=doc-sale-success-v3",
+    "title": "出售成功",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "collection-desktop",
     "title": "我的收藏 · 未开盒",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "标题、统计与筛选占用较多上方空间，购盒按钮竞争管理注意力。",
-      "历史 Paid 与当前售价有意不同，不能统一改成现价。"
-    ],
-    "changes": [
-      "统计、筛选和商品继续保持原阅读顺序。",
-      "顶部购盒改为描边次按钮，让已拥有盒子的 Open now 成为重点。"
-    ],
-    "interaction": "未开盒不设到期时间；历史实付保留；更新中盒子继续显示两行说明并禁用打开。",
-    "parameters": [
-      {
-        "element": "PC 内容区",
-        "min": "calc(100% - 64px)",
-        "max": "1300px",
-        "rule": "宽≥1000px 启用紧凑布局，四列等宽，间距16px。"
-      },
-      {
-        "element": "商品图区",
-        "min": 120,
-        "max": 220,
-        "rule": "高度 clamp(120px,100dvh - 548px,220px)，contain 完整显示。"
-      },
-      {
-        "element": "卡片高度",
-        "min": "图片高度 + 214px",
-        "max": "随内容增长",
-        "rule": "取消520px固定高度；标题正常换行，更多行商品自然滚动。"
-      },
-      {
-        "element": "Open now",
-        "min": 44,
-        "max": 44,
-        "rule": "正常及禁用状态均44px；Vaulted仍点整张卡进入详情，寄送/出售位于抽屉。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:166",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/catalog.js:19"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "已更新：PC 收藏页压缩顶部间距，未开盒卡片取消 520px 固定高度，首行 Open now 按钮优先同屏可见。",
-      "商品图区高 clamp(120px,100dvh − 548px,220px)，图片完整等比显示；四列网格，操作按钮高 44px。购买日期、历史实付金额、奖池更新状态保持原样。"
-    ],
-    "web_route": "boxzy-collection.html?preview=reference&view=unopened",
-    "historical_image": "evidence/collection-desktop-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=reference&view=unopened&guide=doc-collection-desktop-v3",
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "live_html",
+    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-collection.html?preview=reference&view=unopened&guide=doc-collection-desktop-v3",
     "browser_visual_verified": false
   },
   {
     "id": "collection-empty",
     "title": "收藏空状态",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "根据已确认参考图修正当前 Web 预览。"
-    ],
-    "changes": [
-      "保留中心空态，以一个金色主操作引导首次开盒。",
-      "教程链接视觉保持次要，后续指向现有收藏帮助文章。"
-    ],
-    "interaction": "空态不伪装加载；教程链接需真实可达，设计图不代表路由已修复。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-collection.html:67",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:7"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · 已确认 UI",
-    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
-    "implemented_changes": [
-      "已修正：使用已登录的独立空收藏预览，显示 Your collection is empty，不再弹出登录窗口。",
-      "预览数据与正常演示数据隔离；保留金色 Open your first box 按钮及收藏帮助入口。"
-    ],
-    "web_route": "boxzy-collection.html?preview=demo&empty=1",
-    "historical_image": "evidence/collection-empty-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=demo&empty=1&guide=doc-collection-empty-v4",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "collection-vault",
     "title": "收藏 · 已开盒商品",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "每张卡的金边、状态和计时使用相近强调，商品扫描偏重。",
-      "出售反馈和寄送阶段的状态命名仍有源码问题。"
-    ],
-    "changes": [
-      "中性黑卡片配细灰边，保留七天自动出售与剩余时间。",
-      "对齐商品标题、金额、日期和计时；顶部购盒操作改为描边次按钮。"
-    ],
-    "interaction": "保留七天自动出售规则；出售补到账提示；寄送申请与实际 Shipped 区分，尚未实现。",
-    "parameters": [
-      {
-        "element": "PC 内容区",
-        "min": "calc(100% - 64px)",
-        "max": "1300px",
-        "rule": "宽≥1000px 启用紧凑布局，四列等宽，间距16px。"
-      },
-      {
-        "element": "商品图区",
-        "min": 120,
-        "max": 220,
-        "rule": "高度 clamp(120px,100dvh - 548px,220px)，contain 完整显示。"
-      },
-      {
-        "element": "卡片高度",
-        "min": "图片高度 + 214px",
-        "max": "随内容增长",
-        "rule": "取消520px固定高度；标题正常换行，更多行商品自然滚动。"
-      },
-      {
-        "element": "Open now",
-        "min": 44,
-        "max": 44,
-        "rule": "正常及禁用状态均44px；Vaulted仍点整张卡进入详情，寄送/出售位于抽屉。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:185",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:365",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:393"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "已更新：Vaulted 与 Unopened 共用紧凑图片高度与四列网格；缩小标题及顶部统计区，让首行商品信息和倒计时完整显示。",
-      "Vault 卡片仍点击整张卡片打开详情，寄送 / 出售继续位于抽屉；7 天自动出售规则保持不变。多行收藏仍自然滚动，不隐藏溢出内容。"
-    ],
-    "web_route": "boxzy-collection.html?preview=reference&view=vault",
-    "historical_image": "evidence/collection-vault-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=reference&view=vault&guide=doc-collection-vault-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "item-drawer",
     "title": "商品详情面板",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "参考图把到期信息留在卡片，最终 Ship/Sell 决策处缺少上下文。",
-      "寄送申请后源码直接标为 shipped，详情又写 Tracking pending。"
-    ],
-    "changes": [
-      "保留商品、当前价值、来源事实和双操作。",
-      "在操作附近复现已有计时信息，统一按钮和中性抽屉底。"
-    ],
-    "interaction": "Ship to me 进入收费确认；Sell 显示实际收到金额；状态阶段需开发同步修正。",
-    "parameters": [
-      {
-        "element": "桌面抽屉宽度",
-        "min": 480,
-        "max": 560,
-        "rule": "px；以可读内容与操作空间优先。"
-      },
-      {
-        "element": "商品图容器高度",
-        "min": 240,
-        "max": 300,
-        "rule": "px；原图等比 contain。"
-      },
-      {
-        "element": "底部操作高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；操作区保留已有计时及实际收到金额。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:254",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:365"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "商品抽屉统一中性面板、等比主图和两级按钮。",
-      "操作区上方新增该商品的实时剩余保管时间，到期状态单独显示；寄送后隐藏该操作区。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。",
-      "修复主图溢出：展示区高 clamp(160px,28dvh,260px)，图片绝对定位、宽高 100%、object-fit:contain；标题与操作区不被遮挡。"
-    ],
-    "web_route": "boxzy-collection.html?preview=reference&panel=drawer",
-    "historical_image": "evidence/item-drawer-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=reference&panel=drawer&guide=doc-item-drawer-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "shipping-dialog",
     "title": "寄送确认 · 新增税费",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "费用分项已完整，但遮罩后需回忆正在寄送的商品。",
-      "不足余额充值会自动续扣寄送费，当前充值面板未说明。"
-    ],
-    "changes": [
-      "增加紧凑商品识别行，保留地址及费用明细。",
-      "固定示例 Shipping $9、Handling $2、Tax $1、Total $12，主操作带总价。"
-    ],
-    "interaction": "确认地址和费用后提交；余额不足须明确后续扣款或充值后再次确认；真实报价、支付与履约未验证。",
-    "parameters": [
-      {
-        "element": "弹窗宽度",
-        "min": 480,
-        "max": 560,
-        "rule": "px；商品识别行紧凑，不挤占费用。"
-      },
-      {
-        "element": "费用行高",
-        "min": 28,
-        "max": 36,
-        "rule": "px；9+2+1=12，金额右对齐。"
-      },
-      {
-        "element": "确认按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；Pay $12.00 and ship；保留 Cancel。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/shipping-quote.js:1",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:332",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:360"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "新增当前寄送商品的缩略图、名称和 1 sealed item。",
-      "Shipping / Handling fee / Tax / Total 与支付按钮继续从同一报价读取。",
-      "示例 $9 + $2 + $1 = $12；金额不写死到真实接口。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。",
-      "PC 寄送弹窗改为 760px，地址和费用两列，商品缩略图 56px；常规桌面视口下总额与支付按钮同屏可见，不依赖滚动。"
-    ],
-    "web_route": "boxzy-collection.html?preview=reference&panel=shipping",
-    "historical_image": "evidence/shipping-dialog-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=reference&panel=shipping&guide=doc-shipping-dialog-v3",
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "live_html",
+    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-collection.html?preview=reference&panel=shipping&guide=doc-shipping-dialog-v3",
     "browser_visual_verified": false
   },
   {
     "id": "account-desktop",
     "title": "个人账户",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "钱包与账户双列结构有效，无需大改。",
-      "棕金面板、图标圆底与边框叠加，使普通管理页面发闷。"
-    ],
-    "changes": [
-      "保留账户结构，统一中性背景、面板和边线。",
-      "余额保持主层级，Deposit 为金色主按钮，Withdraw 为次按钮；删除保留危险色。"
-    ],
-    "interaction": "账户资金与管理入口不新增业务；本地演示余额不等于真实支付账户。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-account.html",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/account.js"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "直接沿用本次图 2：1200px 页面宽、原双列布局、钱包渐变与金色按钮；账户页内容和推荐码卡片保留。"
-    ],
-    "web_route": "boxzy-account.html?preview=demo",
-    "historical_image": "evidence/account-desktop-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-account.html?preview=demo&guide=doc-account-desktop-v3",
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "live_html",
+    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-account.html?preview=demo&guide=doc-account-desktop-v3",
     "browser_visual_verified": false
   },
   {
     "id": "deposit-desktop",
     "title": "充值",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "用户确认必须展示屏幕数字键盘；需要整理金额、快捷金额、键盘与支付方式的层级。",
-      "交易承接充值会自动续扣购买或寄送，而面板只写 Deposit。"
-    ],
-    "changes": [
-      "保留完整屏幕数字键盘及可直接输入的金额，统一键尺寸、行距与中性色。",
-      "保留快捷金额和 Coinflow；独立充值按钮明确金额，承接交易态补用途和后续扣款摘要。"
-    ],
-    "interaction": "屏幕数字键盘必须显示，金额也可直接输入；保留金额验证及 Coinflow。承接交易必须明示自动继续的动作，设计稿不代表付款已接通。",
-    "parameters": [
-      {
-        "element": "桌面资金弹窗宽度",
-        "min": 520,
-        "max": 600,
-        "rule": "px；必须保留屏幕数字键盘，金额、键盘、支付方式顺序清楚。"
-      },
-      {
-        "element": "数字键高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；统一三列键宽，间距 8–12px；数字、MAX、退格保留。"
-      },
-      {
-        "element": "金额字号",
-        "min": 36,
-        "max": 44,
-        "rule": "px；原生输入仍可编辑；至少 14px 的限额和校验说明。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/deposit.js:25",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/deposit.js:33",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/deposit.js:101"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "user_decision": "用户已明确要求展示键盘；此前 Assessment A 移除键盘建议已被覆盖。",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "完整 3×4 数字键盘、五档预设金额、MAX 和退格保留。",
-      "统一黑金面板与灰色按键；主按钮显示 Deposit $金额。",
-      "充值成功只增加余额；原来的购买或寄送需返回后再次确认，不再自动继续扣款。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-account.html?preview=demo&show=deposit",
-    "historical_image": "evidence/deposit-desktop-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-account.html?preview=demo&show=deposit&guide=doc-deposit-desktop-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "withdraw-desktop",
     "title": "提现",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "用户确认必须展示屏幕数字键盘；当前需通过尺寸、间距与颜色整理层级。",
-      "源码与帮助、记录的预计到账时效存在冲突。"
-    ],
-    "changes": [
-      "保留完整屏幕数字键盘和直接输入金额，与充值统一按键尺寸及中性配色。",
-      "保留可用余额、每日剩余额度和 Review withdrawal，压缩无关留白与装饰。"
-    ],
-    "interaction": "屏幕数字键盘必须显示，金额也可直接输入；保留提现限额和审阅步骤。到账时效由业务统一，不在图中新增承诺。",
-    "parameters": [
-      {
-        "element": "桌面资金弹窗宽度",
-        "min": 520,
-        "max": 600,
-        "rule": "px；与充值共用视觉规格，屏幕数字键盘始终展示。"
-      },
-      {
-        "element": "数字键高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；统一三列键宽、8–12px 间距，保留 MAX 与退格。"
-      },
-      {
-        "element": "金额字号",
-        "min": 36,
-        "max": 44,
-        "rule": "px；同时看清可用余额与每日剩余额度，保留 Review withdrawal。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/withdraw.js:58",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:67",
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-account.html:154"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "user_decision": "用户已明确要求展示键盘；此前 Assessment A 移除键盘建议已被覆盖。",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "金额、可用余额、日限额、完整键盘和 Coinflow 继续保留。",
-      "输入态与审阅态统一中性黑金；禁用、错误和确认按钮有不同状态。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-account.html?preview=demo&show=withdraw",
-    "historical_image": "evidence/withdraw-desktop-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-account.html?preview=demo&show=withdraw&guide=doc-withdraw-desktop-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "history-dialog",
     "title": "交易记录",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "交易金额、日期、状态的结构清楚，但小字与棕色背景降低阅读。",
-      "帮助与页面的支付方式、时效说明不统一。"
-    ],
-    "changes": [
-      "保留三筛选与交易行，以中性抽屉和更清楚的辅助文字呈现。",
-      "状态保留 Completed/Processing/Failed 的语义颜色，不全部染金。"
-    ],
-    "interaction": "历史交易保留历史金额和方式；时效文案待统一，不能批量改写历史数据。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-account.html:154",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:66"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "流水行改为中性底与分隔线，金额 / 方法 / 日期分层。",
-      "Completed、Processing、Failed 分别保留绿色 / 金色 / 红色语义。",
-      "移除与提现确认页冲突的固定到账时效。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-account.html?preview=demo&show=history",
-    "historical_image": "evidence/history-dialog-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-account.html?preview=demo&show=history&guide=doc-history-dialog-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "username-dialog",
-    "title": "修改用户名",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "参考图帮助文字与当前用户名提示发生重叠。",
-      "源码 availability 使用负上边距，支持这一排版风险。"
-    ],
-    "changes": [
-      "帮助、校验、可用性提示各占独立正常文档流。",
-      "统一输入框、关闭按钮、Cancel 与 Save 的层级。"
-    ],
-    "interaction": "保留长度、字符和占用验证；未更改用户名时禁用保存的源码逻辑已存在。",
-    "parameters": [
-      {
-        "element": "弹窗宽度",
-        "min": 460,
-        "max": 520,
-        "rule": "px；保持单字段结构。"
-      },
-      {
-        "element": "输入框高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；帮助与可用性提示各占独立行。"
-      },
-      {
-        "element": "提示行距",
-        "min": 18,
-        "max": 22,
-        "rule": "px；不使用负 margin 叠放状态文字。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/account.css:45",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/account.js:72"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "修复负外边距导致的帮助文字重叠；输入规则、计数、可用性分行。",
-      "消除重复内边距，输入高 48px，关闭命中区 44px；保留原校验。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。",
-      "明确设置 1px solid #9B8344 金色外边框；输入框仍为灰边。"
-    ],
-    "web_route": "boxzy-account.html?preview=demo&show=username",
-    "historical_image": "evidence/username-dialog-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-account.html?preview=demo&show=username&guide=doc-username-dialog-v3",
+    "title": "修改用户名 · 旧版金色弹窗",
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "addresses-desktop",
     "title": "收货地址",
-    "status": "retain",
-    "priority": "P1",
-    "why": [
-      "地址行、默认标记与增删改入口已清楚，保留布局。",
-      "关联表单仅列五个美国州，国家与行政区字段不联动。"
-    ],
-    "changes": [],
-    "interaction": "保留管理页视觉；地址可用地区及完整行政区由业务和开发确认，不能称完整通过。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-addresses.html:44",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/addresses.js:134"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": "boxzy-addresses.html?preview=demo",
-    "historical_image": "evidence/addresses-desktop-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-addresses.html?preview=demo&guide=doc-addresses-desktop-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "address-dialog",
     "title": "新增 / 编辑地址",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "表单分组基本清楚，但输入面板偏棕、辅助信息偏小。",
-      "美国州选项不完整，且国家变化没有对应州/邮编变化。"
-    ],
-    "changes": [
-      "保留字段分组与底部操作，使用中性输入底和清楚标签。",
-      "给校验与底部操作保留空间，避免信息挤压。"
-    ],
-    "interaction": "按确认寄送范围提供完整州/省并联动邮编规则；不由地区拦截页推断跨境业务。",
-    "parameters": [
-      {
-        "element": "抽屉宽度",
-        "min": 560,
-        "max": 640,
-        "rule": "px；长字段使用整行，姓名和行政区按组排列。"
-      },
-      {
-        "element": "输入框高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；清楚区分标签、值与校验。"
-      },
-      {
-        "element": "字段组间距",
-        "min": 16,
-        "max": 24,
-        "rule": "px；底部操作固定或可达，地区规则待确认。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-addresses.html:44",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/addresses.js:134"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "右侧表单统一 48px 输入控件、14px 标签和 48px 底部按钮。",
-      "表头与粘性操作区统一中性背景，保留原字段和校验。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-addresses.html?preview=demo&show=address",
-    "historical_image": "evidence/address-dialog-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-addresses.html?preview=demo&show=address&guide=doc-address-dialog-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "leaderboard-desktop",
     "title": "排行榜",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "领奖台加列表符合任务，当前金边和金色积分强调偏多。",
-      "Elite 无独立积分定义，源码可能回落为 Starter。"
-    ],
-    "changes": [
-      "保留前三名与排名表，降低边框和普通积分装饰。",
-      "将规则入口变为可理解的文字入口，突出当前用户行。"
-    ],
-    "interaction": "保留周切换与倒计时；Elite 积分待业务确认，不填假分值。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/leaderboard-v2.js:2",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/leaderboard-v2.js:61"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "保留榜单与领奖台结构，普通积分改为主文字色，面板中性化。",
-      "规则入口从感叹号改为可读 Rules 按钮。"
-    ],
-    "web_route": "boxzy-leaderboard.html?preview=demo",
-    "historical_image": "evidence/leaderboard-desktop-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-leaderboard.html?preview=demo&guide=doc-leaderboard-desktop-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "rules-dialog",
     "title": "排行榜规则",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "两组规则可读，不需要多层描边和暖色填充。",
-      "四档商品中 Elite 规则缺失，不能照三档旧图声称齐全。"
-    ],
-    "changes": [
-      "中性面板配两组平铺列表，减少层层金边。",
-      "纠正 Starter 金色 / Ultra 镭射图标映射；保留原三档积分，不填造 Elite 积分。"
-    ],
-    "interaction": "Elite 积分与计分映射待确认；既有三档数值保留，本图不修改业务规则。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-leaderboard.html:50",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/leaderboard-v2.js:2"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "规则改用两组平铺列表与细分隔线。",
-      "Starter / Ultra 使用正确的新版素材，原三档积分数值保持。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-leaderboard.html?preview=demo&show=rules",
-    "historical_image": "evidence/rules-dialog-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-leaderboard.html?preview=demo&show=rules&guide=doc-rules-dialog-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "support-desktop",
     "title": "帮助中心",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "搜索、五分类和快捷入口具备完整信息结构。",
-      "棕金卡片和联系卡都在争夺注意力，且内容含旧支付说明。"
-    ],
-    "changes": [
-      "保留搜索与五分类，统一中性卡片，减弱边框。",
-      "联系支持使用明确但次要的入口，保持文章浏览优先。"
-    ],
-    "interaction": "搜索和文章入口需对应实际内容；付款方式与时效问题由内容修正解决，不由视觉图代替。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:12",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:66"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "保留主题分类与联系入口，去掉顶部暖色光晕、棕色快捷入口。",
-      "搜索和正文字号统一，提高可读性。"
-    ],
-    "web_route": "boxzy-support.html?preview=demo",
-    "historical_image": "evidence/support-desktop-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-support.html?preview=demo&guide=doc-support-desktop-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "support-topic",
-    "title": "帮助 · 账户分类（移除推荐内容）",
-    "status": "retain",
-    "priority": "P1",
-    "why": [
-      "四篇文章加相关分类的布局清楚，可直接保留。",
-      "关联支付文章仍包含旧移动支付及不一致时效。"
-    ],
-    "changes": [],
-    "interaction": "保留分类页；同步修正文章内容与目的链接后才算交互闭环。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:12",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:66"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "账户帮助分类改为 Account，只保留修改用户名和联系支持两篇文章。",
-      "删除推荐流程、推荐收益、修改推荐码三篇文章及搜索结果、导航入口；账户主页仍按图 2 保留。"
-    ],
-    "web_route": "boxzy-support.html?preview=demo&topic=account",
-    "historical_image": "evidence/support-topic-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-support.html?preview=demo&topic=account&guide=doc-support-topic-v3",
+    "title": "帮助 · 支付分类",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "support-article",
     "title": "帮助 · 充值文章",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "当前 Web 文章要求 iOS/Android 钱包，无法指导当前 Coinflow 入口。",
-      "文章正文短而侧栏强调强，阅读重点不够集中。"
-    ],
-    "changes": [
-      "保留面包屑、正文和主题导航，降低侧栏对比。",
-      "正文改为当前 Web 入口与步骤说明，不写未经确认的到账时效。"
-    ],
-    "interaction": "文章须与真实付款/提现流程同步；截图只验证排版，不验证支付能力。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/support.js:66",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/deposit.js:36"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "充值帮助改为 Web 三步操作：My Account → Deposit、输入金额并选 Coinflow、确认充值。",
-      "移除移动端 Apple Pay / Google Pay 操作说明与冲突的提现时间。"
-    ],
-    "web_route": "boxzy-support.html?preview=demo&topic=payments&article=add-funds",
-    "historical_image": "evidence/support-article-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-support.html?preview=demo&topic=payments&article=add-funds&guide=doc-support-article-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "deposit-standalone",
     "title": "独立充值入口",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "应复用账户充值组件，不能再建立第二套视觉。",
-      "游客分支找不到登录按钮而静默返回，页面背景仍为排行榜占位。"
-    ],
-    "changes": [
-      "完全复用 deposit-desktop 的同一张带完整屏幕数字键盘的提案图与参数。",
-      "独立入口后续使用账户或充值背景，游客登录后返回原充值意图。"
-    ],
-    "interaction": "屏幕数字键盘必须显示；已登录复用独立充值。游客导向实际登录路由并保存返回目标，此路由缺陷尚未实现修复。",
-    "parameters": [
-      {
-        "element": "桌面资金弹窗宽度",
-        "min": 520,
-        "max": 600,
-        "rule": "px；必须保留屏幕数字键盘，金额、键盘、支付方式顺序清楚。"
-      },
-      {
-        "element": "数字键高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；统一三列键宽，间距 8–12px；数字、MAX、退格保留。"
-      },
-      {
-        "element": "金额字号",
-        "min": 36,
-        "max": 44,
-        "rule": "px；原生输入仍可编辑；至少 14px 的限额和校验说明。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-deposit.html:7",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/deposit.js:69",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/header.js:29"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": "deposit-desktop",
-    "implementation_status": "已更新 · Web 副本",
-    "user_decision": "用户已明确要求展示键盘；独立充值与账户充值复用同一方案。",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "复用同一充值组件与完整键盘；独立页背景改为 My Account。",
-      "游客入口转到登录，保留 preview 隔离参数。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-deposit.html?preview=demo",
-    "historical_image": "evidence/deposit-standalone-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-deposit.html?preview=demo&guide=doc-deposit-standalone-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "blocked",
     "title": "地区不可用",
-    "status": "retain",
-    "priority": "P1",
-    "why": [
-      "地区说明已直白，保留安静布局。",
-      "页脚 Careers/Terms/Privacy 是无目标锚点，仍需修正。"
-    ],
-    "changes": [],
-    "interaction": "提供真实法律内容入口；未实现 Careers 可移除，不能新增地区绕过承诺。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-access-blocked.html:23"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": "boxzy-access-blocked.html?preview=demo",
-    "historical_image": "evidence/blocked-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-access-blocked.html?preview=demo&guide=doc-blocked-v3",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
+    "current_preview": null,
     "browser_visual_verified": false
   },
   {
     "id": "loading",
     "title": "加载状态",
-    "status": "proposal",
-    "priority": "P3",
-    "why": [
-      "基础加载页安静，但宽范围暖色光晕与其他加载样式不统一。"
-    ],
-    "changes": [
-      "中性黑底保留 Logo 与简洁 Loading。",
-      "统一为单一简单 spinner，不增加虚假百分比或装饰粒子。"
-    ],
-    "interaction": "只是等待状态；超时与失败由实际请求状态切换，不能以动画视为加载完成。",
-    "parameters": [
-      {
-        "element": "spinner 直径",
-        "min": 28,
-        "max": 40,
-        "rule": "px；单一简单转圈，尊重减少动态偏好。"
-      },
-      {
-        "element": "加载文字",
-        "min": 14,
-        "max": 16,
-        "rule": "px；不显示虚假进度。"
-      },
-      {
-        "element": "Logo 宽度",
-        "min": 120,
-        "max": 180,
-        "rule": "px；中性背景，不扩散暖色光晕。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-loading.html",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/boot-loader.js"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "恢复参考图的白色品牌 Logo + Loading + 三个金色圆点；背景保持黑色。",
-      "尊重减少动态效果设置。"
-    ],
-    "web_route": "boxzy-loading.html?preview=demo",
-    "historical_image": "evidence/loading-0.jpg",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-loading.html?preview=demo&guide=doc-loading-v3",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "live",
-    "title": "Live pulls 详情",
-    "status": "proposal",
-    "priority": "P2",
-    "why": [
-      "产品和来源的左右布局成立，金色稀有度参考样式与六色系统不一致。",
-      "当前源码已映射六色标签，旧图问题不应当作现行故障。"
-    ],
-    "changes": [
-      "保留产品原图与左右结构，使用统一中性弹窗。",
-      "标签按既定稀有度色值，来源和时间降为辅助，保留一个 View box 主操作。"
-    ],
-    "interaction": "来源盒子与奖品必须来自一致数据；不把演示 Live 内容标为已验证实时成交。",
-    "parameters": [
-      {
-        "element": "弹窗宽度",
-        "min": 800,
-        "max": 920,
-        "rule": "px；保留左右商品/信息结构。"
-      },
-      {
-        "element": "商品主图宽度",
-        "min": 300,
-        "max": 380,
-        "rule": "px；原图等比，不叠加额外光晕。"
-      },
-      {
-        "element": "元信息文字",
-        "min": 12,
-        "max": 14,
-        "rule": "px；稀有度文字和指定颜色共同表达。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/src/ui.css:178",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/catalog.js:32",
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "左右商品图 / 信息结构保留；中性背景、无额外背景光晕。",
-      "图片、名称、价值、稀有度与来源继续由选中的 Live pull 传入。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=demo&show=live",
-    "historical_image": "evidence/live-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&show=live&guide=doc-live-v3",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "prize",
-    "title": "奖品详情与 Drop Chance",
-    "status": "proposal",
-    "priority": "P1",
-    "why": [
-      "旧参考图的 available rows 显示价格，而源码已显示 Drop Chance。",
-      "按档位复用概率且遗漏 Elite，可用盒型及概率含义需确认。"
-    ],
-    "changes": [
-      "统一中性黑弹窗、商品图与稀有度标签。",
-      "保留源码中已有的 Drop chance 示例值；移除旧图盒子价格，避免将价格当作概率。"
-    ],
-    "interaction": "右图 9.8% / 12.6% / 5.4% 仅沿用源码的 UNCOMMON 示例值，不是已核实的单商品概率。其含义、与 50/49/1 的关系，以及 Elite 可用性仍待确认；不得直接据此上线。",
-    "parameters": [
-      {
-        "element": "弹窗宽度",
-        "min": 480,
-        "max": 560,
-        "rule": "px；商品图等比，正文正常阅读顺序。"
-      },
-      {
-        "element": "盒型信息行高度",
-        "min": 64,
-        "max": 80,
-        "rule": "px；名称与概率含义分行，不能填未经确认的概率。"
-      },
-      {
-        "element": "概率文字",
-        "min": 12,
-        "max": 14,
-        "rule": "px；六档原色不变。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/box-detail.js:65",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/box-detail.js:261"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "中性奖品弹窗、280px 等比主图、清晰的盒型行。",
-      "Available in 的比例沿用旧示例，未擅自填入 Elite。",
-      "本次追加：外层使用细金边，卡片 #5E5130 / 弹窗 #9B8344；内部输入与键盘保留 #303030 灰边。"
-    ],
-    "web_route": "boxzy-box.html?preview=demo&box=discovery&show=prize",
-    "historical_image": "evidence/prize-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-box.html?preview=demo&box=discovery&show=prize&guide=doc-prize-v3",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "sell",
-    "title": "出售确认",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "市场价值、90%收到金额与明确售价按钮已清楚，是可复用确认结构。",
-      "收藏出售成功目前只移除卡片，到账反馈不足。"
-    ],
-    "changes": [],
-    "interaction": "保留确认弹窗；点击确认后需显示 Sold for $X—added to your balance，并依据真实结果更新。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:393",
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html:2799"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · Web 副本",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [
-      "出售成功后增加到账 Toast；原确认弹窗与 90% 计算保留。"
-    ],
-    "web_route": "boxzy-collection.html?preview=reference&panel=sell",
-    "historical_image": "evidence/sell-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=reference&panel=sell&guide=doc-sell-v3",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "opening-loading",
-    "title": "开盒视频结束 · 加载中",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "根据已确认参考图修正当前 Web 预览。"
-    ],
-    "changes": [],
-    "interaction": "Loading...",
-    "parameters": [
-      {
-        "element": "舞台",
-        "min": 1280,
-        "max": 1280,
-        "rule": "固定 1280 × 720 CSS px；顶部栏 64px；随视口等比缩放。"
-      },
-      {
-        "element": "内容布局",
-        "min": 32,
-        "max": 32,
-        "rule": "舞台内边距32px，单行网格居中；背景 #111111。"
-      },
-      {
-        "element": "状态图标",
-        "min": 36,
-        "max": 64,
-        "rule": "Loading 36px；失败与更新64px；金色 #F5C442。"
-      },
-      {
-        "element": "文字与按钮",
-        "min": 14,
-        "max": 54,
-        "rule": "Loading 14/22px；标题32/40px；正文17/26px；返回按钮最小304×54px、圆角10px。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html:2174",
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/pc-frame.js:5"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · 已确认 UI",
-    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
-    "implemented_changes": [
-      "已按确认图恢复：小转圈与 Loading... 在顶部栏以下的内容区水平、垂直居中。",
-      "沿用黑金边框、Logo、声音开关、余额与关闭按钮；加载中不显示返回按钮。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=loading",
-    "historical_image": "evidence/opening-loading-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=loading&guide=doc-opening-loading-v4",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "opening-failed",
-    "title": "开盒失败 · 返回收藏",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "根据已确认参考图修正当前 Web 预览。"
-    ],
-    "changes": [],
-    "interaction": "Unable to open your box\nSorry, we couldn’t open your box.\nYour unopened box is still in My Collection.\nPlease try again later.\n\nBack to My Collection",
-    "parameters": [
-      {
-        "element": "舞台",
-        "min": 1280,
-        "max": 1280,
-        "rule": "固定 1280 × 720 CSS px；顶部栏 64px；随视口等比缩放。"
-      },
-      {
-        "element": "内容布局",
-        "min": 32,
-        "max": 32,
-        "rule": "舞台内边距32px，单行网格居中；背景 #111111。"
-      },
-      {
-        "element": "状态图标",
-        "min": 36,
-        "max": 64,
-        "rule": "Loading 36px；失败与更新64px；金色 #F5C442。"
-      },
-      {
-        "element": "文字与按钮",
-        "min": 14,
-        "max": 54,
-        "rule": "Loading 14/22px；标题32/40px；正文17/26px；返回按钮最小304×54px、圆角10px。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html:2181"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · 已确认 UI",
-    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
-    "implemented_changes": [
-      "已按确认图恢复：金色圆圈感叹号、居中标题 Unable to open your box、完整三行说明。",
-      "金色实心 Back to My Collection 返回收藏；未开盒权益保留。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=failed",
-    "historical_image": "evidence/opening-failed-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=failed&guide=doc-opening-failed-v4",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "opening-updating",
-    "title": "开盒受阻 · 奖池更新中",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "根据已确认参考图修正当前 Web 预览。"
-    ],
-    "changes": [],
-    "interaction": "New prizes are on the way\nThis prize pool is currently sold out.\nWe’re adding new, higher-value prizes.\nYour box will stay in My Collection\nand can be opened once the update is complete.\n\nBack to My Collection",
-    "parameters": [
-      {
-        "element": "舞台",
-        "min": 1280,
-        "max": 1280,
-        "rule": "固定 1280 × 720 CSS px；顶部栏 64px；随视口等比缩放。"
-      },
-      {
-        "element": "内容布局",
-        "min": 32,
-        "max": 32,
-        "rule": "舞台内边距32px，单行网格居中；背景 #111111。"
-      },
-      {
-        "element": "状态图标",
-        "min": 36,
-        "max": 64,
-        "rule": "Loading 36px；失败与更新64px；金色 #F5C442。"
-      },
-      {
-        "element": "文字与按钮",
-        "min": 14,
-        "max": 54,
-        "rule": "Loading 14/22px；标题32/40px；正文17/26px；返回按钮最小304×54px、圆角10px。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/boxzy-interactive.html:2182"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已更新 · 已确认 UI",
-    "mockup_note": "上方为当前 Web 实时预览；用户已确认本地效果，自动检查为源码与状态检查。",
-    "implemented_changes": [
-      "已按确认图恢复：金色圆圈刷新图标、居中标题 New prizes are on the way 与四行说明。",
-      "金色实心 Back to My Collection 返回收藏；奖池更新完成后才允许再次开盒。"
-    ],
-    "web_route": "boxzy-interactive.html?preview=demo&screen=updating",
-    "historical_image": "evidence/opening-updating-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-interactive.html?preview=demo&screen=updating&guide=doc-opening-updating-v4",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "collection-updating",
-    "title": "收藏卡片 · 更新中短文案",
-    "status": "retain",
-    "priority": "P3",
-    "why": [
-      "两行说明、UPDATING 标签和禁用 Open now 已解释清楚。",
-      "状态恢复仍需由奖池版本/可用性驱动，不能仅靠改按钮颜色。"
-    ],
-    "changes": [],
-    "interaction": "未开盒不设到期；保留短文案，更新完成再允许打开，不加入退款或免费换盒内容。",
-    "parameters": [
-      {
-        "element": "正文",
-        "min": 14,
-        "max": 16,
-        "rule": "px；主文 #F5F5F5，辅助 #B8B8B8；关键说明不低于 12px。"
-      },
-      {
-        "element": "按钮高度",
-        "min": 44,
-        "max": 48,
-        "rule": "px；主操作 #F1C75B，次操作中性底及细灰边。"
-      },
-      {
-        "element": "面板内边距",
-        "min": 24,
-        "max": 32,
-        "rule": "px；普通面板 #141414、边线 #303030，页面 #090909。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/assets/boxzy/collection-v2.js:166"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": "boxzy-collection.html?preview=updating&view=unopened",
-    "historical_image": "evidence/collection-updating-1.png",
-    "visual_kind": "current_web_preview",
-    "current_preview": "../boxzy-collection.html?preview=updating&view=unopened&guide=doc-collection-updating-v3",
-    "browser_visual_verified": false
-  },
-  {
-    "id": "palette",
-    "title": "稀有度名称与色值",
-    "status": "retain",
-    "priority": "P2",
-    "why": [
-      "六个已确认色值已在当前源码定义，无需重配色。",
-      "部分稀有度文字仅 10px，颜色正确不等于小字可读性已通过。"
-    ],
-    "changes": [],
-    "interaction": "严格保留 COMMON #ADB5BF、UNCOMMON #7FB59A、RARE #83A9D1、EPIC #B09BCC、LEGENDARY #D9BC79、GRAIL #D99C78；名称与颜色同时显示。",
-    "parameters": [
-      {
-        "element": "稀有度种类",
-        "min": 6,
-        "max": 6,
-        "rule": "固定六档色值与名称，不新增第七套颜色。"
-      },
-      {
-        "element": "常规标签文字",
-        "min": 12,
-        "max": 14,
-        "rule": "px；结果页可增大，不把颜色当唯一信号。"
-      },
-      {
-        "element": "标签高度",
-        "min": 26,
-        "max": 32,
-        "rule": "px；中性容器，低透明度对应色底。"
-      }
-    ],
-    "evidence": "源码确认",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/src/ui.css:158",
-      "deliverables/BOXZY-Web-2026-10-12/src/ui.css:166"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": null,
-    "historical_image": null,
-    "visual_kind": "current_color_spec",
-    "current_preview": null,
-    "browser_visual_verified": false
-  },
-  {
-    "id": "assets",
-    "title": "商品素材与缩放规范",
-    "status": "retain",
-    "priority": "P3",
-    "why": [
-      "原始四盒及商品素材已承担产品识别，不应为统一界面而重画。",
-      "真实清晰度、缩放和渲染仍需实现时核查。"
-    ],
-    "changes": [],
-    "interaction": "等比缩放、object-fit contain，保留原图，不裁切商品主体、不改变盒色、不用生成替代图。",
-    "parameters": [
-      {
-        "element": "列表缩略图边长",
-        "min": 48,
-        "max": 72,
-        "rule": "px；按场景使用 48/56/72px 容器。"
-      },
-      {
-        "element": "详情商品容器边长",
-        "min": 240,
-        "max": 380,
-        "rule": "px；contain 等比缩放，视觉尺寸依原图留白调整。"
-      },
-      {
-        "element": "原图横纵缩放比例",
-        "min": 1,
-        "max": 1,
-        "rule": "X/Y 比例一致，禁止拉伸或生成替代品。"
-      }
-    ],
-    "evidence": "参考图观察",
-    "source_references": [
-      "deliverables/BOXZY-Web-2026-10-12/src/ui.css:254",
-      "deliverables/BOXZY-Web-2026-10-12/src/ui.css:291"
-    ],
-    "current_image": null,
-    "proposal_image_reuse": null,
-    "implementation_status": "已同步 · 原逻辑保留",
-    "mockup_note": "右图为生成的设计建议，不是网页运行截图。文字、色值和 CSS 尺寸以旁边说明为准；实现时复用项目原始 Logo、盒子和商品 PNG，不从生成图裁切素材。",
-    "implemented_changes": [],
-    "web_route": null,
-    "historical_image": "evidence/assets-0.png",
-    "visual_kind": "current_asset_gallery",
+    "updated": false,
+    "implementation_status": "原版保留",
+    "visual_kind": "embedded_image",
     "current_preview": null,
     "browser_visual_verified": false
   }

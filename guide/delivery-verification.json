@@ -1,25 +1,23 @@
 {
-  "date": "2026-10-13",
-  "layout": "self-contained repository; product guide in guide/",
-  "localReferencesChecked": 883,
+  "date": "2026-10-18",
+  "layout": "28-section guide; desktop visual left and explanation right",
+  "guideSections": 28,
+  "updatedSectionIds": [
+    "home-desktop",
+    "collection-desktop",
+    "shipping-dialog",
+    "account-desktop",
+    "username-dialog"
+  ],
+  "localReferencesChecked": 424,
   "missingLocalReferences": [],
   "outsideRepository": [],
   "sourceAndLogicChecksPassed": 38,
-  "currentPreviewCount": 36,
+  "statePreviewChecksPassed": true,
+  "currentPreviewCount": 4,
+  "onlinePreviewsRequireNetwork": true,
   "guideCopiesIdentical": true,
-  "guideFilesCopied": 186,
-  "guideImageBytesPreserved": true,
-  "browserVisualVerified": false,
-  "localUIRestoration": {
-    "states": [
-      "collection-empty",
-      "opening-failed",
-      "opening-loading",
-      "opening-updating"
-    ],
-    "statePreviewChecksPassed": true,
-    "browserVisualVerified": false,
-    "publication": "approved for repository update",
-    "userVisualApproval": true
-  }
+  "oldGoldUsernameModalPreserved": true,
+  "zipIntegrityPassed": true,
+  "browserVisualVerified": false
 }

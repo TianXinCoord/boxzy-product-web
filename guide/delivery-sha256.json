@@ -1,14 +1,15 @@
 {
   ".gitignore": "9a20c0027a728186cf0363e888ed743eae7c379ff4f27c01c8c326e9939c77c0",
   "BOXZY-BOX-SHADOW-SPEC.html": "33ada923cf98812c2c8bc5c64514d034bce8c8a5b6b82f87b1b79c560b65652c",
-  "BOXZY-WEB-PRODUCT-GUIDE.html": "dcf7650df45a6990cb02df591f74962767941dbada7fad0713c359c4952aace0",
-  "README.md": "6dfcf5440ccd6c57ca03eb02de0cd771cd16442b8780f57cd5c1838b97a96b30",
-  "README.txt": "04ff6cda20cc4428005c3e3e59b44c95e507bd66ea80e15b82f70b7e7628b2a5",
-  "START-HERE.html": "dcf7650df45a6990cb02df591f74962767941dbada7fad0713c359c4952aace0",
+  "BOXZY-WEB-PRODUCT-GUIDE-updated.zip": "e52d5ef4a4ceab44b3b90dacb90439f16ddba2b59205c806a404ba982b3774d3",
+  "BOXZY-WEB-PRODUCT-GUIDE.html": "ed9b3155dcb277e9361f90deb6da53557d81538a13aecaa716912aca1c18eb85",
+  "README.md": "cca09c81c68813e8b0c86043059527ba0600e6fecf4b9461e480ff193652114c",
+  "README.txt": "0d3368d44e90161cb4b4961d483e4054a7276d8e13da2ef716c8e35f9b5433d4",
+  "START-HERE.html": "ed9b3155dcb277e9361f90deb6da53557d81538a13aecaa716912aca1c18eb85",
   "assets/starter.png": "e73235d2426de8ab30545221f2e215cd4941bbf11e2f342ec754e8b730262e50",
   "assets/super.png": "fd7a7d30ed30d99050cb55ad7aaae46643ed8c360f3e86252c5aaff35182963e",
   "assets/ultra.png": "e4f91078b4d30d0715eae0aacff8060378e5c035be191b6c72f2d686a6d73bf4",
-  "delivery-verification.json": "7d26e58175a452fb86a32252d6dd497e8788b407875747f4f53dd881e0c2f463",
+  "delivery-verification.json": "6928d5918052c4d14e4447a0c227a4c26a783de53bffe15321b164c7d1a50b5c",
   "evidence/account-desktop-0.jpg": "6f5ba587e3cebb824f65ecc4d3cce92891f4072d2639cce8208c3b46ffa2b9a2",
   "evidence/address-dialog-0.jpg": "1b5c6dc5be28b34c67733c16d1b8932db9dd5a6f79f5f57bb6218c4cc4c3c854",
   "evidence/addresses-desktop-0.jpg": "e0db6a11e0447775b1c3c615a8fe4264aa24bec0386a6844cdb629e228eacd7a",
@@ -160,7 +161,7 @@
   "images/sale-success-updated.png": "70804f1ef782c513f33872def43bf09d0e7b7d99b64da3e2a251fa33d1b572a8",
   "images/shipping-tax-app-reference.png": "d079a99a65f74b20706853d488053acfc226ac207d7a783a16561444982769e7",
   "images/shipping-tax.png": "5b86dc53dacd79030a103e8c6a9893664896e40f81c56210ddbcbfc7090a1897",
-  "implementation.json": "dbf2251c0631912804615876c340a1bc1f68c10a0d3e81875b7b0c0d512b1c7d",
+  "implementation.json": "932b92c787ca8228789453bcc6d7736a8002e174636fe23ef3eb0c2a1772f42e",
   "index.html": "108bf618f47cb54aa895446640f1066b6ee60ad996e981aea3c07be526d59a17",
   "proposals/account-desktop.png": "8f6626cc0a46c11949a9bedc19354a6fc0d75d3bb3b7a313c7c5a791acab462d",
   "proposals/address-dialog.png": "4ad5dd134ca1d93c61f701a6c6c8235c12d09fb2949a17453d427b735b307ce1",
@@ -183,5 +184,5 @@
   "proposals/support-desktop.png": "9c0f5129d46b8445dae151b72fe4690854b0dae0e30641c4e19064e33fc5fd39",
   "proposals/username-dialog.png": "d4173c424265cb4dd0a4a696d43e6c0245fd8b2267597eee1961e937ebce1aeb",
   "proposals/withdraw-desktop.png": "81e7fc2ee89929f73f9ee9ecc870750631066bb060f187d56f7a30f5309d38dc",
-  "visual-sync-audit.json": "bab554ea881683ba8beb8e30cda3e6b34ce87835b1b5e1afd80f56ae5f3c3039"
+  "visual-sync-audit.json": "d742ad0e47046089a106bfbb6101fd8a56ea7556434ff570707073adc7a84b17"
 }

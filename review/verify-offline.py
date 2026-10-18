@@ -1,4 +1,4 @@
-"""Validate the self-contained Web + guide repository without a browser."""
+"""Validate local Web assets and the mixed online/offline guide without a browser."""
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
@@ -39,12 +39,14 @@ for p in list((ROOT/'assets').rglob('*.js'))+list(ROOT.glob('*.html')):
 for rank in (1,2,3):check(ROOT/'index.html',f'assets/boxzy/rank-medal-{rank}.png')
 html=(GUIDE/'START-HERE.html').read_text()
 assert html==(GUIDE/'BOXZY-WEB-PRODUCT-GUIDE.html').read_text()
-assert html.count('<iframe ')==36
+assert html.count('<iframe ')==4
+assert len(re.findall(r'<section id=',html))==28
+assert html.count('class="nav-updated"')==5
 assert '../boxzy-product-web/' not in html
 for row in json.loads((GUIDE/'implementation.json').read_text()):
  for key in ('current_preview','historical_image'):
   s=row.get(key)
   if s and not s.startswith('deliverables/'):check(GUIDE/'implementation.json',s)
-report={'localReferencesChecked':checked,'missing':missing,'outsideRepository':outside,'guideCurrentPreviews':36,'guideCopiesIdentical':True,'browserVisualVerified':False}
+report={'localReferencesChecked':checked,'missing':missing,'outsideRepository':outside,'guideCurrentPreviews':4,'guideSections':28,'onlinePreviewsRequireNetwork':True,'guideCopiesIdentical':True,'browserVisualVerified':False}
 print(json.dumps(report,ensure_ascii=False,indent=2))
 assert not missing and not outside
