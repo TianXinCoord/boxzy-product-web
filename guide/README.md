@@ -1,15 +1,14 @@
-# BOXZY Web 产品说明
+# BOXZY Web 产品说明书
 
-打开 [START-HERE.html](START-HERE.html) 或 [index.html](index.html)。[BOXZY-WEB-PRODUCT-GUIDE.html](BOXZY-WEB-PRODUCT-GUIDE.html) 为同内容入口。[下载 ZIP](BOXZY-WEB-PRODUCT-GUIDE-updated.zip)。
+[打开说明书](START-HERE.html)
 
-## 当前内容
+BOXZY Web 产品说明书 — 图片版（2026-10-19）
 
-- 28 个页面与状态，桌面左图右说明，窄屏上下排列。
-- 首页、未开盒收藏、寄送确认、个人账户、修改用户名五个模块在目录中标注“已更新”；其余沿用原版。
-- 首页、未开盒收藏、寄送确认和个人账户直接嵌入指定的线上 Demo HTML；需要联网，并提供原尺寸查看入口。
-- 修改用户名保留老版金色弹窗图片和内容；其他图片与说明保留离线阅读和图片放大。
-- 已删除开场介绍、版本栏、文档口径和开发阅读约定。
-
-`implementation.json` 是本版章节与预览索引。`delivery-verification.json` 记录静态检查；不代表真实支付、服务端业务或浏览器视觉验收。
-
-本次仅发布已确认的说明书；产品页面源码未修改。
+打开 START-HERE.html 或同内容 BOXZY-WEB-PRODUCT-GUIDE.html。
+所有章节均以图片展示 UI，不再嵌套 HTML。桌面保留左侧图片、右侧对应说明；点击图片放大。
+侧边栏只给已替换模块标记“已更新”，当前 8 项。
+寄送新增无地址及地址选择图；地址抽屉移除 Address label、底部按钮分隔线，按钮为 Save address；排行榜新增空状态图。
+本轮新增图片使用已确认的 UI 参考图，图下注明来源；既有截图原尺寸保留，不进行拉伸放大或伪造清晰度。
+首页章节只展示电脑首页、iPad 样式两张已确认设计图，以及两份 Banner 素材；图片可放大、素材可下载。旧设计已从页面移除，原文件保留。产品首页代码暂未修改。
+本次 Git 交付仅包含说明书、引用图片和检查脚本，不包含产品页面代码改动。旧 ZIP 与 delivery-sha256.json 为上次交付存档，不含本轮修改。
+排行榜空状态已换为确认的居中奖杯 / No rankings yet / Explore boxes 设计；对应说明不再要求空榜保留前三名和个人栏。有数据截图保留。该次仅同步说明书，产品页空状态实现待同步。

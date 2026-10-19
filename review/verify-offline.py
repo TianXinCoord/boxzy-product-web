@@ -39,14 +39,14 @@ for p in list((ROOT/'assets').rglob('*.js'))+list(ROOT.glob('*.html')):
 for rank in (1,2,3):check(ROOT/'index.html',f'assets/boxzy/rank-medal-{rank}.png')
 html=(GUIDE/'START-HERE.html').read_text()
 assert html==(GUIDE/'BOXZY-WEB-PRODUCT-GUIDE.html').read_text()
-assert html.count('<iframe ')==4
+assert html.count('<iframe ')==0
 assert len(re.findall(r'<section id=',html))==28
-assert html.count('class="nav-updated"')==5
+assert html.count('class="nav-updated"')==8
 assert '../boxzy-product-web/' not in html
 for row in json.loads((GUIDE/'implementation.json').read_text()):
  for key in ('current_preview','historical_image'):
   s=row.get(key)
   if s and not s.startswith('deliverables/'):check(GUIDE/'implementation.json',s)
-report={'localReferencesChecked':checked,'missing':missing,'outsideRepository':outside,'guideCurrentPreviews':4,'guideSections':28,'onlinePreviewsRequireNetwork':True,'guideCopiesIdentical':True,'browserVisualVerified':False}
+report={'localReferencesChecked':checked,'missing':missing,'outsideRepository':outside,'guideCurrentPreviews':0,'localHtmlPreviews':0,'onlineHtmlPreviews':0,'guideSections':28,'onlinePreviewsRequireNetwork':False,'guideCopiesIdentical':True,'browserVisualVerified':False}
 print(json.dumps(report,ensure_ascii=False,indent=2))
 assert not missing and not outside

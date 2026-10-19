@@ -1,9 +1,12 @@
 {
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "uiSections": 28,
-  "currentWebPreviews": 4,
-  "embeddedImageSections": 24,
-  "updatedMenuMarkers": 5,
+  "currentWebPreviews": 0,
+  "embeddedImageSections": 28,
+  "updatedMenuMarkers": 8,
   "bothGuideCopiesMatch": true,
-  "browserVisualVerified": false
+  "browserVisualVerified": false,
+  "localHtmlPreviews": 0,
+  "onlineHtmlPreviews": 0,
+  "imageOnly": true
 }

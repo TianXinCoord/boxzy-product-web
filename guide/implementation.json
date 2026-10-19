@@ -4,9 +4,45 @@
     "title": "选盒首页 · 四档盒子",
     "updated": true,
     "implementation_status": "已更新",
-    "visual_kind": "live_html",
-    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-interactive.html?preview=demo&guide=doc-home-desktop-v3",
-    "browser_visual_verified": false
+    "visual_kind": "static_image",
+    "current_preview": "images/local-update-20261019/home-web-final.png",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "首页 · 电脑样式",
+        "src": "images/local-update-20261019/home-web-final.png",
+        "source_type": "用户确认设计图",
+        "width": 1586,
+        "height": 992,
+        "kind": "design"
+      },
+      {
+        "title": "首页 · iPad 样式",
+        "src": "images/local-update-20261019/home-ipad-final.png",
+        "source_type": "用户确认设计图",
+        "width": 1086,
+        "height": 1448,
+        "kind": "design"
+      },
+      {
+        "title": "Banner 素材 · 平板母版",
+        "src": "images/local-update-20261019/banner-tablet-master.png",
+        "source_type": "imagegen 素材母版",
+        "width": 1983,
+        "height": 793,
+        "kind": "asset"
+      },
+      {
+        "title": "Banner 素材 · 电脑母版",
+        "src": "images/local-update-20261019/banner-desktop-master.png",
+        "source_type": "imagegen 素材母版",
+        "width": 1983,
+        "height": 793,
+        "kind": "asset"
+      }
+    ],
+    "design_status": "approved",
+    "product_html_updated": false
   },
   {
     "id": "box-desktop",
@@ -76,9 +112,16 @@
     "title": "我的收藏 · 未开盒",
     "updated": true,
     "implementation_status": "已更新",
-    "visual_kind": "live_html",
-    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-collection.html?preview=reference&view=unopened&guide=doc-collection-desktop-v3",
-    "browser_visual_verified": false
+    "visual_kind": "static_image",
+    "current_preview": "images/local-update-20261019/collection-desktop.jpg",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "我的收藏 · 未开盒",
+        "src": "images/local-update-20261019/collection-desktop.jpg",
+        "source_type": "既有页面截图"
+      }
+    ]
   },
   {
     "id": "collection-empty",
@@ -112,18 +155,37 @@
     "title": "寄送确认 · 新增税费",
     "updated": true,
     "implementation_status": "已更新",
-    "visual_kind": "live_html",
-    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-collection.html?preview=reference&panel=shipping&guide=doc-shipping-dialog-v3",
-    "browser_visual_verified": false
+    "visual_kind": "static_image",
+    "current_preview": "images/local-update-20261019/shipping-no-address.png",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "寄送 · 无收货地址",
+        "src": "images/local-update-20261019/shipping-no-address.png",
+        "source_type": "已确认 UI 参考图"
+      },
+      {
+        "title": "选择收货地址",
+        "src": "images/local-update-20261019/address-choice.png",
+        "source_type": "已确认 UI 参考图"
+      }
+    ]
   },
   {
     "id": "account-desktop",
     "title": "个人账户",
     "updated": true,
     "implementation_status": "已更新",
-    "visual_kind": "live_html",
-    "current_preview": "https://boxzy-product-web-ten.vercel.app/boxzy-account.html?preview=demo&guide=doc-account-desktop-v3",
-    "browser_visual_verified": false
+    "visual_kind": "static_image",
+    "current_preview": "images/local-update-20261019/account-desktop.jpg",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "个人账户",
+        "src": "images/local-update-20261019/account-desktop.jpg",
+        "source_type": "既有页面截图"
+      }
+    ]
   },
   {
     "id": "deposit-desktop",
@@ -164,29 +226,62 @@
   {
     "id": "addresses-desktop",
     "title": "收货地址",
-    "updated": false,
-    "implementation_status": "原版保留",
-    "visual_kind": "embedded_image",
-    "current_preview": null,
-    "browser_visual_verified": false
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "static_image",
+    "current_preview": "evidence/addresses-desktop-0.jpg",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "账户 · 地址管理",
+        "src": "evidence/addresses-desktop-0.jpg",
+        "source_type": "既有页面截图"
+      },
+      {
+        "title": "新增 / 编辑 · 右侧抽屉",
+        "src": "images/local-update-20261019/address-editor.png",
+        "source_type": "更新后 UI 参考图"
+      }
+    ]
   },
   {
     "id": "address-dialog",
     "title": "新增 / 编辑地址",
-    "updated": false,
-    "implementation_status": "原版保留",
-    "visual_kind": "embedded_image",
-    "current_preview": null,
-    "browser_visual_verified": false
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "static_image",
+    "current_preview": "images/local-update-20261019/address-editor.png",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "新增 / 编辑地址 · Save address",
+        "src": "images/local-update-20261019/address-editor.png",
+        "source_type": "更新后 UI 参考图"
+      }
+    ]
   },
   {
     "id": "leaderboard-desktop",
     "title": "排行榜",
-    "updated": false,
-    "implementation_status": "原版保留",
-    "visual_kind": "embedded_image",
-    "current_preview": null,
-    "browser_visual_verified": false
+    "updated": true,
+    "implementation_status": "已更新",
+    "visual_kind": "static_image",
+    "current_preview": "images/local-update-20261019/leaderboard-empty-approved.png",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "排行榜 · 空状态",
+        "src": "images/local-update-20261019/leaderboard-empty-approved.png",
+        "source_type": "已确认 Web 设计图"
+      },
+      {
+        "title": "排行榜 · 有数据",
+        "src": "evidence/leaderboard-desktop-0.jpg",
+        "source_type": "既有页面截图"
+      }
+    ],
+    "design_status": "approved",
+    "empty_state_product_html_updated": false
   },
   {
     "id": "rules-dialog",
