@@ -1,20 +1,64 @@
 [
   {
+    "id": "global-footer",
+    "title": "页脚 · 全部 H5 页面共用",
+    "updated": true,
+    "implementation_status": "说明书已更新；产品实现待同步",
+    "visual_kind": "static_image",
+    "current_preview": "images/footer-update-20261022/home-footer.png",
+    "image_states": [
+      {
+        "title": "首页 · 公共页脚",
+        "src": "images/footer-update-20261022/home-footer.png",
+        "width": 1585,
+        "height": 992,
+        "sha256": "7630b1a86de499e58074c3c1245ede88755e7d11c23be53201d7724e77264117",
+        "kind": "design",
+        "source_type": "用户确认设计图"
+      },
+      {
+        "title": "地区不可用 · 公共页脚",
+        "src": "images/footer-update-20261022/region-page.png",
+        "width": 1505,
+        "height": 1045,
+        "sha256": "8c3fede1a3624b5e66a916daa727bd98595ef0893ad11cd46ef68034f4860d9f",
+        "kind": "design",
+        "source_type": "用户确认设计图"
+      },
+      {
+        "title": "Contact Us · 邮箱联系弹窗",
+        "src": "images/footer-update-20261022/contact-modal.png",
+        "width": 1505,
+        "height": 1045,
+        "sha256": "dfd7e716cca272d81248c963a3bd1c17df2a7116b6285f0b2d3c97ec198de8e6",
+        "kind": "design",
+        "source_type": "用户确认设计图"
+      }
+    ],
+    "design_status": "approved",
+    "product_html_updated": false,
+    "browser_visual_verified": false,
+    "scope": "All H5 pages",
+    "visibility": "Shown for review; may be hidden globally after approval and project confirmation",
+    "email": "kenchito@boxzy.io"
+  },
+  {
     "id": "home-desktop",
     "title": "选盒首页 · 四档盒子",
     "updated": true,
     "implementation_status": "已更新",
     "visual_kind": "static_image",
-    "current_preview": "images/local-update-20261019/home-web-final.png",
+    "current_preview": "images/footer-update-20261022/home-footer.png",
     "browser_visual_verified": false,
     "image_states": [
       {
-        "title": "首页 · 电脑样式",
-        "src": "images/local-update-20261019/home-web-final.png",
-        "source_type": "用户确认设计图",
-        "width": 1586,
+        "title": "首页 · 电脑样式（含公共页脚）",
+        "src": "images/footer-update-20261022/home-footer.png",
+        "width": 1585,
         "height": 992,
-        "kind": "design"
+        "sha256": "7630b1a86de499e58074c3c1245ede88755e7d11c23be53201d7724e77264117",
+        "kind": "design",
+        "source_type": "用户确认设计图"
       },
       {
         "title": "首页 · iPad 样式",
@@ -331,11 +375,24 @@
   {
     "id": "blocked",
     "title": "地区不可用",
-    "updated": false,
-    "implementation_status": "原版保留",
-    "visual_kind": "embedded_image",
-    "current_preview": null,
-    "browser_visual_verified": false
+    "updated": true,
+    "implementation_status": "说明书已更新；产品实现待同步",
+    "visual_kind": "static_image",
+    "current_preview": "images/footer-update-20261022/region-page.png",
+    "browser_visual_verified": false,
+    "image_states": [
+      {
+        "title": "地区不可用 · 公共页脚",
+        "src": "images/footer-update-20261022/region-page.png",
+        "width": 1505,
+        "height": 1045,
+        "sha256": "8c3fede1a3624b5e66a916daa727bd98595ef0893ad11cd46ef68034f4860d9f",
+        "kind": "design",
+        "source_type": "用户确认设计图"
+      }
+    ],
+    "design_status": "approved",
+    "product_html_updated": false
   },
   {
     "id": "loading",

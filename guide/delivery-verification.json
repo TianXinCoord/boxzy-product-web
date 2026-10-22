@@ -1,8 +1,9 @@
 {
-  "date": "2026-10-19",
-  "layout": "28-section guide; desktop visual left and explanation right",
-  "guideSections": 28,
+  "date": "2026-10-22",
+  "layout": "29-section guide; desktop visual left and explanation right",
+  "guideSections": 29,
   "updatedSectionIds": [
+    "global-footer",
     "home-desktop",
     "collection-desktop",
     "shipping-dialog",
@@ -10,9 +11,10 @@
     "username-dialog",
     "addresses-desktop",
     "address-dialog",
-    "leaderboard-desktop"
+    "leaderboard-desktop",
+    "blocked"
   ],
-  "localReferencesChecked": 461,
+  "localReferencesChecked": 488,
   "missingLocalReferences": [],
   "outsideRepository": [],
   "sourceAndLogicChecksPassed": 38,
@@ -40,5 +42,22 @@
   "deliveryScope": "Product guide, referenced images and validation scripts only",
   "publicationStatus": "Consult repository commit and remote branch; deployment not verified",
   "historicalProductChecksNote": "38 source checks and 9 product DOM cases describe earlier local validation, not product code delivered by this guide-only commit",
-  "verificationScope": "Exact staged Git snapshot; guide DOM and offline reference checks passed"
+  "verificationScope": "Exact staged Git snapshot; guide DOM, footer order/search/zoom and offline reference checks passed",
+  "footerDesignUpdated": true,
+  "footerProductHtmlUpdated": false,
+  "footerImageHashes": [
+    {
+      "src": "images/footer-update-20261022/home-footer.png",
+      "sha256": "7630b1a86de499e58074c3c1245ede88755e7d11c23be53201d7724e77264117"
+    },
+    {
+      "src": "images/footer-update-20261022/region-page.png",
+      "sha256": "8c3fede1a3624b5e66a916daa727bd98595ef0893ad11cd46ef68034f4860d9f"
+    },
+    {
+      "src": "images/footer-update-20261022/contact-modal.png",
+      "sha256": "dfd7e716cca272d81248c963a3bd1c17df2a7116b6285f0b2d3c97ec198de8e6"
+    }
+  ],
+  "footerSourceHashesVerified": true
 }
